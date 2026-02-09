@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="VitaTitleBar">
+        <item name="vita_show_back">true</item>
+        <item name="vita_back_type">back_img</item>
+        <item name="vita_back_icon">@drawable/ic_ws_base_back</item>
+        <item name="vita_menu_type">none</item>
+    </style>
+
+
+</resources>

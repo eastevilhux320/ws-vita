@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wsui_unit_people">人</string>
+    <string name="ui_media_picker_album">相册</string>
+    <string name="ui_media_picker_camera">相机</string>
+    <string name="ui_cancel">取消</string>
+
+    <string name="week_1">月</string>
+    <string name="week_2">火</string>
+    <string name="week_3">水</string>
+    <string name="week_4">木</string>
+    <string name="week_5">金</string>
+    <string name="week_6">土</string>
+    <string name="week_7">日</string>
+</resources>

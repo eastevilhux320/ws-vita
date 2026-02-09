@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
+            <meta-data
+                android:name="com.wsvita.network.manager.TokenManager"
+                android:value="androidx.startup" />
+
+        </provider>
+
+        <!--百度地图 start-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="vLzUdMroZx7hNlVyknMcMm30NmYc1rto" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"
+            android:foregroundServiceType="location" />
+        <!--百度地图 end-->
+
+        <activity android:name="com.wsvita.biz.core.model.protocol.ProtocolActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.wsvita.biz.core.splash.protocol"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".model.region.RegionActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.wsvita.biz.core.region"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".model.address.AddressActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.wsvita.biz.core.address"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

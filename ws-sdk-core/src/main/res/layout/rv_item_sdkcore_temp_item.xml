@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--为了BR能生成对应的值，定义的一个临时使用布局-->
+    <data>
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="recyclerItem"
+            type="com.wsvita.core.recycler.IRecyclerItem" />
+
+        <variable
+            name="stringItem"
+            type="java.lang.String" />
+
+        <variable
+            name="stringPresenter"
+            type="com.wsvita.core.recycler.presenter.IStringPresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
+
+</layout>

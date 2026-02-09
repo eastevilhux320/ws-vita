@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bizcore_title_protocol">应用协议</string>
+    <string name="bizcore_lc_protocol_deny">不同意</string>
+    <string name="bizcore_lc_protocol_allow">同意并继续</string>
+    <string name="bizcore_contact_customer_service">联系客服</string>
+
+    <string name="bizcore_protocol_agree_tips">我已阅读并同意<annotation key="action" value="user_agreement">《用户协议》</annotation>和<annotation key="action" value="privacy_policy">《隐私协议》</annotation></string>
+    <string name="bizcore_foot_loading">加载中</string>
+    <string name="bizcore_foot_loading_error">加载失败</string>
+    <string name="bizcore_title_region_city_list">城市列表</string>
+    <string name="bizcore_city_hot">热门城市</string>
+    <string name="bizcore_citylist_province_selected_tips">选择省份</string>
+    <string name="bizcore_city_selected_tips">请选择省份</string>
+    <string name="bizcore_selected_tips">请选择</string>
+    <string name="app_add">添加</string>
+    <string name="bizcore_address_city_selected">请选择城市</string>
+    <string name="bizcore_hint_address_detail">请输入详细地址</string>
+    <string name="bizcore_address_add">添加地址</string>
+    <string name="bizcore_title_address_enrollment">添加地址</string>
+    <string name="bizcore_title_address_list">我的地址</string>
+    <string name="bizcore_sdkcore_location_current">当前定位</string>
+
+</resources>

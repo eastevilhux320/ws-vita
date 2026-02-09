@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.wsvita.account.model.login.phone.PhoneViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.wsvita.account.model.login.phone.PhoneFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_base_bg">
+
+        <com.wsvita.ui.view.SuffixInputLayout
+            android:id="@+id/input_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dp_50"
+            app:wsui_labelWeight="0.32"
+            app:wsui_input_hint="@string/account_ac_loginphone_hint_phone"
+            app:wsui_label="@string/account_ac_loginphone_phone"
+            style="@style/AccountSuffix"
+            app:wsui_suffixText="@string/account_send_opt"
+            app:wsui_suffixHeight="@dimen/dp_30"
+            app:wsui_suffixBackground="@drawable/shape_border_gray_10"
+            app:wsui_suffixMarginRight="@dimen/dp_15"
+            app:wsui_suffixSize="@dimen/sp_11" />
+
+        <com.wsvita.ui.view.SimpleInputLayout
+            android:id="@+id/input_otp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            app:layout_constraintTop_toBottomOf="@id/input_phone_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/AccountInput"
+            android:layout_marginTop="@dimen/dp_1"
+            app:wsui_label="@string/account_ac_opt_code"
+            app:wsui_input_hint="@string/account_hint_ac_out_code"/>
+
+        <Button
+            android:id="@+id/btn_enter_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/appButtonHeight"
+            app:layout_constraintTop_toBottomOf="@id/input_otp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:onClick="@{fragment.onViewClick}"
+            android:text="@string/account_phone_login"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

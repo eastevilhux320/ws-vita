@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_hitch_driving"
+    app:startDestination="@id/f_bizcore_region_city_list">
+
+    <fragment
+        android:id="@+id/f_bizcore_region_city_list"
+        android:name="com.wsvita.biz.core.model.region.citylist.CityListFragment"/>
+
+</navigation>

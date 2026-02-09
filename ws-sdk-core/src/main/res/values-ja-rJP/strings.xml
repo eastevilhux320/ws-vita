@@ -1,0 +1,35 @@
+<resources>
+    <string name="title_protocol">应用协议</string>
+    <string name="wsvita_app_default_service_error">service error</string>
+    <string name="wsvita_app_dialog_title_tips">应用发送请求</string>
+
+    <!-- App / Common -->
+    <string name="app_wechat">WeChat</string>
+    <string name="app_enter">確認</string>
+    <string name="i_know">わかりました</string>
+    <string name="app_unknow">unknow</string>
+
+    <!-- Date & Time Format -->
+    <string name="ws_date_format_with_week">yyyy年MM月dd日（E）</string>
+    <string name="ws_date_year_month_format">yyyy年MM月</string>
+    <string name="ws_date_time_format_default">yyyy-MM-dd HH:mm:ss</string>
+    <string name="ws_date_time_format_chinese">yyyy年MM月dd日 HH時mm分ss秒</string>
+    <string name="ws_date_format_default">yyyy-MM-dd</string>
+    <string name="ws_time_format_default">HH:mm:ss</string>
+    <string name="sdkcore_foot_loading_error">加载失败</string>
+    <string name="sdkcore_foot_loading">加载中</string>
+    <string name="sdkcore_plate_license_select">请选择所在省份</string>
+    <string name="sdkcore_plate_license_select_letter">请选择车牌所在地</string>
+    <string name="sdkcore_plate_license_input">请输入完整的车牌号码</string>
+    <string name="sdkcore_location_rationale">请求获取您的定位权限。我们郑重声明：仅将位置信息用于当前功能，不会将其用于任何非法追踪，充分保障您的隐私安全。</string>
+    <string name="sdkcore_location_confirm">去授权</string>
+    <string name="sdkcore_location_cancel">拒绝</string>
+    <string name="sdkcore_location_title">请求地址权限</string>
+    <string name="sdkcore_permission_camera">我们需要你的相机权限</string>
+    <string name="sdkcore_permission_camera_title">请求相册权限</string>
+    <string name="sdkcore_permission_camear_message">我们需要使用你的相机权限，请先进行授权</string>
+    <string name="sdkcore_permission_camear_denied">你拒绝了相机权限</string>
+    <string name="sdkcore_tilte_datetime">选择日期</string>
+    <string name="sdkcore_month_format">yyyy年MM月</string>
+
+</resources>

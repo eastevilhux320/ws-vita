@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VitaTitleBar">
+        <attr name="vita_title_text" format="string" />
+        <attr name="vita_title_color" format="color" />
+        <attr name="vita_title_size" format="dimension" />
+
+        <attr name="vita_show_back" format="boolean" />
+        <attr name="vita_back_icon" format="reference" />
+        <attr name="vita_back_text" format="string" />
+
+        <attr name="vita_menu_text" format="string" />
+        <attr name="vita_menu_icon" format="reference" />
+        <attr name="vita_menu_text_color" format="color"/>
+
+        <attr name="vita_bar_background" format="color|reference" />
+        <attr name="vita_bar_height" format="dimension" />
+
+        <attr name="vita_back_width" format="dimension"/>
+        <attr name="vita_back_height" format="dimension"/>
+        <attr name="vita_menuicon_width" format="dimension"/>
+        <attr name="vita_menuicon_height" format="dimension"/>
+
+        <attr name="back_icon_margin" format="dimension"/>
+        <attr name="back_icon_marginLeft" format="dimension"/>
+        <attr name="back_icon_marginRight" format="dimension"/>
+        <attr name="back_icon_marginTop" format="dimension"/>
+        <attr name="back_icon_marginBottom" format="dimension"/>
+
+        <attr name="menu_icon_margin" format="dimension" />
+        <attr name="menu_icon_marginLeft" format="dimension" />
+        <attr name="menu_icon_marginRight" format="dimension" />
+        <attr name="menu_icon_marginTop" format="dimension" />
+        <attr name="menu_icon_marginBottom" format="dimension" />
+
+
+        <attr name="vita_back_type" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="back_img" value="1"/>
+            <enum name="back_text" value="2"/>
+            <enum name="back_both" value="3"/>
+        </attr>
+
+        <attr name="vita_menu_type" format="enum">
+            <enum name="none" value="0"/>
+            <enum name='nenu_img' value="1"/>
+            <enum name="menu_text" value="2"/>
+            <enum name="menu_both" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>

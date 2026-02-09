@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ui_ll_input_suffix_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toTopOf="@id/v_ui_suffix_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_ui_suffix_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                style="@style/AppTextTheme.Normal"
+                tools:text="充值金额" />
+
+            <EditText
+                android:id="@+id/edit_ui_suffix_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                style="@style/AppEditText.Left"
+                tools:hint="0.00" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_clean"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_ui_clean"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ui_ll_input_suffix_container"
+            app:layout_constraintEnd_toStartOf="@id/ll_suffix_end"
+            app:layout_constraintTop_toTopOf="@id/ui_ll_input_suffix_container"
+            tools:visibility="visible" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_suffix_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ui_ll_input_suffix_container"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tv_ui_suffix_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:gravity="center"
+                style="@style/AppTextTheme.Normal"
+                tools:text="元" />
+
+            <ImageView
+                android:id="@+id/tv_ui_suffix_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:gravity="center"
+                style="@style/AppTextTheme.Normal"
+                tools:text="元" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/v_ui_suffix_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#EEEEEE"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ui_ll_input_suffix_container" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

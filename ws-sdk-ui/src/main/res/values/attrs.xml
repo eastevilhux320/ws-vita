@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="wsui_label" format="string" />
+    <attr name="wsui_labelColor" format="color" />
+    <attr name="wsui_labelSize" format="dimension" />
+    <attr name="wsui_labelWidth" format="dimension" />
+    <attr name="wsui_labelWeight" format="float"/>
+
+    <attr name="wsui_arrow_src" format="reference"/>
+    <attr name="wsui_arrow_width" format="dimension"/>
+    <attr name="wsui_arrow_height" format="dimension"/>
+
+    <attr name="wsui_input_text" format="string" />
+    <attr name="wsui_input_hint" format="string" />
+    <attr name="wsui_inputWeight" format="float"/>
+    <attr name="wsui_maxLength" format="integer" />
+    <attr name="wsui_enabled" format="boolean" />
+    <attr name="wsui_inputType" format="enum">
+        <enum name="text" value="1" />
+        <enum name="number" value="2" />
+        <enum name="password" value="129" />
+        <enum name="phone" value="3" />
+        <enum name="email" value="33" />
+    </attr>
+
+    <attr name="wsui_showDivider" format="boolean" />
+
+    <attr name="wsui_suffixText" format="string" />
+    <attr name="wsui_suffixColor" format="color" />
+    <attr name="wsui_suffixSize" format="dimension" />
+
+    <attr name="wsui_clean_width" format="dimension" />
+    <attr name="wsui_clean_height" format="dimension" />
+    <attr name="wsui_clean_unable" format="boolean"/>
+    <attr name="wsui_clean_padding" format="dimension" />
+    <attr name="wsui_clean_marginEnd" format="dimension" />
+
+    <attr name="wsui_arrowMarginLeft" format="dimension"/>
+    <attr name="wsui_arrowMarginRight" format="dimension"/>
+    <attr name="wsui_arrowMarginTop" format="dimension"/>
+    <attr name="wsui_arrowMarginBottom" format="dimension"/>
+
+    <declare-styleable name="SimpleInputLayout">
+        <attr name="wsui_label" />
+        <attr name="wsui_labelColor" />
+        <attr name="wsui_labelSize" />
+        <attr name="wsui_labelWidth" />
+        <attr name="wsui_labelWeight" />
+        <attr name="wsui_input_text" />
+        <attr name="wsui_input_hint" />
+        <attr name="wsui_inputWeight" />
+        <attr name="wsui_inputType" />
+        <attr name="wsui_maxLength" />
+        <attr name="wsui_enabled" />
+        <attr name="wsui_showDivider" />
+        <attr name="wsui_clean_width" />
+        <attr name="wsui_clean_height" />
+        <attr name="wsui_clean_unable" />
+        <attr name="wsui_clean_padding" />
+        <attr name="wsui_clean_marginEnd" />
+    </declare-styleable>
+
+    <declare-styleable name="SuffixInputLayout">
+        <attr name="wsui_label" />
+        <attr name="wsui_labelColor" />
+        <attr name="wsui_labelSize" />
+        <attr name="wsui_labelWidth" />
+        <attr name="wsui_labelWeight" />
+        <attr name="wsui_input_text" />
+        <attr name="wsui_input_hint" />
+        <attr name="wsui_inputWeight" />
+        <attr name="wsui_inputType" />
+        <attr name="wsui_maxLength" />
+        <attr name="wsui_enabled" />
+        <attr name="wsui_showDivider" />
+        <attr name="wsui_suffixText" />
+        <attr name="wsui_suffixColor" />
+        <attr name="wsui_suffixSize" />
+        <attr name="wsui_clean_unable" />
+        <attr name="wsui_clean_width" />
+        <attr name="wsui_clean_height" />
+        <attr name="wsui_clean_padding" />
+        <attr name="wsui_clean_marginEnd" />
+
+        <attr name="wsui_suffixBackground" format="reference"/>
+        <attr name="wsui_suffixWidth" format="dimension"/>
+        <attr name="wsui_suffixHeight" format="dimension"/>
+        <attr name="wsui_suffixMarginLeft" format="dimension"/>
+        <attr name="wsui_suffixMarginRight" format="dimension"/>
+        <attr name="wsui_suffixMarginTop" format="dimension"/>
+        <attr name="wsui_suffixMarginBottom" format="dimension"/>
+        <attr name="wsui_suffixType" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="text" value="1"/>
+            <enum name="image" value="2"/>
+            <enum name="both" value="3"/>
+        </attr>
+        <attr name="wsui_suffixSrc" format="reference"/>
+        <attr name="wsui_suffixImageWidth" format="dimension"/>
+        <attr name="wsui_suffixImageHeight" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SimpleMete">
+        <attr name="wsui_label" />
+        <attr name="wsui_labelColor" />
+        <attr name="wsui_labelSize" />
+        <attr name="wsui_labelWidth" />
+
+        <attr name="wsui_action_text" format="string"/>
+        <attr name="wsui_action_size" format="dimension"/>
+        <attr name="wsui_action_color" format="color"/>
+
+        <attr name="wsui_showArrow" format="boolean"/>
+        <attr name="wsui_arrow_src"/>
+        <attr name="wsui_arrow_width"/>
+        <attr name="wsui_arrow_height"/>
+
+        <attr name="wsui_lableMarginLeft" format="dimension"/>
+        <attr name="wsui_lableMarginRight" format="dimension" />
+        <attr name="wsui_lableMarginTop" format="dimension" />
+        <attr name="wsui_lableMarginBottom" format="dimension" />
+
+        <attr name="wsui_actionMarginLeft" format="dimension" />
+        <attr name="wsui_actionMarginRight" format="dimension" />
+        <attr name="wsui_actionMarginTop" format="dimension" />
+        <attr name="wsui_actionMarginBottom" format="dimension" />
+
+        <attr name="wsui_arrowMarginLeft" />
+        <attr name="wsui_arrowMarginRight" />
+        <attr name="wsui_arrowMarginTop" />
+        <attr name="wsui_arrowMarginBottom" />
+    </declare-styleable>
+
+</resources>

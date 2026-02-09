@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AccountInput" parent="BaseInput">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="AccountSuffix" parent="BaseInput.Suffix">
+        <item name="android:background">@color/white</item>
+    </style>
+</resources>

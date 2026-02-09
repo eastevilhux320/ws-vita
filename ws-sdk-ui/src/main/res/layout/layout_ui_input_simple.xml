@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ui_ll_input_simple_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ui_ll_input_simple_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/v_ui_simple_divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tv_ui_simple_tips"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/AppTextTheme.Normal"
+                tools:ignore="Suspicious0dp" />
+
+            <EditText
+                android:id="@+id/edit_ui_simple_input"
+                android:layout_width="0dp"
+                tools:ignore="Suspicious0dp"
+                android:layout_height="wrap_content"
+                style="@style/AppEditText.Left" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_clean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_ui_clean"/>
+
+        <TextView
+            android:id="@+id/v_ui_simple_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="#EEEEEE"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

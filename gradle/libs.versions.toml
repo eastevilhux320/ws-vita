@@ -1,0 +1,158 @@
+[versions]
+compileSdk = "33"
+minSdk = "24"
+targetSdk = "33"
+agp = "7.4.2"
+kotlin = "1.8.10"
+retrofit = "2.9.0"
+okhttp = "4.10.0"
+# 配合 SDK 33 稳定的 logging-interceptor
+okhttp-logging = "4.10.0"
+# 环境配置
+env-dev = "1"
+env-sit = "2"
+env-uat = "3"
+env-prod = "4"
+env-personal = "5"
+
+# 基础库
+coreKtx = "1.9.0"
+appcompat = "1.6.1"
+material = "1.8.0"
+constraintlayout = "2.1.4"
+swiperefresh = "1.1.0"
+
+# 异步框架 (最稳定的 RxJava 3 组合)
+rxjava = "3.1.5"
+rxandroid = "3.0.0"
+autodispose = "2.2.1"
+# 修复：activity 1.8.0+ 要求 SDK 34，降级到 1.7.2
+activity = "1.7.2"
+# 修复：lifecycle 2.6.2 会引发 SDK 34 检查，降级到 2.6.1
+lifecycle = "2.6.1"
+kotlinx-coroutines = "1.6.4"
+
+# 功能库
+exoplayer = "2.18.1"
+alipay = "15.8.17"
+banner = "2.2.2"
+junit = "4.13.2"
+# 修复：匹配 SDK 33 的测试库版本
+androidx-test-ext-junit = "1.1.5"
+espresso-core = "3.5.1"
+# Navigation 版本
+# 修复：navigation 2.7.0+ 强制要求 SDK 34，降级到 2.5.3 是最稳方案
+navigation = "2.5.3"
+# 修复：glide 4.16.0 会拉取较新的 androidx 依赖，降级到 4.15.1 适配 SDK 33
+glide = "4.15.1"
+# 修复：gson 2.11 需要更高编译环境，降回 2.10.1
+gson = "2.10.1"
+securityCrypto = "1.0.0"
+#App Startup 自动初始化
+startup = "1.1.1"
+oaid = "4.2.4"
+meituan = "1.1.7"
+eventbus = "3.3.1"
+flexbox = "3.0.0"
+flowlayout = "1.1.2"
+easypermissions = "3.0.0"
+# 百度地图版本号
+baiduMap-map = "7.6.4"
+baiduMap-location = "9.6.4"
+pickerview = "4.1.9"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefresh" }
+# Lifecycle Runtime KTX (包含 lifecycleScope)
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+# 替代旧特 @OnLifecycleEvent
+androidx-lifecycle-common-java8 = { group = "androidx.lifecycle", name = "lifecycle-common-java8", version.ref = "lifecycle" }
+# Activity KTX 扩展，用于在 Activity 中方便地使用 viewModels() 等委托
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
+# 之前的 lifecycle 配置
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+# Navigation 组件
+navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+# 核心异步与生命周期 (这就是正确的核心库)
+rxjava3 = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
+rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
+# 注意：2.x 版本必须使用 autodispose-androidx-lifecycle
+autodispose-core = { group = "com.uber.autodispose2", name = "autodispose", version.ref = "autodispose" }
+autodispose-android = { group = "com.uber.autodispose2", name = "autodispose-androidx-lifecycle", version.ref = "autodispose" }
+# 视频与地图
+exoplayer-core = { group = "com.google.android.exoplayer", name = "exoplayer-core", version.ref = "exoplayer" }
+exoplayer-ui = { group = "com.google.android.exoplayer", name = "exoplayer-ui", version.ref = "exoplayer" }
+alipay-sdk = { group = "com.alipay.sdk", name = "alipaysdk-android", version.ref = "alipay" }
+banner-vp2 = { group = "io.github.youth5201314", name = "banner", version.ref = "banner" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+glide-core = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+# Retrofit 核心库
+retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+# Retrofit Gson 转换器 (用于处理原本 BaseConverterFactory 的逻辑)
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+# Retrofit RxJava3 适配器 (如果你需要保留 RxJava 链式调用)
+retrofit-adapter-rxjava3 = { group = "com.squareup.retrofit2", name = "adapter-rxjava3", version.ref = "retrofit" }
+# OkHttp 网络引擎
+okhttp-core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+# OkHttp 日志拦截器 (用于调试，替代部分 SLog 打印功能)
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp-logging" }
+# androidx-security-crypto
+androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
+# androidx-startup
+androidx-startup = { group = "androidx.startup", name = "startup-runtime", version.ref = "startup" }
+android-oaid = { group = "com.github.gzu-liyujiang", name = "Android_CN_OAID", version.ref = "oaid" }
+meituan-walle-lib = { group = "com.meituan.android.walle", name = "library", version.ref = "meituan" }
+meituan-walle-plugin-path = { group = "com.meituan.android.walle", name = "plugin", version.ref = "meituan" }
+# EventBus 核心库
+eventbus-core = { group = "org.greenrobot", name = "eventbus", version.ref = "eventbus" }
+# 注解处理器
+eventbus-processor = { group = "org.greenrobot", name = "eventbus-annotation-processor", version.ref = "eventbus" }
+google-flexbox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "flexbox" }
+zhy-flowlayout = { group = "com.hyman", name = "flowlayout-lib", version.ref = "flowlayout" }
+# easypermissions
+easypermissions = { group = "pub.devrel", name = "easypermissions", version.ref = "easypermissions" }
+# 百度地图相关依赖
+baidumap-map = { group = "com.baidu.lbsyun", name = "BaiduMapSDK_Map", version.ref = "baiduMap-map" }
+baidumap-location = { group = "com.baidu.lbsyun", name = "BaiduMapSDK_Location", version.ref = "baiduMap-location" }
+# Android-PickerView 核心库
+pickerview = { group = "com.contrarywind", name = "Android-PickerView", version.ref = "pickerview" }
+# 如果你需要单独使用 WheelView 也可以定义（可选）
+wheelview = { group = "com.contrarywind", name = "wheelview", version = "4.1.2" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version = "2.48" }
+
+[bundles]
+# 将相关的库打包，方便一键引用
+navigation = ["navigation-fragment-ktx", "navigation-ui-ktx"]
+glide = ["glide-core"]
+baidumap = ["baidumap-map", "baidumap-location"]
+
+# 网络请求套件
+network = [
+    "retrofit-core",
+    "retrofit-converter-gson",
+    "okhttp-core",
+    "okhttp-logging-interceptor"
+]
+
+# 建议打包成 bundle，方便在基础模块中一键引用
+infrastructure = [
+    "androidx-security-crypto",
+    "androidx-startup"
+]

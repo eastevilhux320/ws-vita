@@ -1,0 +1,64 @@
+{
+  "defaultExtraInfo": {
+    "extVersion": "11"
+  },
+
+  "defaultExtraInfoStrategy": "always",
+
+  "channelInfoList": [
+    {
+      "channel": "xiaomi",
+      "extraInfo": {
+        "id": "1"
+      }
+    },
+    {
+      "channel": "huawei",
+      "extraInfo": {
+        "id": "2"
+      }
+    },
+    {
+      "channel": "vivo",
+      "extraInfo": {
+        "id": "3"
+      }
+    },
+    {
+      "channel": "oppo",
+      "extraInfo": {
+        "id": "4"
+      }
+    },
+    {
+      "channel": "360",
+      "extraInfo": {
+        "id": "6"
+      }
+    },
+    {
+      "channel": "baidu",
+      "extraInfo": {
+        "id": "7"
+      }
+    },
+    {
+      "channel": "defaultc",
+      "extraInfo": {
+        "id": "8"
+      }
+    },
+    {
+      "channel": "wangshu",
+      "extraInfo": {
+        "id": "9"
+      }
+    },
+    {
+      "channel": "csj",
+      "extraInfo": {
+        "id": "10"
+      }
+    }
+  ]
+}

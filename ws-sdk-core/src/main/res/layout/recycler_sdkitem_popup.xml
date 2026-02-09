@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="recyclerItem"
+            type="com.wsvita.core.entity.domain.SLItem" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="slPresenter"
+            type="com.wsvita.core.recycler.presenter.ISLItemPresenter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:paddingHorizontal="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{()->slPresenter.onEntityClick(recyclerItem,position)}">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/iv_slitem_icon"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25"
+            app:round="@dimen/dp_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_slitem_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:text="@{recyclerItem.title}"
+            style="@style/AppTextTheme.Normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_slitem_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="left|center_vertical"
+            tools:text="选项名称" />
+
+        <ImageView
+            android:id="@+id/iv_slitem_selected"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_ui_seleted_gray" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,9 @@
+jdk:
+  - openjdk17
+
+install:
+  - ./gradlew :ws-sdk-framework:publishReleasePublicationToMavenLocal
+  - ./gradlew :ws-sdk-network:publishReleasePublicationToMavenLocal
+  - ./gradlew :ws-sdk-ui:publishReleasePublicationToMavenLocal
+  - ./gradlew :ws-sdk-core:publishReleasePublicationToMavenLocal
+  - ./gradlew :ws-lib-core:publishReleasePublicationToMavenLocal

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="province"
+            type="com.wsvita.biz.core.entity.region.ProvinceEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:gravity="center_vertical|left"
+        android:background="@color/color_base_bg">
+
+        <TextView
+            android:id="@+id/tv_province_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            android:text="@{province.name}"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+    </LinearLayout>
+</layout>

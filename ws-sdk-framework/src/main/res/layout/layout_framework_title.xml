@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="androidx.databinding.ObservableField" />
+        <import type="com.wsvita.framework.configure.TitleConfigure" />
+
+        <variable
+            name="config"
+            type="ObservableField&lt;TitleConfigure&gt;" />
+
+        <variable
+            name="vitaTitleBar"
+            type="com.wsvita.framework.widget.view.VitaTitleBar" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_vita_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
+
+        <ImageView
+            android:id="@+id/iv_sl_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="32dp"
+            android:minHeight="32dp"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_ws_base_back"
+            android:onClick="@{vitaTitleBar.onViewClick}"/>
+
+        <TextView
+            android:id="@+id/tv_sl_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@{config.backText}"
+            android:onClick="@{vitaTitleBar.onViewClick}"
+            app:layout_constraintBottom_toBottomOf="@id/iv_sl_back"
+            app:layout_constraintStart_toEndOf="@id/iv_sl_back"
+            app:layout_constraintTop_toTopOf="@id/iv_sl_back"
+            tools:text="back" />
+
+        <LinearLayout
+            android:id="@+id/ll_sl_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_sl_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{config.title}"
+                android:textColor="#333333"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="title" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_sl_menuimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="32dp"
+            android:minHeight="32dp"
+            android:scaleType="centerInside"
+            android:onClick="@{vitaTitleBar.onViewClick}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_sl_menutext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@{config.menuText}"
+            android:onClick="@{vitaTitleBar.onViewClick}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_sl_menuimage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

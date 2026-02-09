@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.wsvita.biz.core.model.address.enrollment.EnrollmentFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.wsvita.biz.core.model.address.enrollment.EnrollmentViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_base_bg"
+        android:orientation="vertical">
+
+        <com.wsvita.ui.view.side.SimpleMete
+            android:id="@+id/mete_city"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="@dimen/dp_20"
+            app:bizLabel="@{viewModel.cityText}"
+            app:wsui_lableMarginLeft="@dimen/dp_30"
+            android:background="@color/white"
+            style="@style/BizcoreMete"
+            android:onClick="@{fragment.onViewClick}"/>
+
+        <EditText
+            android:id="@+id/edit_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="@dimen/dp_1"
+            android:hint="@string/bizcore_hint_address_detail"
+            style="@style/AppEditText.Left"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dp_30"/>
+
+
+        <TextView
+            android:id="@+id/tv_bizcore_address_add"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="@dimen/dp_20"
+            style="@style/AppTextTheme.Normal"
+            android:text="@string/bizcore_address_add"
+            android:textColor="@color/white"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:onClick="@{fragment.onViewClick}"/>
+
+    </LinearLayout>
+
+</layout>
+

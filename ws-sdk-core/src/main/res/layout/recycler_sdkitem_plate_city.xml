@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="recyclerItem"
+            type="com.wsvita.core.entity.domain.PlateLicenseEntity" />
+
+        <variable
+            name="platePresenter"
+            type="com.wsvita.core.recycler.presenter.IPlateLicensePresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_border_fillet_white_gray_2"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:onClick="@{()-> platePresenter.onItemClick(recyclerItem)}">
+
+        <TextView
+            android:id="@+id/tv_plate_abbreviation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            android:text="@{recyclerItem.abbreviation}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </LinearLayout>
+
+</layout>

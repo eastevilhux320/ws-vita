@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== 基础颜色（标准纯色） ===== -->
+    <!-- 纯红色，用于错误提示、警告状态 -->
+    <color name="red">#FF0000</color>
+    <!-- 纯黑色，用于主要文字 -->
+    <color name="black">#000000</color>
+    <!-- 纯白色，用于背景、反色文字 -->
+    <color name="white">#FFFFFF</color>
+    <!-- 纯蓝色，用于主按钮、链接 -->
+    <color name="blue">#0000FF</color>
+    <!-- 纯绿色，用于成功状态、确认提示 -->
+    <color name="green">#008000</color>
+    <!-- 纯黄色，用于提示、警示背景 -->
+    <color name="yellow">#FFFF00</color>
+    <!-- 蓝绿色（Teal），用于强调色 -->
+    <color name="teal">#008080</color>
+    <!-- 橙色，用于活跃状态、次级警告 -->
+    <color name="orange">#FFA500</color>
+    <!-- 青色（Cyan），用于信息提示 -->
+    <color name="cyan">#00FFFF</color>
+    <!-- 紫色，用于装饰或特殊模块 -->
+    <color name="purple">#800080</color>
+    <!-- 粉色，用于柔和强调或女性向风格 -->
+    <color name="pink">#FFC0CB</color>
+    <!-- 金色，用于奖励、VIP、高价值元素 -->
+    <color name="gold">#FFD700</color>
+
+
+    <!-- ===== 灰度色系（UI 层级 / 分割 / 文本） ===== -->
+    <!-- 极浅灰，用于页面背景 -->
+    <color name="gray_50">#F9FAFB</color>
+    <!-- 浅灰，用于分割线、边框 -->
+    <color name="gray_200">#E5E7EB</color>
+    <!-- 中灰，用于次级文字、图标 -->
+    <color name="gray_400">#9CA3AF</color>
+    <!-- 深灰，用于正文文字 -->
+    <color name="gray_600">#4B5563</color>
+    <!-- 接近黑色，用于标题或重点文字 -->
+    <color name="gray_800">#1F2937</color>
+
+    <!-- ===== 黑色透明度（遮罩 / 阴影 / 蒙层） ===== -->
+    <!-- 黑色 10% 透明度，用于轻微阴影 -->
+    <color name="black_alpha_10">#1A000000</color>
+    <!-- 黑色 30% 透明度，用于卡片阴影 -->
+    <color name="black_alpha_30">#4D000000</color>
+    <!-- 黑色 50% 透明度，用于半透明遮罩 -->
+    <color name="black_alpha_50">#80000000</color>
+    <!-- 黑色 80% 透明度，用于弹窗背景蒙层 -->
+    <color name="black_alpha_80">#CC000000</color>
+
+</resources>

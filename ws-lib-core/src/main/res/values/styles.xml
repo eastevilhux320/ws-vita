@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BizcoreAppTitle" parent="UITitle">
+        <item name="vita_title_color">@color/white</item>
+        <item name="back_icon_marginLeft">@dimen/dp_10</item>
+        <item name="menu_icon_marginRight">@dimen/dp_10</item>
+    </style>
+
+    <style name="BizcoreMete" parent="BaseMete">
+
+    </style>
+
+</resources>

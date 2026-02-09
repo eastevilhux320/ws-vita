@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="account_ac_title_login_main">账号登录</string>
+    <string name="account_ac_title_login_phone">手机号码登录</string>
+    <string name="account_title_ac_login_main">账号登录</string>
+    <string name="account_login_username">用&#160;户&#160;名</string>
+    <string name="account_hint_account_login_username">用户名/手机号码</string>
+    <string name="account_login_password">登录密码</string>
+    <string name="account_hint_account_login_password">请输入登录密码</string>
+    <string name="account_enter_login_username">立即登录</string>
+    <string name="account_ac_login_phone">手机号码登录</string>
+    <string name="account_ac_login_wechat">微信登录</string>
+    <string name="account_login_phone">手机号码登录</string>
+    <string name="account_ac_loginphone_hint_phone">请输入手机号码</string>
+    <string name="account_ac_loginphone_phone">手机号码</string>
+    <string name="account_send_opt">发送验证码</string>
+    <string name="account_ac_opt_code">验&#160;证&#160;码</string>
+    <string name="account_hint_ac_out_code">请输入短信验证码</string>
+    <string name="account_send_opt_timer">秒后发送</string>
+    <string name="account_phone_login">立即登录</string>
+</resources>

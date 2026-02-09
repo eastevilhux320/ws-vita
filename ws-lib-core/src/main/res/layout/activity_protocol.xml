@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingConstraints">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.wsvita.biz.core.model.protocol.ProtocolViewModel" />
+
+        <variable
+            name="activity"
+            type="com.wsvita.biz.core.model.protocol.ProtocolActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F9F9F9">
+
+        <com.wsvita.framework.widget.view.VitaTitleBar
+            android:id="@+id/title_core_protocol"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/appTitleHeight"
+            app:vita_title_text="@string/bizcore_title_protocol"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/BizcoreAppTitle"/>
+
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toBottomOf="@id/title_core_protocol"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/cl_bizcore_protocol_tips" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_bizcore_protocol_tips"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            app:layout_constraintTop_toBottomOf="@id/webview"
+            app:layout_constraintBottom_toTopOf="@id/ll_protocol_bottom"
+            android:layout_marginLeft="@dimen/dp_5">
+
+            <ImageView
+                android:id="@+id/iv_bizcore_agree"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:padding="@dimen/dp_10"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@{viewModel.isAgree ? @drawable/ic_bizcore_agree_sel : @drawable/ic_bizcore_agree_nor}"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:onClick="@{activity.onViewClick}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AppTextTheme.Normal"
+                android:text="@string/bizcore_protocol_agree_tips"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_bizcore_agree" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 操作按钮 -->
+        <LinearLayout
+            android:id="@+id/ll_protocol_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/btn_bizcore_deny"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:text="@string/bizcore_lc_protocol_deny"
+                android:textColor="@color/base_app_text"
+                android:background="@color/base_text_hint"
+                android:textAllCaps="false"
+                android:layout_weight="3"
+                style="@style/AppTextTheme.Normal"
+                android:onClick="@{activity.onViewClick}"/>
+
+            <Button
+                android:id="@+id/btn_bizcore_allow"
+                android:layout_width="@dimen/dp_0"
+                android:layout_weight="7"
+                android:layout_height="match_parent"
+                android:text="@string/bizcore_lc_protocol_allow"
+                android:textColor="@color/design_default_color_primary"
+                android:background="?attr/selectableItemBackground"
+                android:textAllCaps="false"
+                style="@style/AppTextTheme.Normal"
+                android:onClick="@{activity.onViewClick}"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

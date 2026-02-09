@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ===================================================== -->
+    <!-- UI 基础文本颜色（Base Text Colors） -->
+    <!-- ===================================================== -->
+    <color name="base_app_text">#101010</color>
+
+    <color name="base_text_title">#0A0A0A</color>
+    <color name="base_text_sub">#7A869A</color>
+    <color name="base_text_hint">#97A0AF</color>
+    <color name="base_text_error">#FF0000</color>
+    <color name="base_text_link">#2684FF</color>
+
+    <!-- ===================================================== -->
+    <!-- UI 基础通用颜色（Base Common Colors） -->
+    <!-- ===================================================== -->
+    <color name="color_base_bg">#F5F5F5</color>
+    <color name="color_base_line">#DBDBDB</color>
+
+</resources>
