@@ -1,4 +1,4 @@
-package com.wsvita.app.local.manager
+package com.vita.xuantong.demo.local.manager
 
 import com.meituan.android.walle.WalleChannelReader
 import com.vita.xuantong.demo.commons.KYApp
@@ -87,12 +87,14 @@ class ChannelManager : BaseManager{
     private fun getFromLocalStore(){
         cacheChannelName = StorageManager.instance.get(APP_CHANNEL_NAME);
         cacheChannelId = StorageManager.instance.getInt(APP_CHANNEL_ID);
-        SLog.d(TAG,"getFromLocalStore,cacheChannelName:${cacheChannelName},cacheChannelId:${cacheChannelId}");
+        SLog.d(TAG,"getFromLocalStore,cacheChannelName:$cacheChannelName,cacheChannelId:$cacheChannelId");
     }
 
     private fun getFromWalle(){
         cacheChannelName = WalleChannelReader.getChannel(KYApp.app);
-        val fid = WalleChannelReader.getChannelInfo(KYApp.app)?.extraInfo?.get(WALLE_EXTRAINFO_CHANNEL_ID);
+        val fid = WalleChannelReader.getChannelInfo(KYApp.app)?.extraInfo?.get(
+            WALLE_EXTRAINFO_CHANNEL_ID
+        );
         if(fid != null){
             try {
                 cacheChannelId = fid.toInt();
@@ -100,6 +102,6 @@ class ChannelManager : BaseManager{
                 SLog.e(TAG,"getFromWalle,id parse int value error,id is :${fid}");
             }
         }
-        SLog.d(TAG,"getFromWalle,cacheChannelName:${cacheChannelName},cacheChannelId:${cacheChannelId}");
+        SLog.d(TAG,"getFromWalle,cacheChannelName:$cacheChannelName,cacheChannelId:$cacheChannelId");
     }
 }
