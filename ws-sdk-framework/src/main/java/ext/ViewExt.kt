@@ -16,7 +16,7 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
 import androidx.annotation.StringRes
-import com.wsvita.framework.commons.BaseApplication
+import com.wsvita.framework.local.WsContext
 import ext.TimeExt.format
 
 object ViewExt {
@@ -271,14 +271,14 @@ object ViewExt {
         val radii = floatArrayOf(lt, lt, rt, rt, rb, rb, lb, lb)
 
         // 调用核心工厂方法
-        // 注意：建议这里确保 BaseApplication.app 已初始化，或考虑在此处增加 Context 参数
+        // 注意：建议这里确保 WsContext.context 已初始化，或考虑在此处增加 Context 参数
         return createRectangle(
             color = this,
             radius = 0f,
             radii = radii,
             strokeWidth = strokeDp,
             strokeColor = strokeColor,
-            context = BaseApplication.app
+            context = WsContext.context
         )
     }
 
@@ -349,7 +349,7 @@ object ViewExt {
             radii = null,
             strokeWidth = strokeDp,
             strokeColor = strokeColor,
-            context = BaseApplication.app
+            context = WsContext.context
         )
     }
 
@@ -408,7 +408,7 @@ object ViewExt {
             radii = null,
             strokeWidth = strokeDp,
             strokeColor = strokeColor,
-            context = BaseApplication.app
+            context = WsContext.context
         )
     }
 

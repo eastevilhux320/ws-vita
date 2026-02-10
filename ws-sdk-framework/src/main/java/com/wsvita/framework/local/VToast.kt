@@ -4,7 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.annotation.StringRes
-import com.wsvita.framework.commons.BaseApplication
+import com.wsvita.framework.local.WsContext
 
 /**
  * Description: 全局统一交互提示组件 (Toast)。
@@ -36,7 +36,7 @@ object VToast {
         if (msg.isNullOrBlank()) return
         execute {
             if (isDuplicate(msg.toString())) return@execute
-            Toast.makeText(BaseApplication.app, msg, Toast.LENGTH_SHORT).show()
+            Toast.makeText(WsContext.context, msg, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -47,7 +47,7 @@ object VToast {
     fun showLong(msg: CharSequence?) {
         if (msg.isNullOrBlank()) return
         execute {
-            Toast.makeText(BaseApplication.app,msg, Toast.LENGTH_LONG).show()
+            Toast.makeText(WsContext.context,msg, Toast.LENGTH_LONG).show()
         }
     }
 
@@ -56,7 +56,7 @@ object VToast {
      * @param resId 字符串资源标识。
      */
     fun show(@StringRes resId: Int) {
-        show(BaseApplication.app.getString(resId))
+        show(WsContext.context.getString(resId))
     }
 
     /**
@@ -64,7 +64,7 @@ object VToast {
      * @param resId 字符串资源标识。
      */
     fun showLong(@StringRes resId: Int) {
-        showLong(BaseApplication.app.getString(resId))
+        showLong(WsContext.context.getString(resId))
     }
 
     /**

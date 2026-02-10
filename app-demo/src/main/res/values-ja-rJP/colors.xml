@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <!-- ===== Theme Base ===== -->
+    <color name="colorPrimary">#0F0F1A</color>
+    <color name="colorPrimaryDark">#0A0A12</color>
+    <color name="colorAccent">#3A3F5C</color>
+
+    <color name="color_main_theme">#0F0F1A</color>
+    <color name="color_main_theme_deep">#0A0A12</color>
+    <color name="color_main_medium">#2A2F45</color>
+    <color name="color_main_theme_pale">#3A3F5C</color>
+
+    <!-- ===== Background ===== -->
+    <color name="color_app_main_bg">#F5F6FA</color>
+    <color name="color_main_tab">#FFFFFF</color>
+    <color name="color_main_title_bg">#0F0F1A</color>
+
+    <!-- ===== Text ===== -->
+    <color name="color_text_title">#111827</color>
+    <color name="color_text_content">#4B5563</color>
+    <color name="color_aitext_subtitle">#9CA3AF</color>
+    <color name="color_normal">#9CA3AF</color>
+
+    <!-- ===== Buttons / Dialog ===== -->
+    <color name="color_dialog_submit">#0F0F1A</color>
+    <color name="color_dialog_cancel">#E5E7EB</color>
+    <color name="color_submit_btnnor">#0F0F1A</color>
+    <color name="color_submit_btnsel">#0A0A12</color>
+
+    <color name="color_app_bg">@color/color_base_bg</color>
+
+    <!-- ===== Business / Function Colors (保持原样) ===== -->
+    <color name="home_coupon">#FFAB00</color>
+    <color name="home_gift">#FF5630</color>
+    <color name="mine_assets_num">#0F0F1A</color>
+    <color name="color_money">#0F0F1A</color>
+    <color name="color_redpaper_text">#FFC400</color>
+
+    <!-- ===== Gradient Button ===== -->
+    <color name="btn_long_start_color">#2A2F45</color>
+    <color name="btn_long_center_color">#0F0F1A</color>
+    <color name="btn_long_end_color">#0A0A12</color>
+
+    <!-- ===== Bill / State ===== -->
+    <color name="color_bill_expenditure">#36B37E</color>
+    <color name="color_bill_income">#FF5630</color>
+    <color name="color_state_receive">#0F0F1A</color>
+    <color name="color_state_finished">#9CA3AF</color>
+
+    <!-- ===== Reference Theme ===== -->
+    <color name="selector_main_tab_color">@color/color_main_theme</color>
+    <color name="bg_home_find_person">@color/color_main_theme</color>
+    <color name="bg_home_find_car">#36B37E</color>
+
+    <!-- ===== Tags ===== -->
+    <color name="color_tag_sel">#3A3F5C</color>
+    <color name="color_tag_sel_line">#1F2433</color>
+
+</resources>

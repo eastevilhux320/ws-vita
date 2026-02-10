@@ -4,7 +4,7 @@ import android.content.ContentProvider
 import androidx.annotation.StringRes
 import com.wsvita.core.R
 import com.wsvita.core.recycler.RecyclerItemEntity
-import com.wsvita.framework.commons.BaseApplication
+import com.wsvita.framework.local.WsContext
 
 /**
  * 业务实体基础抽象类（Base Entity）。
@@ -136,19 +136,19 @@ abstract class BaseEntity : RecyclerItemEntity() {
     }
 
     fun unknowText(): String {
-        return BaseApplication.app.getString(R.string.app_unknow);
+        return WsContext.context.getString(R.string.app_unknow);
     }
 
     fun getString(resId : Int): String {
-        return BaseApplication.app.getString(resId);
+        return WsContext.context.getString(resId);
     }
 
     fun getString(@StringRes resId: Int, vararg formatArgs: Any?): String {
-        return BaseApplication.app.getString(resId, *formatArgs)
+        return WsContext.context.getString(resId, *formatArgs)
     }
 
     fun getColor(resId: Int): Int {
-        return BaseApplication.app.getColor(resId);
+        return WsContext.context.getColor(resId);
     }
 
     fun appDateFormat(): String {

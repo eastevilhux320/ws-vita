@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_slogan">体验前所未有的短剧狂欢</string>
+    <string name="wsvita_main_tab_home">我的</string>
+    <string name="wsvita_main_tab_discovery">发现</string>
+    <string name="wsvita_main_tab_wsvita">app</string>
+    <string name="wsvita_main_tab_mine">我的</string>
+</resources>

@@ -1,0 +1,18 @@
+{
+  "com.wangshu.vita.demo": {
+    "packageName": "com.wangshu.vita.demo",
+    "appId": "22",
+    "appSecret": "b46dc7bb99ad371c148e58406f190b11",
+    "csjAppId": "0",
+    "csjVideoId": "",
+    "csjBannerId": "",
+    "csjFeedAdId": "",
+    "csjSplashId": "",
+    "agreementAccountUrl" : "",
+    "agreementPrivacyUrl" : "",
+    "aboutUsUrl": "",
+    "wxAppId": "",
+    "wxAppSecret": "",
+    "languageFlag": false
+  }
+}

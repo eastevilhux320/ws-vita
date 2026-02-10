@@ -32,3 +32,4 @@ include(":ws-lib-advertise")
 include(":ws-sdk-core")
 include(":ws-lib-core")
 
+include(":app-demo")

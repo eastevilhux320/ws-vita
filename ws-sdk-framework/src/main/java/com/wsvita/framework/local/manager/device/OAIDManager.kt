@@ -1,10 +1,11 @@
 package com.wsvita.framework.local.manager.device
 
+import android.app.Application
 import com.github.gzuliyujiang.oaid.DeviceID
 import com.github.gzuliyujiang.oaid.DeviceIdentifier
 import com.github.gzuliyujiang.oaid.IGetter
-import com.wsvita.framework.commons.BaseApplication
 import com.wsvita.framework.local.BaseManager
+import com.wsvita.framework.local.WsContext
 import com.wsvita.framework.local.manager.StorageManager
 import com.wsvita.framework.utils.SLog
 import ext.StringExt.isInvalid
@@ -60,13 +61,17 @@ class OAIDManager private constructor() : BaseManager() {
         private var isFetching = false
     }
 
+    fun register(application: Application){
+        // 1. 注册底层 SDK
+        DeviceIdentifier.register(application);
+        fetchOaidFromSystem();
+    }
+
     /**
      * 组件初始化：从持久化层恢复数据，并按需触发物理获取
      */
     override fun onInit() {
         SLog.d(TAG,"onInit");
-        // 1. 注册底层 SDK
-        DeviceIdentifier.register(BaseApplication.app)
         // 2. 从存储恢复缓存，确保后续 oaid() 同步调用能秒回
         val savedOaid = StorageManager.instance.getString(KEY_OAID, "")
         if (!savedOaid.isNullOrBlank()) {
@@ -127,7 +132,7 @@ class OAIDManager private constructor() : BaseManager() {
         lastImeiTime = now
 
         SLog.d(TAG, "fetchOaid: Triggering DeviceID.getOAID")
-        DeviceID.getOAID(BaseApplication.app, getter)
+        DeviceID.getOAID(WsContext.context, getter)
     }
 
     private val getter = object : IGetter {

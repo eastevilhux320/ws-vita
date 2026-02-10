@@ -7,8 +7,8 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager as AndroidLocationManager
 import androidx.core.content.ContextCompat
-import com.wsvita.framework.commons.BaseApplication
 import com.wsvita.framework.local.BaseManager
+import com.wsvita.framework.local.WsContext
 
 class LocationManager private constructor() : BaseManager() {
 
@@ -30,7 +30,7 @@ class LocationManager private constructor() : BaseManager() {
      */
     @SuppressLint("MissingPermission")
     fun getLastKnownLocation(): Pair<String, String>? {
-        val context = BaseApplication.app ?: return null
+        val context = WsContext.context ?: return null
 
         // 1. 权限前置检查
         if (!checkPermission(context)) {

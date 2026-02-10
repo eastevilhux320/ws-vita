@@ -2,5 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wsvita.framework">
 
+    <application>
+
+        <provider
+            android:name=".local.WsFrameInitializer"
+            android:authorities="${applicationId}.wsvita.framework.initializer"
+            android:exported="false"
+            android:initOrder="100" />
+
+    </application>
 
 </manifest>

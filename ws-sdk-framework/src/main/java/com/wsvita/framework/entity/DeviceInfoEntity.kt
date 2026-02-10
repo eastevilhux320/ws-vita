@@ -1,7 +1,7 @@
 package com.wsvita.framework.entity
 
-import com.wsvita.framework.commons.BaseApplication
 import com.wsvita.framework.configure.FrameConfigure
+import com.wsvita.framework.local.WsContext
 import com.wsvita.framework.local.manager.device.AndroidIdManager
 import com.wsvita.framework.local.manager.device.CpuManager
 import com.wsvita.framework.local.manager.device.DeviceManager
@@ -105,7 +105,7 @@ class DeviceInfoEntity {
 
         fun gen(): DeviceInfoEntity {
             val d = DeviceInfoEntity();
-            val app = BaseApplication.app;
+            val app = WsContext.context;
             d.androidId = AndroidIdManager.instance.androidId(app);
             d.imei = ImeiManager.instance.imei(app);
             d.oaid = OAIDManager.instance.oaid();

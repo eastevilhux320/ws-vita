@@ -3,8 +3,8 @@ package com.wsvita.framework.local.manager
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.LruCache
-import com.wsvita.framework.commons.BaseApplication
 import com.wsvita.framework.ext.JsonExt.parseGson
+import com.wsvita.framework.local.WsContext
 import com.wsvita.framework.utils.JsonUtil
 import java.io.*
 import java.security.MessageDigest
@@ -36,7 +36,8 @@ class StorageManager private constructor() {
     }
 
     fun init(appId: Long) {
-        val appContext = BaseApplication.app
+        //在这里需要
+        val appContext = WsContext.context;
         val maxMemory = (Runtime.getRuntime().maxMemory() / 1024).toInt()
         memoryCache = LruCache(maxMemory / 8)
         diskCacheDir = File(appContext.cacheDir, DISK_DIR_NAME).apply { if (!exists()) mkdirs() }

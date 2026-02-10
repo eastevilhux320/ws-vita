@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.vita.xuantong.demo.model.main.home.HomeViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.vita.xuantong.demo.model.main.home.HomeFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_main_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/iv_home_logo"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:onClick="@{fragment.onViewClick}"
+                app:srcUrl="@{viewModel.homeConfig.homeLogo}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:round="@dimen/dp_2"/>
+
+            <TextView
+                android:id="@+id/edit_home_search"
+                style="@style/AppTextTheme.Normal"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                app:bizText="@{viewModel.homeConfig.searchHint}"
+                android:paddingLeft="@dimen/dp_8"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/base_text_hint"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_scan_icon"
+                app:layout_constraintStart_toEndOf="@id/iv_home_logo"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{fragment.onViewClick}"/>
+
+            <ImageView
+                android:id="@+id/iv_home_search"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_10"
+                android:onClick="@{fragment.onViewClick}"
+                app:srcUrl="@{viewModel.homeConfig.searchIcon}"
+                android:visibility="@{viewModel.homeConfig.showSearch}"
+                app:layout_constraintBottom_toBottomOf="@id/edit_home_search"
+                app:layout_constraintEnd_toEndOf="@id/edit_home_search"
+                app:layout_constraintTop_toTopOf="@id/edit_home_search" />
+
+            <ImageView
+                android:id="@+id/iv_scan_icon"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_10"
+                app:srcUrl="@{viewModel.homeConfig.scanIcon}"
+                android:visibility="@{viewModel.homeConfig.showScan}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_add_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_add_icon"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_15"
+                android:onClick="@{fragment.onViewClick}"
+                app:srcUrl="@{viewModel.homeConfig.addIcon}"
+                android:visibility="@{viewModel.homeConfig.showAdd}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/cl_swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toBottomOf="@id/cl_main_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_15"/>
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/banner_guide_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_120"
+                        android:visibility="@{viewModel.bannerList.size() > 0}"
+                        app:banner_loop_time="5000"
+                        app:banner_round_bottom_left="true"
+                        app:banner_round_bottom_right="true"
+                        app:banner_round_top_left="true"
+                        app:banner_round_top_right="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cl_main_title"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:layout_marginRight="@dimen/dp_15"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:layout_marginRight="@dimen/dp_15">
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

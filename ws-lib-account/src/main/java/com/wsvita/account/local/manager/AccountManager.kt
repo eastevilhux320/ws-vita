@@ -9,8 +9,8 @@ import com.wsvita.account.local.event.AccountModifyEvent
 import com.wsvita.account.network.model.AccountModel
 import com.wsvita.core.configure.SDKManager
 import com.wsvita.framework.GlideApp
-import com.wsvita.framework.commons.BaseApplication
 import com.wsvita.framework.local.BaseManager
+import com.wsvita.framework.local.WsContext
 import com.wsvita.framework.utils.SLog
 import com.wsvita.module.account.AccountEventIndex
 import ext.JsonExt.toJson
@@ -90,7 +90,7 @@ class AccountManager private constructor() : SDKManager() {
                 val intent = Intent(AccountAction.ACTION_ACCOUNT_MODIFIED);
                 intent.putExtra(AccountConstants.AccountKeys.ACCOUNT_ID, account.getAccountId());
                 intent.putExtra(AccountConstants.AccountKeys.ACCOUNT_DETAIL,accountJson);
-                BaseApplication.app.sendBroadcast(intent);
+                WsContext.context.sendBroadcast(intent);
                 SLog.d(TAG, "send account update broadcast success");
             } catch (e: Exception) {
                 SLog.e(TAG, "send account update broadcast error: " + e.message);

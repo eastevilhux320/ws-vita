@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_f_main_home"
+    app:startDestination="@id/nav_f_main_home">
+
+    <fragment
+        android:id="@+id/nav_f_main_home"
+        android:name="com.wsvita.biz.core.model.address.main.MainFragment"/>
+
+
+    <fragment
+        android:id="@+id/nav_f_main_discovery"
+        android:name="com.wsvita.biz.core.model.address.main.MainFragment"/>
+
+
+    <fragment
+        android:id="@+id/nav_f_main_serene"
+        android:name="com.vita.xuantong.demo.model.main.serene.SereneFragment"/>
+
+    <fragment
+        android:id="@+id/nav_f_main_mine"
+        android:name="com.vita.xuantong.demo.model.main.mine.MineFragment"/>
+
+    <fragment
+        android:id="@+id/nav_f_main_default"
+        android:name="com.vita.xuantong.demo.model.main.default.DefaultFragment"/>
+</navigation>

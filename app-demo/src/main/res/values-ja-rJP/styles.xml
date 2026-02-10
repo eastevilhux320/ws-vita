@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_main_theme</item>
+        <item name="colorPrimaryDark">@color/color_main_theme</item>
+        <item name="colorAccent">@color/color_main_theme</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+
+    <style name="FullTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Hide the status bar and make the Activity full screen -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppInput" parent="BaseInput">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="AppSuffix" parent="BaseInput.Suffix">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="DrivingDivider" parent="WsuiDivider">
+        <item name="dividerThickness">@dimen/dp_0_5</item>
+        <item name="dividerColor">@color/color_app_bg</item>
+    </style>
+</resources>
