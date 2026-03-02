@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.vita.xuantong.demo.commons.KYFragment
 import com.vita.xuantong.demo.commons.KYViewModel
 import com.wangshu.vita.demo.R
-import com.wsvita.app.local.manager.ChannelManager
+import com.vita.xuantong.demo.local.manager.ChannelManager
 import com.vita.xuantong.demo.model.main.default.DefaultFragment
 import com.vita.xuantong.demo.model.main.discovery.DiscoveryFragment
 import com.vita.xuantong.demo.model.main.home.HomeFragment

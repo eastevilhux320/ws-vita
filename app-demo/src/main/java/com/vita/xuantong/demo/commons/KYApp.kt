@@ -5,7 +5,7 @@ import com.wangshu.vita.demo.BuildConfig
 import com.wsvita.account.configure.AccountConfig
 import com.wsvita.account.configure.AccountConfigure
 import com.wsvita.app.local.accountup.AccountConfigDispatcher
-import com.wsvita.app.local.manager.ChannelManager
+import com.vita.xuantong.demo.local.manager.ChannelManager
 import com.wsvita.app.local.manager.ContainerManager
 import com.wsvita.app.local.startup.AppStartupConfigDispatcher
 import com.wsvita.biz.core.configure.BizcoreConfig
