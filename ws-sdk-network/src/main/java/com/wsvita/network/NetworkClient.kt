@@ -111,9 +111,14 @@ class NetworkClient private constructor() {
         builder.writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             // 按顺序添加拦截器
         builder.addInterceptor(LoggingInterceptor())
-        builder.addInterceptor(ParamsInterceptor())
         builder.addInterceptor(HeaderInterceptor())
-        builder.addInterceptor(DataSecurityInterceptor());
+
+        if(networkOptions.isEncryptParams){
+            builder.addInterceptor(ParamsInterceptor())
+        }
+        if(networkOptions.decryptType == 1){
+            builder.addInterceptor(DataSecurityInterceptor());
+        }
 
         val netInterceptors = networkOptions.interceptors;
         netInterceptors.forEach {

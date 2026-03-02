@@ -22,8 +22,17 @@ class NetworkOptions private constructor(builder: Builder) {
     val maxCacheAge: Int = builder.maxCacheAge
     val isNeedUrlDecode: Boolean = builder.isNeedUrlDecode
     val isNeedBase64: Boolean = builder.isNeedBase64
+
+    /**
+     * 是否需要使用参数加密
+     */
     val isEncryptParams: Boolean = builder.isEncryptParams
+
+    /**
+     * 解密方式，1-使用默认解密方式，-1-不适用解密方式
+     */
     val decryptType: Int = builder.decryptType
+
     val mediaType: String = builder.mediaType
     val interceptors: List<Interceptor> = builder.interceptors.toList()
     val headers: Map<String, String> = builder.headers
