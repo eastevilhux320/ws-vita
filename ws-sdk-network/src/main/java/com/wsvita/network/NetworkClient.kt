@@ -105,16 +105,21 @@ class NetworkClient private constructor() {
 
     private fun buildOkHttpClient(): OkHttpClient {
         SLog.d(TAG,"build okHttp client");
-        return OkHttpClient.Builder()
-            .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-            .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+        val builder = OkHttpClient.Builder();
+        builder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+        builder.readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+        builder.writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             // 按顺序添加拦截器
-            .addInterceptor(LoggingInterceptor())
-            .addInterceptor(ParamsInterceptor())
-            .addInterceptor(HeaderInterceptor())
-            .addInterceptor(DataSecurityInterceptor())
-            .build()
+        builder.addInterceptor(LoggingInterceptor())
+        builder.addInterceptor(ParamsInterceptor())
+        builder.addInterceptor(HeaderInterceptor())
+        builder.addInterceptor(DataSecurityInterceptor());
+
+        val netInterceptors = networkOptions.interceptors;
+        netInterceptors.forEach {
+            builder.addInterceptor(it);
+        }
+        return builder.build();
     }
 
     /**

@@ -74,7 +74,7 @@ afterEvaluate {
                 // 模块名作为 artifactId
                 artifactId = "ws-sdk-network"
                 // 版本号保持一致
-                version = "1.0.0"
+                version = "1.0.1"
 
                 // 告诉插件发布 release 变体生成的 AAR
                 from(components["release"])
