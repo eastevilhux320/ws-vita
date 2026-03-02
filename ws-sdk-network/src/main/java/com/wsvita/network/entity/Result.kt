@@ -25,6 +25,14 @@ class Result<T>(var data:T? = null) {
      */
     var extended : String? = null;
 
+    var merchantNo : String? = null;
+
+    var signData : String? = null;
+
+    var time : Long? = null;
+
+    var appId : Long? = null;
+
     val isSuccess
         get() = code == NetworkClient.instance.getOptions().successCode;
 
