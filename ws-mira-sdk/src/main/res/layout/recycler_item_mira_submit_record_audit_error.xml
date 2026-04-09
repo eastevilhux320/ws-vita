@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="submitRecord"
+            type="com.wangshu.mira.entity.SubmitRecordEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_mira_task_card"
+        android:elevation="2dp"
+        android:padding="12dp">
+
+        <!-- 1. 顶部左侧：审核时间/预期审核时间 -->
+        <TextView
+            android:id="@+id/tv_mira_audit_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/AppTextTheme.Normal"
+            app:miraAuditTime="@{submitRecord}"/>
+
+        <!-- 2. 顶部右侧：当前状态 -->
+        <TextView
+            android:id="@+id/tv_mira_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/AppTextTheme.Normal"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginRight="@dimen/dp_10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:miraAuditState="@{submitRecord.auditState}"/>
+
+        <!-- 分割线 (可选，让顶部和内容区分开) -->
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#F0F0F0"
+            app:layout_constraintTop_toBottomOf="@id/tv_mira_audit_time" />
+
+        <!-- 3. 任务图标：100*100dp -->
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/iv_mira_task_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            app:round="@dimen/dp_5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_line"
+            app:miraSrc="@{submitRecord.taskIcon}"/>
+
+
+        <!-- 4. 任务标题：对齐图片的右上角 -->
+        <TextView
+            android:id="@+id/tv_mira_task_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            style="@style/AppTextTheme.Normal"
+            android:gravity="left|top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_mira_task_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_mira_task_icon"
+            android:text="@{submitRecord.taskTitle}"/>
+
+        <!-- 5. 任务提交时间：对齐图片的右下角 (对应你要求的图片区域下方/右侧) -->
+        <TextView
+            android:id="@+id/tv_mira_submit_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            style="@style/AppTextTheme.Normal"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintBottom_toBottomOf="@id/iv_mira_task_icon"
+            app:layout_constraintStart_toEndOf="@id/iv_mira_task_icon"
+            app:miraTime="@{submitRecord.createTime}"/>
+
+        <View
+            android:id="@+id/view_error_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="#F0F0F0"
+            app:layout_constraintTop_toBottomOf="@id/tv_mira_submit_time" />
+
+        <TextView
+            android:id="@+id/tv_error_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            android:text="@string/mira_task_audit_error_tips"
+            app:layout_constraintTop_toBottomOf="@id/view_error_line"
+            app:layout_constraintStart_toStartOf="@id/iv_mira_task_icon"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="@color/mira_submit_audit_state_4"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_error_tips"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/AppTextTheme.Normal"
+            android:gravity="left|top"
+            android:textColor="@color/mira_submit_audit_state_4"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="@{submitRecord.auditRemark}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

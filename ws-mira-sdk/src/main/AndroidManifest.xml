@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <queries>
+        <package android:name="com.huawei.hwid" />
+        <package android:name="com.meizu.safe" />
+        <package android:name="com.heytap.mcs" />
+        <package android:name="com.vivo.abe" />
+        <package android:name="com.hihonor.id" />
+        <package android:name="com.google.android.gms" />
+    </queries>
+
+    <application>
+        <activity android:name="com.wangshu.mira.model.main.MiraMainActivity"/>
+
+        <activity android:name="com.wangshu.mira.model.detail.TaskDetailActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.wangshu.mira.task.detail"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.wangshu.mira.model.chrono.ChronoActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.wangshu.mira.chrono"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

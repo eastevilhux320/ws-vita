@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 核心品牌色 -->
+    <color name="colorPrimary">#FF7826</color>          <!-- 舒记橙（主色） -->
+    <color name="colorPrimaryDark">#CC5F1F</color>      <!-- 主色深色版 -->
+    <color name="colorAccent">#FF9E57</color>           <!-- 橙色强调色 -->
+
+    <!-- 主色衍生梯度 -->
+    <color name="color_main_theme">#FF7826</color>      <!-- 主色 -->
+    <color name="color_main_medium">#FF8F47</color>     <!-- 中等亮度 -->
+    <color name="color_main_theme_deep">#CC5F1F</color> <!-- 深色 -->
+    <color name="color_main_theme_pale">#50FF7826</color><!-- 半透明浅色 -->
+
+    <!-- 背景与文字 -->
+    <color name="color_app_main_bg">#FDF7F3</color>     <!-- 浅米白背景（暖色系） -->
+    <color name="color_main_tab">@color/white</color>        <!-- 标签栏背景 -->
+    <color name="color_main_title_bg">#FF7826</color>   <!-- 标题栏背景（主色） -->
+    <color name="color_text_title">#1A1A1A</color>      <!-- 标题文字 -->
+    <color name="color_text_content">#4D4D4D</color>    <!-- 正文 -->
+    <color name="color_aitext_subtitle">#8A8A8A</color> <!-- 副标题 -->
+
+    <!-- 功能辅助色 -->
+    <color name="color_normal">#8A8A8A</color>
+    <color name="color_dialog_submit">#FF9E57</color>   <!-- 对话框确认（强调橙） -->
+    <color name="color_dialog_cancel">#B4B4B4</color>
+
+    <!-- 按钮状态 -->
+    <color name="color_submit_btnnor">#FF7826</color>   <!-- 默认态 -->
+    <color name="color_submit_btnsel">#FF8F47</color>   <!-- 按下态 -->
+
+    <!-- 特殊场景色（保留业务语义） -->
+    <color name="home_coupon">#FFD700</color>           <!-- 优惠券（金色保留） -->
+    <color name="home_gift">#FF9E57</color>             <!-- 礼物（橙色强调） -->
+    <color name="mine_assets_num">#FF7826</color>       <!-- 资产数字 -->
+
+    <!-- 状态渐变 -->
+    <color name="btn_long_start_color">#FF7826</color>
+    <color name="btn_long_center_color">#FF8F47</color>
+    <color name="btn_long_end_color">#FF9E57</color>
+
+    <!-- 其他保留色 -->
+    <color name="color_redpaper_text">#FFC300</color>
+    <color name="color_money">#FF5000</color>
+    <color name="color_bill_expenditure">#14BA89</color>
+    <color name="color_bill_income">#F15255</color>
+
+    <!-- 状态标识色 -->
+    <color name="color_state_receive">#FF7826</color>
+    <color name="color_state_finished">#FF9E57</color>
+
+    <!-- 问卷相关色 -->
+    <color name="color_survey_detail_data">#FAFAFA</color>
+    <color name="color_survey_bg">#FCF0DC</color>
+    <color name="color_survey_reward_bg">#FFA500</color>
+
+    <color name="color_survey_reward_text_cash">#E53935</color>
+    <color name="color_survey_reward_text_exp">#FF8F00</color>
+    <color name="color_survey_reward_text_level">#7E57C2</color>
+    <color name="color_survey_reward_text_coin">#00C853</color>
+    <color name="color_survey_reward_text_point">#1E88E5</color>
+
+    <color name="color_coupon">#4DAAF5</color>
+    <color name="color_note_bg">@color/color_base_bg</color>
+    <color name="color_note_memo">#1296db</color>
+    <color name="color_note_plan">#4CAF50</color>
+
+    <color name="color_degree_1">@color/red</color>
+    <color name="color_degree_2">#FF5555</color>
+    <color name="color_degree_3">#FF9000</color>
+    <color name="color_degree_4">#8A8A8A</color>
+    <color name="color_note_today">#FFCF83</color>
+
+    <color name="color_health_theme">#4CAF50</color>
+    <color name="color_time_past">#B4B4B4</color>
+    <color name="color_time_future">#4CAF50</color>
+
+    <color name="color_ws_state_success">#14BA89</color>
+    <color name="color_ws_state_in_progress">#FF7826</color>
+    <color name="color_ws_state_pending">#00C853</color>
+    <color name="color_ws_state_failure">#F44336</color>
+    <color name="color_ws_state_stale">#FF9800</color>
+    <color name="color_ws_state_neutral">#B4B4B4</color>
+
+    <color name="color_withdrawal_state_yes">#33A954</color>
+    <color name="color_withdrawal_state_no">#CDCDCD</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+</resources>

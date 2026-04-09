@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="taskAdapter"
+            type="com.wangshu.mira.adapter.TaskAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_main_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_mira_main_back"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:src="@drawable/ic_ws_base_back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_5"/>
+
+            <TextView
+                android:id="@+id/tv_mira_main_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AppTextTheme.Title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tv_mira_main_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AppTextTheme.Normal"
+                android:text="@string/mira_mine_task"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="@dimen/dp_15" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/cl_main_top"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:adapter="@{taskAdapter}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

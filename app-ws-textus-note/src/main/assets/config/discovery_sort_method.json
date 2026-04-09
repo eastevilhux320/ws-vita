@@ -1,0 +1,46 @@
+{
+  "zh": {
+    "language":"zh",
+    "sortMethodList": [
+      {"name":"juHuaSuan","text":"聚划算"},
+      {"name":"taoQiangGou","text":"淘抢购"},
+      {"name":"tmall","text":"天猫"},
+      {"name":"goldSeller","text":"金牌卖家"},
+      {"name":"haitao","text":"海淘"},
+      {"name":"flagShipStore","text":"旗舰店"}
+    ]
+  },
+  "en": {
+    "language":"en",
+    "sortMethodList": [
+      {"name":"juHuaSuan","text":"juHuaSuan"},
+      {"name":"taoQiangGou","text":"taoQiangGou"},
+      {"name":"tmall","text":"tmall"},
+      {"name":"goldSeller","text":"goldSeller"},
+      {"name":"haitao","text":"haitao"},
+      {"name":"flagShipStore","text":"flagShipStore"}
+    ]
+  },
+  "ja": {
+    "language":"ja",
+    "sortMethodList": [
+      {"name":"juHuaSuan","text":"聚划算"},
+      {"name":"taoQiangGou","text":"淘抢购"},
+      {"name":"tmall","text":"天猫"},
+      {"name":"goldSeller","text":"金牌卖家"},
+      {"name":"haitao","text":"海淘"},
+      {"name":"flagShipStore","text":"旗舰店"}
+    ]
+  },
+  "zh_TW": {
+    "language":"zh_TW",
+    "sortMethodList": [
+      {"name":"juHuaSuan","text":"聚划算"},
+      {"name":"taoQiangGou","text":"淘抢购"},
+      {"name":"tmall","text":"天猫"},
+      {"name":"goldSeller","text":"金牌卖家"},
+      {"name":"haitao","text":"海淘"},
+      {"name":"flagShipStore","text":"旗舰店"}
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:layout_width="@dimen/dp_320"
+            android:layout_height="@dimen/dp_160"
+            android:src="@drawable/ui_banner_default_grey"
+            app:round="@dimen/dp_10"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            android:textColor="@color/base_text_hint"
+            android:text="@string/mira_recycler_item_no_data"/>
+
+    </LinearLayout>
+</layout>

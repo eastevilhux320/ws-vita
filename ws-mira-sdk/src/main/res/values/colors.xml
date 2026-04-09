@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mira_main_theme_color">#6A0DAD</color>
+    <color name="mira_task_operation_bg">#C7EDCC</color>
+
+    <color name="mira_task_operation_main_none">#00C853</color>
+    <color name="mira_task_operation_main_applied">#00C853</color>
+    <color name="mira_task_operation_main_in_progress">#448AFF</color>
+    <color name="mira_task_operation_main_canceled">#BDBDBD</color>
+    <color name="mira_task_operation_main_completed">#BDBDBD</color>
+    <color name="mira_task_operation_main_continue">#00A430</color>
+    <color name="mira_task_operation_main_submit">#BDBDBD</color>
+
+    <color name="mira_task_operation_sub_cancel">#BDBDBD</color>
+    <color name="mira_task_operation_sub_detail">#BDBDBD</color>
+
+    <color name="mira_task_operation_main_text_none">#FFFFFF</color>
+    <color name="mira_task_operation_main_text_applied">#FFFFFF</color>
+    <color name="mira_task_operation_main_text_in_progress">#FFFFFF</color>
+    <color name="mira_task_operation_main_text_canceled">#F5F5F5</color>
+    <color name="mira_task_operation_main_text_completed">#F5F5F5</color>
+    <color name="mira_task_operation_main_text_submit">#F5F5F5</color>
+
+    <color name="mira_submit_audit_state_default">@color/base_app_text</color>
+    <color name="mira_submit_audit_state_1">#2196F3</color>
+    <color name="mira_submit_audit_state_2">#FF9800</color>
+    <color name="mira_submit_audit_state_3">#4CAF50</color>
+    <color name="mira_submit_audit_state_4">#F44336</color>
+</resources>

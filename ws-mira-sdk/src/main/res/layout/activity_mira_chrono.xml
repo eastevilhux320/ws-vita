@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="menuAdapter"
+            type="com.wangshu.mira.adapter.ChornoMenuAdapter" />
+
+        <variable
+            name="submitAdapter"
+            type="com.wangshu.mira.adapter.SubmitRecordAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_base_bg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_chrono_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_mira_task_detail_back"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:src="@drawable/ic_ws_base_back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_5"/>
+
+            <TextView
+                android:id="@+id/tv_mira_task_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AppTextTheme.Title"
+                android:text="@string/mira_user_chrono"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/white"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_mira_chrono_menu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            app:layout_constraintTop_toBottomOf="@id/cl_chrono_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:adapter="@{menuAdapter}"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_mira_chrono_list"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toBottomOf="@id/rv_mira_chrono_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:adapter="@{submitAdapter}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

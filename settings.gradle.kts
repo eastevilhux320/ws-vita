@@ -20,6 +20,11 @@ dependencyResolutionManagement {
         maven { url = uri("https://artifact.bytedance.com/repository/pangle") }
         maven { url = uri("https://artifact.bytedance.com/repository/Volcengine/") }
         maven { url = uri("https://s01.oss.sonatype.org/content/groups/public") }
+
+        // 关键配置：让全工程（包括 JitPack）能找到这两个 AAR
+        flatDir {
+            dirs(File(rootDir, "ws-third-libs/libs"))
+        }
     }
 }
 
@@ -33,3 +38,5 @@ include(":ws-sdk-core")
 include(":ws-lib-core")
 
 include(":app-demo")
+include(":ws-mira-sdk")
+include(":app-ws-textus-note")

@@ -1,0 +1,33 @@
+<resources>
+    <string name="mira_permission_rationale">玄映需要相关权限以确保业务正常运行</string>
+    <string name="mira_mine_task">我参与的</string>
+    <string name="mira_task_step_guide_text">第</string>
+    <string name="mira_task_step_tips_text">步</string>
+    <string name="mira_task_apply">申请任务</string>
+    <string name="task_not_find">任务信息未找到</string>
+    <string name="mira_task_continue_task">继续任务</string>
+    <string name="mira_task_detail_permission_success">授权成功，赶紧去完成任务吧</string>
+    <string name="mira_task_detail_permission_fail">你未授权，还不能提交任务</string>
+    <string name="mira_task_step_operation_not_allow">请先开始任务</string>
+    <string name="mira_task_step_operation_not_allow_none_tips">请先申请任务</string>
+    <string name="mira_task_step_operation_not_allow_applied_tips">请先开始任务</string>
+    <string name="mira_task_step_operation_not_allow_cancelled_tips">状态已不允许该操作</string>
+    <string name="mira_task_step_operation_not_allow_completed_tips">状态已不允许该操作</string>
+    <string name="mira_task_tips_completed_step">请先完成任务的所有步骤</string>
+    <string name="mira_dialog_title_task_submit">任务提交成功</string>
+    <string name="mira_task_submit_watch_detail">查看详情</string>
+    <string name="mira_task_submit_do_task_goon">继续做任务</string>
+    <string name="mira_task_submit_message_tips">你已成功提交这个任务，我们会在1-3个工作日内完成任务审核，审核完成后，你会立刻获得任务的奖励，详细信息请在任务提交详情中查看。感谢你的信任，我们会继续努力~</string>
+    <string name="mira_user_chrono">我的记录</string>
+    <string name="mira_submit_expected_audit_time_default">预计1天后审核完成</string>
+    <string name="mira_submit_expected_audit_time">预计%s前完成审核</string>
+    <string name="mira_submit_audit_time">审核时间:%s</string>
+    <string name="mira_submit_create_time">提交时间:%s</string>
+    <string name="mira_submit_audit_state_default">待审核</string>
+    <string name="mira_recycler_item_no_data">暂无更多数据</string>
+    <string name="mira_task_audit_error_tips">失败原因:</string>
+    <string name="mira_submit_audit_state_1">待审核</string>
+    <string name="mira_submit_audit_state_2">审核中</string>
+    <string name="mira_submit_audit_state_3">审核通过</string>
+    <string name="mira_submit_audit_state_4">审核驳回</string>
+</resources>

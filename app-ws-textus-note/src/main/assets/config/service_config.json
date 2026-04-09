@@ -1,0 +1,13 @@
+{
+  "com.star.light.box": {
+    "packageName": "com.star.light.box",
+    "appId": "11",
+    "appSecret": "0023a1e3447fdb31836536cc903f1310",
+    "csjAppId": "5441485",
+    "csjVideoId": "954080625",
+    "csjBannerId": "954080616",
+    "csjFeedAdId": "954080615",
+    "agreementAccountUrl" : "http://47.111.106.175:8080/wangshu_box/box_agreement_user.html",
+    "agreementPrivacyUrl" : "http://47.111.106.175:8080/wangshu_box/box_agreement_privacy.html"
+  }
+}
