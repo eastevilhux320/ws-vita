@@ -41,12 +41,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        val ver = JavaVersion.toVersion(libs.versions.javaVersion.get())
+        sourceCompatibility = ver
+        targetCompatibility = ver
     }
-
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = libs.versions.javaVersion.get()
     }
 
     // 开启 DataBinding

@@ -45,6 +45,7 @@ abstract class BaseComponentResult<I, O> : ActivityResultContract<I, ComponentRe
         SLog.d(TAG,"createIntent start,time:${systemTime()}")
         // 1. 显式创建隐式 Intent
         val intent = Intent(action)
+        intent.setPackage(context.packageName)
         SLog.i(TAG,"createIntent_create intent,action:${action}");
         // 2. 调用 IComponentContract 接口定义的实现方法获取 Bundle
         val bundle = createInput(input)
