@@ -1,4 +1,4 @@
-package com.wangshu.note.app.model.main.note
+package com.wangshu.textus.note.model.main.note
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
@@ -8,14 +8,13 @@ import com.wangshu.note.app.R
 import com.wangshu.note.app.entity.NoteLocation
 import com.wangshu.note.app.entity.note.MemoEntity
 import com.wangshu.note.app.entity.note.NoteEntity
-import com.wangshu.note.app.entity.note.plan.IPlan
 import com.wangshu.note.app.entity.note.plan.PlanEntity
 import com.wangshu.note.app.entity.weather.WeatherNow
 import com.wangshu.note.app.model.main.MainData
 import com.wangshu.note.app.model.note.WSNoteData
 import com.wangshu.note.app.network.model.BillModel
 import com.wangshu.note.app.network.model.NoteModel
-import com.wangshu.note.app.network.reponse.YearlyDetailReponse
+import com.wangshu.textus.note.network.reponse.YearlyDetailReponse
 import com.wangshu.note.app.network.request.UserPlanListRequest
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay

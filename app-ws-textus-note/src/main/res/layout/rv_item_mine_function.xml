@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <variable
+            name="functionEntity"
+            type="com.wangshu.note.app.entity.main.MineFunctionEntity" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:background="@drawable/selecter_list_item_default">
+
+        <ImageView
+            android:id="@+id/iv_function_icon"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:src="@{functionEntity.iconResId}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_function_icon"
+            android:text="@{functionEntity.functionText}"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+
+        <ImageView
+            android:layout_width="@dimen/ws_arrow_img_size"
+            android:layout_height="@dimen/ws_arrow_img_size"
+            android:src="@drawable/wsui_ic_va_arrow_gray"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="@dimen/dp_10"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,4 +1,4 @@
-package com.wangshu.note.app.model.main.home
+package com.wangshu.textus.note.model.main.home
 
 import android.graphics.Color
 import android.os.Bundle
@@ -6,48 +6,26 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.baidu.location.BDLocation
-import com.star.light.common.adapter.NavigationAdapter
-import com.star.light.common.entity.enums.NavigationCode
-import com.star.light.common.ext.ApplicationExt.openQQChat
-import com.star.light.common.local.manager.PermissionsManager
-import com.starlight.dot.framework.utils.*
-import com.wangshu.lunaris.model.customer.CustomerData
-import com.wangshu.note.app.R
-import com.wangshu.note.app.adapter.TypePercentAdapter
-import com.wangshu.note.app.common.AppConfigure
-import com.wangshu.note.app.common.NoteFragment
-import com.wangshu.note.app.databinding.FragmentMainHomeBinding
-import com.wangshu.note.app.entity.appenums.TimeType
-import com.wangshu.note.app.entity.bill.BillTypeEntity
-import com.wangshu.note.app.local.CommentPopupHelper.showCommentInput
-import com.wangshu.note.app.local.manager.AppManager
-import com.wangshu.note.app.model.finance.FinanceData
-import com.wangshu.note.app.model.bill.BillData
-import com.wangshu.note.app.model.budget.BudgetData
-import com.wangshu.note.app.model.main.MainActivity
-import com.wangshu.note.app.model.note.WSNoteData
-import com.wangshu.note.app.model.plan.PlanData
-import com.wangshu.note.app.model.search.SearchData
-import com.wangshu.note.app.widget.popup.BillPopup
-import com.wangshu.note.app.widget.popup.HomeAddPopup
+import com.wangshu.textus.note.R
+import com.wangshu.textus.note.adapter.NavigationAdapter
+import com.wangshu.textus.note.adapter.TypePercentAdapter
+import com.wangshu.textus.note.common.NoteFragment
+import com.wangshu.textus.note.databinding.FragmentMainHomeBinding
+import com.wangshu.textus.note.entity.bill.BillTypeEntity
+import ext.StringExt.parseColor
 
 class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
     private lateinit var navigationAdapter : NavigationAdapter;
     private lateinit var incomePercentAdapter : TypePercentAdapter;
     private lateinit var expenditurePercentAdapter : TypePercentAdapter;
-    private lateinit var addPopup : HomeAddPopup;
-    private lateinit var billPopup: BillPopup;
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_main_home;
-    }
 
     override fun getVMClass(): Class<HomeViewModel> {
         return HomeViewModel::class.java;
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
         dataBinding.viewModel = viewModel;
         dataBinding.fragment = this;
 
@@ -194,6 +172,10 @@ class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
         })
     }
 
+    override fun navigationId(): Int {
+        return R.id.nav_textus_note_main_home;
+    }
+
     override fun onViewClick(view: View) {
         super.onViewClick(view)
         when(view.id){
@@ -237,13 +219,17 @@ class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
         }
     }
 
-    override fun onDateSelected(requestCode: Int, resultCode: Int, dateTime: Long) {
+    override fun layoutId(): Int {
+        return R.layout.fragment_main_home;
+    }
+
+   /* override fun onDateSelected(requestCode: Int, resultCode: Int, dateTime: Long) {
         super.onDateSelected(requestCode, resultCode, dateTime)
         SLog.d(TAG,"onDateSelected,requestCode:${requestCode},resultCode:${resultCode},dataTime:${dateTime}");
         //选择时间返回
         billPopup.setBilLTime(dateTime);
     }
-
+*/
     /**
      * 地址权限请求成功，在首页设计到的是右上角的增加按钮点击事件
      * @author Eastevil

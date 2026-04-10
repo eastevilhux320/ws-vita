@@ -1,15 +1,19 @@
-package com.wangshu.note.app.model.main.webview
+package com.wangshu.textus.note.model.main.webview
 
 import android.os.Bundle
-import com.wangshu.note.app.R
-import com.wangshu.note.app.common.NoteFragment
-import com.wangshu.note.app.databinding.FragmentMainWebviewBinding
+import com.wangshu.textus.note.R
+import com.wangshu.textus.note.common.NoteFragment
+import com.wangshu.textus.note.databinding.FragmentMainWebviewBinding
 
 class WebviewFragment : NoteFragment<FragmentMainWebviewBinding, WebviewViewModel>() {
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_main_webview;
+    override fun navigationId(): Int {
+        return R.id.nav_textus_note_main_webview;
     }
+
+    override fun layoutId(): Int {
+        return R.id.fragment_main_webview;
+    }
+
 
     override fun getVMClass(): Class<WebviewViewModel> {
         return WebviewViewModel::class.java;

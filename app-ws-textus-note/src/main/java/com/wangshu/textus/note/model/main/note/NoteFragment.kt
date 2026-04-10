@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import com.baidu.location.BDLocation
-import com.star.light.common.entity.AppData
 import com.star.starlight.ui.view.commons.RichAdapter
 import com.star.starlight.ui.view.commons.RichBuilder
 import com.star.starlight.ui.view.entity.RecyclerItemEntity
@@ -14,16 +13,15 @@ import com.wangshu.note.app.R
 import com.wangshu.note.app.adapter.NoteAdapter
 import com.wangshu.note.app.adapter.note.PlanAdapter
 import com.wangshu.note.app.databinding.FragmentMainNoteBinding
-import com.wangshu.note.app.entity.NoteLocation
-import com.wangshu.note.app.entity.bill.BillTypeEntity
+import com.wangshu.textus.note.entity.bill.BillTypeEntity
 import com.wangshu.note.app.local.CommentPopupHelper.showCommentInput
 import com.wangshu.note.app.local.manager.AppManager
 import com.wangshu.note.app.model.bill.BillData
 import com.wangshu.note.app.model.main.MainActivity
-import com.wangshu.note.app.model.main.home.HomeFragment
 import com.wangshu.note.app.model.note.WSNoteData
 import com.wangshu.note.app.model.plan.PlanData
 import com.wangshu.note.app.widget.popup.BillPopup
+import com.wangshu.textus.note.model.main.note.NoteViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

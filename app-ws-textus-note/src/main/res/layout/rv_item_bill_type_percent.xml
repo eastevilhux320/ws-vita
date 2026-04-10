@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="billType"
+            type="com.wangshu.note.app.entity.bill.BillTypePercentEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_55"
+        android:background="@color/colorWhite">
+
+        <ImageView
+            android:id="@+id/iv_bill_type_icon"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:src="@{billType.typeIcon}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="@dimen/dp_15"/>
+
+        <TextView
+            android:id="@+id/tv_bill_type_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            android:text="@{billType.typeName}"
+            android:layout_marginLeft="@dimen/dp_10"
+            app:layout_constraintStart_toEndOf="@id/iv_bill_type_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_bill_type_icon"
+            app:layout_constraintBottom_toTopOf="@id/ll_bars"/>
+
+        <TextView
+            android:id="@+id/tv_bill_type_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            app:layout_constraintTop_toTopOf="@id/tv_bill_type_name"
+            app:layout_constraintBottom_toBottomOf="@id/tv_bill_type_name"
+            app:layout_constraintStart_toEndOf="@id/tv_bill_type_name"
+            android:text="@{billType.amountText}"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:textColor="@{billType.billType == 1 ? @color/color_bill_expenditure : @color/color_bill_income}"/>
+
+        <TextView
+            android:id="@+id/tv_bill_type_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            android:textColor="@{billType.billType == 1 ? @color/color_bill_expenditure : @color/color_bill_income}"
+            app:layout_constraintTop_toTopOf="@id/tv_bill_type_name"
+            app:layout_constraintBottom_toBottomOf="@id/tv_bill_type_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{billType.percentText}"
+            android:layout_marginRight="@dimen/dp_15"/>
+
+        <LinearLayout
+            android:id="@+id/ll_bars"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/tv_bill_type_name"
+            app:layout_constraintBottom_toBottomOf="@id/iv_bill_type_icon"
+            app:layout_constraintStart_toEndOf="@id/iv_bill_type_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_15"
+            android:gravity="center">
+
+            <ProgressBar
+                android:id="@+id/bar_type_income"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_10"
+                style="@style/BillIncomeProgressbar" />
+
+
+            <ProgressBar
+                android:id="@+id/bar_type_expenditure"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_10"
+                style="@style/BillExpenditureProgressbar" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

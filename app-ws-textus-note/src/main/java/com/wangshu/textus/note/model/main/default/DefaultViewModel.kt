@@ -1,12 +1,8 @@
-package com.wangshu.note.app.model.main.default
+package com.wangshu.textus.note.model.main.default
 
 import android.app.Application
-import com.wangshu.note.app.common.NoteViewModel
-import com.wangshu.note.app.model.main.MainData
+import com.wangshu.textus.note.common.NoteViewModel
 
-class DefaultViewModel(application: Application) : NoteViewModel<MainData>(application) {
+class DefaultViewModel(application: Application) : NoteViewModel(application) {
 
-    override fun initData(): MainData {
-        return MainData();
-    }
 }

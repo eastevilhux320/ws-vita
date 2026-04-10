@@ -1,0 +1,3 @@
+<resources>
+    <dimen name="ws_arrow_img_size">@dimen/dp_12</dimen>
+</resources>

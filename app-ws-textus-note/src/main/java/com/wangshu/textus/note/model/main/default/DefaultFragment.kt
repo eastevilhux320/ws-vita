@@ -1,13 +1,18 @@
-package com.wangshu.note.app.model.main.default
+package com.wangshu.textus.note.model.main.default
 
 import android.os.Bundle
-import com.wangshu.note.app.R
-import com.wangshu.note.app.common.NoteFragment
-import com.wangshu.note.app.databinding.FragmentMainDefaultBinding
+import com.wangshu.textus.note.R
+import com.wangshu.textus.note.common.NoteFragment
+import com.wangshu.textus.note.databinding.FragmentMainDefaultBinding
 
 class DefaultFragment : NoteFragment<FragmentMainDefaultBinding, DefaultViewModel>() {
 
-    override fun getLayoutRes(): Int {
+
+    override fun navigationId(): Int {
+        return R.id.nav_textus_note_main_default;
+    }
+
+    override fun layoutId(): Int {
         return R.layout.fragment_main_default;
     }
 

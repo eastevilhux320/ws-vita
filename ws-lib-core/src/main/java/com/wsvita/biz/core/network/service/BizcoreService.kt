@@ -3,12 +3,14 @@ package com.wsvita.biz.core.network.service
 import com.wsvita.biz.core.entity.AppUrlEntity
 import com.wsvita.biz.core.entity.HomeBannerEntity
 import com.wsvita.biz.core.entity.MainTabEntity
+import com.wsvita.biz.core.entity.NavigationEntity
 import com.wsvita.biz.core.entity.region.AddressEntity
 import com.wsvita.biz.core.entity.region.CityEntity
 import com.wsvita.biz.core.entity.region.DistrictEntity
 import com.wsvita.biz.core.entity.region.HotCityEntity
 import com.wsvita.biz.core.entity.region.ProvinceEntity
 import com.wsvita.biz.core.network.reponse.AppBeforehandResponse
+import com.wsvita.biz.core.network.request.AppNavigationListRequest
 import com.wsvita.biz.core.network.request.CityListRequest
 import com.wsvita.biz.core.network.request.DistractListRequest
 import com.wsvita.biz.core.network.request.EnrollmentAddressRequest
@@ -87,4 +89,15 @@ interface BizcoreService {
      */ 
     @GET("api/address/list")
     fun addressList() : Result<MutableList<AddressEntity>>;
+
+    /**
+     * 获取应用导航菜单列表
+     * create by Eastevil at 2025/7/16 10:56
+     * @author Eastevil
+     * @param request
+     *      [AppNavigationListRequest]
+     * @return
+     */
+    @POST("api/app/navigation/list")
+    fun appNavigationList(@Body request : AppNavigationListRequest) : Result<MutableList<NavigationEntity>>;
 }

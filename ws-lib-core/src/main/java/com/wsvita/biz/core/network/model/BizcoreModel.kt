@@ -6,6 +6,7 @@ import com.wsvita.biz.core.entity.region.CityEntity
 import com.wsvita.biz.core.entity.region.DistrictEntity
 import com.wsvita.biz.core.entity.region.ProvinceEntity
 import com.wsvita.biz.core.network.BizcoreRequestBuilder
+import com.wsvita.biz.core.network.request.AppNavigationListRequest
 import com.wsvita.biz.core.network.request.CityListRequest
 import com.wsvita.biz.core.network.request.DistractListRequest
 import com.wsvita.biz.core.network.request.EnrollmentAddressRequest
@@ -125,5 +126,28 @@ class BizcoreModel private constructor(){
      */ 
     suspend fun addressList() = withContext(Dispatchers.IO){
         return@withContext service.addressList();
+    }
+
+
+    /**
+     * 获取应用导航菜单列表
+     * create by Eastevil at 2024/7/16 10:57
+     * @author Eastevil
+     * @param type
+     *      类型，1-首页导航菜单
+     * @return
+     *      应用导航列表
+     */
+    suspend fun appNavigationList(type : Int) = withContext(Dispatchers.IO){
+        val request = AppNavigationListRequest();
+        request.appId = appId;
+        request.type = type;
+
+        request.channel = BizcoreConfigure.instance.getConfig()?.channelCode;
+        request.appId = appId;
+        request.version = BizcoreConfigure.instance.getConfig()?.version;
+        request.versionName = BizcoreConfigure.instance.getConfig()?.versionName;
+
+        return@withContext service.appNavigationList(request);
     }
 }

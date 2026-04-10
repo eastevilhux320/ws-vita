@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_hitch_driving"
+    app:startDestination="@id/nav_textus_note_main_home">
+
+    <fragment
+        android:id="@+id/nav_textus_note_main_home"
+        android:name="com.wangshu.textus.note.model.main.home.HomeFragment"/>
+
+    <fragment
+        android:id="@+id/nav_textus_note_main_default"
+        android:name="com.wangshu.textus.note.model.main.default.DefaultFragment"/>
+
+    <fragment
+        android:id="@+id/nav_textus_note_main_discovery"
+        android:name="com.wangshu.textus.note.model.main.discovery.DiscoveryFragment"/>
+
+    <fragment
+        android:id="@+id/nav_textus_note_main_webview"
+        android:name="com.wangshu.textus.note.model.main.webview.WebviewFragment"/>
+
+</navigation>

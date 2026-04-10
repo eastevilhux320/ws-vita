@@ -236,6 +236,7 @@ abstract class AppAdapter<T : IRecyclerItem> : VitaAdapter<T> {
     protected open fun onBindItemData(binding: ViewDataBinding, item: T, position: Int) {
         // 默认空实现
         SLog.i(TAG,"onBindItemData,posotion:${position}");
+        setBean(binding,item,position);
     }
 
     /**
@@ -282,6 +283,10 @@ abstract class AppAdapter<T : IRecyclerItem> : VitaAdapter<T> {
 
     fun setOnItemClick(onItemClick : ((item : T?)->Unit)){
         this.itemClick = onItemClick;
+    }
+
+    protected open fun setBean(dataBinding: ViewDataBinding,entity : T,position: Int){
+        SLog.d(TAG,"setBean,postion:${position}");
     }
 
     companion object{
