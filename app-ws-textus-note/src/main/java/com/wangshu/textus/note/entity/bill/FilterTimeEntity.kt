@@ -1,9 +1,9 @@
-package com.wangshu.note.app.entity.bill
+package com.wangshu.textus.note.entity.bill
 
-import com.star.light.common.entity.AppEntity
+import com.wsvita.core.common.BaseEntity
 import java.util.*
 
-class FilterTimeEntity : AppEntity() {
+class FilterTimeEntity : BaseEntity() {
 
     /**
      * 时间显示文本

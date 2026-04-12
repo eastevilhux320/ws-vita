@@ -1,4 +1,4 @@
-package com.wsvita.network
+package com.wsvita.network.configure
 
 import okhttp3.Interceptor
 import java.nio.charset.Charset

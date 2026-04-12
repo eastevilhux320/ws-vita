@@ -1,6 +1,7 @@
 package com.wsvita.network
 
 import com.wsvita.framework.utils.SLog
+import com.wsvita.network.configure.NetworkOptions
 import com.wsvita.network.interceptor.DataSecurityInterceptor
 import com.wsvita.network.interceptor.HeaderInterceptor
 import com.wsvita.network.interceptor.LoggingInterceptor

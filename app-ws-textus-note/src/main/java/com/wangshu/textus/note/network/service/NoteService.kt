@@ -1,6 +1,6 @@
 package com.wangshu.textus.note.network.service
 
-import com.wangshu.note.app.entity.main.MonthBillDetail
+import com.wangshu.textus.note.entity.main.MonthBillDetail
 import com.wangshu.textus.note.network.reponse.BillTypePercentResponse
 import com.wangshu.textus.note.network.reponse.YearlyDetailReponse
 import com.wangshu.textus.note.network.request.BillTypePercentRequest

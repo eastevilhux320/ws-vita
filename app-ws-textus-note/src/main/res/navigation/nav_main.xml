@@ -18,7 +18,15 @@
         android:name="com.wangshu.textus.note.model.main.discovery.DiscoveryFragment"/>
 
     <fragment
+        android:id="@+id/nav_textus_note_main_mine"
+        android:name="com.wangshu.textus.note.model.main.mine.MineFragment"/>
+
+    <fragment
         android:id="@+id/nav_textus_note_main_webview"
         android:name="com.wangshu.textus.note.model.main.webview.WebviewFragment"/>
+
+    <fragment
+        android:id="@+id/nav_textus_note_main_note"
+        android:name="com.wangshu.textus.note.model.main.note.NoteFragment"/>
 
 </navigation>

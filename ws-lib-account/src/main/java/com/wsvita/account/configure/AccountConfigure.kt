@@ -53,6 +53,7 @@ class AccountConfigure private constructor(){
         isInit = true
     }
 
+
     /**
      * 获取业务层定义的应用唯一标识
      * @return appId

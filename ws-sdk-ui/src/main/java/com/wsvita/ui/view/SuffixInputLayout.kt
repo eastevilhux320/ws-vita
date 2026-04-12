@@ -164,6 +164,16 @@ class SuffixInputLayout : BaseInputLayout<LayoutUiInputSuffixBinding> {
         this.onSuffixClick = onSuffixClick;
     }
 
+    fun setSuffixSrc(resId : Int){
+        mSuffixType = SUFFIX_TYPE_IMAGE;
+        showImageSuffix(resId);
+    }
+
+    fun setSuffixBackgroundDrawable(drawable: Drawable){
+        dataBinding.llSuffixEnd.background = drawable;
+    }
+
+
     /**
      * 核心方法：统一应用后缀的物理布局参数
      */

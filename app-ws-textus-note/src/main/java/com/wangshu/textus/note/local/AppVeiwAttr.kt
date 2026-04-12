@@ -1,5 +1,6 @@
 package com.wangshu.textus.note.local
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -8,8 +9,10 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.wsvita.biz.core.configure.BizcoreConfigure
 import com.wsvita.framework.GlideApp
 import com.wsvita.ui.view.SuffixInputLayout
+import ext.BigDecimalExt.scale
 import ext.StringExt.isInvalid
 import java.io.File
+import java.math.BigDecimal
 
 object AppVeiwAttr {
 
@@ -76,10 +79,48 @@ object AppVeiwAttr {
     }
 
     @JvmStatic
+    @BindingAdapter("textIntString")
+    fun setIntText(view : TextView,text : Int){
+        when(view.id){
+            else-> view.setText(text.toString());
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("appInputText")
     fun setInputText(view: SuffixInputLayout, text : String?) {
         when(view.id){
             else-> view.setInputText(text);
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("noteBigDecimal")
+    fun setBigDecimal(view : TextView,bigDecimal: BigDecimal?){
+        when(view.id){
+            else-> view.setText(bigDecimal?.scale(2))
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("appVisibility")
+    fun setVisibility(view : View, visibility : Int){
+        when(view.id){
+            else-> view.visibility = visibility;
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("appVisibility")
+    fun setVisibility(view : View, visibility : Boolean){
+        when(view.id){
+            else-> {
+                if(visibility){
+                    view.visibility = View.VISIBLE;
+                }else{
+                    view.visibility = View.GONE;
+                }
+            }
         }
     }
 }

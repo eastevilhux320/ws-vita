@@ -6,13 +6,13 @@
 
         <variable
             name="billType"
-            type="com.wangshu.note.app.entity.bill.BillTypePercentEntity" />
+            type="com.wangshu.textus.note.entity.bill.BillTypePercentEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_55"
-        android:background="@color/colorWhite">
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/iv_bill_type_icon"

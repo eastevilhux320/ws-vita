@@ -21,7 +21,10 @@ import com.wsvita.framework.configure.FrameConfigure
 import com.wsvita.framework.local.manager.StorageManager
 import com.wsvita.framework.utils.SLog
 import com.wangshu.textus.note.BuildConfig
-import com.wsvita.network.NetworkOptions
+import com.wsvita.account.configure.AccountConfig
+import com.wsvita.account.configure.AccountConfigure
+import com.wsvita.framework.ext.BaseApplicationExt.appName
+import com.wsvita.network.configure.NetworkOptions
 import com.wsvita.network.configure.NetworkConfig
 import com.wsvita.network.configure.NetworkConfigure
 import ext.TimeExt.systemTime
@@ -121,6 +124,7 @@ class NoteApp : BaseApplication() {
             .needUrlDecode()
             .timeout(NetworkContants.TIME_OUT)
             .successCode(NetworkContants.ServiceCode.SUCCESS)
+            .security(true,-1)
             .build();
         NetworkConfigure.instance.init(netConfig,networkOpetion);
         //为网络层设置数据处理过程
@@ -151,7 +155,19 @@ class NoteApp : BaseApplication() {
         SLog.i(TAG,"init bizcore end,time:${systemTime()}");
 
         //账号组件
+        SLog.i(TAG,"init account start,time:${systemTime()}");
+        val accountConfig = AccountConfig.Builder(appConfig.appId)
+            .appLogo(R.mipmap.icon_app_logo)
+            .appName(app.appName())
+            .appSlogan(getString(R.string.app_note_slogan))
+            .mainThemeColor(themeColor)
+            .titleBackgroundColor(themeColor)
+            .privacyAgreementUrl(appConfig.agreementPrivacyUrl)
+            .userAgreementUrl(appConfig.agreementAccountUrl)
+            .builder();
+        AccountConfigure.instance.init(accountConfig);
         SLog.i(TAG,"init account end,time:${systemTime()}");
+
 
         val cEndTime = systemTime();
         SLog.i(TAG,"initCommons end,time:${cEndTime}");

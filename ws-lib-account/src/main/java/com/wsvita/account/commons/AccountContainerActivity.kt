@@ -3,7 +3,10 @@ package com.wsvita.account.commons
 import android.content.res.Configuration
 import android.graphics.Color
 import android.view.View
+import androidx.lifecycle.Observer
+import com.wsvita.account.configure.AccountConfig
 import com.wsvita.core.common.AppContainerActivity
+import com.wsvita.framework.utils.SLog
 import com.wsvita.framework.widget.view.VitaTitleBar
 
 /**
@@ -32,6 +35,18 @@ abstract class AccountContainerActivity<V : AccountContainerViewModel> : AppCont
         titleBar.setBackgroundColor(viewModel.themeColor());
         titleBar.setTitleColor(Color.WHITE);
     }
+
+    override fun addObserve() {
+        super.addObserve()
+        viewModel.config.observe(this, Observer {
+            onConfigChanged(it);
+        })
+    }
+
+    protected open fun onConfigChanged(config : AccountConfig){
+        SLog.d(TAG,"onConfigChanged");
+    }
+
 
 
 
@@ -81,5 +96,9 @@ abstract class AccountContainerActivity<V : AccountContainerViewModel> : AppCont
             val f = fragment as AccountFragment<*,*>;
             f.onMenuClick(view);
         }
+    }
+
+    companion object{
+        private const val TAG = "WS_AC_AccountContainerActivity=>"
     }
 }

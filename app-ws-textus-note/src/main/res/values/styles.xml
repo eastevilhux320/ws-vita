@@ -27,4 +27,21 @@
         <item name="dividerThickness">@dimen/dp_0_5</item>
         <item name="dividerColor">@color/color_app_main_bg</item>
     </style>
+
+    <style name="BillIncomeProgressbar" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">50dip</item>
+        <item name="android:minHeight">8dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:progressDrawable">@drawable/bg_progress_income</item>
+    </style>
+
+    <style name="BillExpenditureProgressbar" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">50dip</item>
+        <item name="android:minHeight">8dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:progressDrawable">@drawable/bg_progress_expenditure</item>
+    </style>
+
 </resources>

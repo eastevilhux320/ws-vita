@@ -5,8 +5,9 @@ import java.math.RoundingMode
 
 object BigDecimalExt {
 
-    fun BigDecimal.scale(newScale : Int, roundingMode : RoundingMode = RoundingMode.HALF_UP): String {
-        return this.setScale(newScale,roundingMode).toString();
+    fun BigDecimal?.scale(newScale : Int, roundingMode : RoundingMode = RoundingMode.HALF_UP): String {
+        val b = this?: BigDecimal.ZERO;
+        return b.setScale(newScale,roundingMode).toString();
     }
 
     fun String?.toBigDecimal(defaultBig : BigDecimal): BigDecimal {
@@ -67,8 +68,9 @@ object BigDecimalExt {
      * @return
      *
      */
-    fun BigDecimal.scale(scale : Int): String {
-        return this.setScale(scale,BigDecimal.ROUND_HALF_UP).toString();
+    fun BigDecimal?.scale(scale : Int): String {
+        val b = this?: BigDecimal.ZERO;
+        return b.setScale(scale,BigDecimal.ROUND_HALF_UP).toString();
     }
 
     /**
@@ -86,6 +88,14 @@ object BigDecimalExt {
             "-${this.scale(scale)}";
         }else{
             this.scale(scale)
+        }
+    }
+
+    fun BigDecimal?.format(scale : Int?) : String{
+        if(this == null)
+            return "0.00";
+        else{
+            return this.setScale(scale?:2,BigDecimal.ROUND_HALF_UP).toString();
         }
     }
 }

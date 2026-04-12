@@ -91,6 +91,13 @@ abstract class NoteFragment<D : ViewDataBinding, V : NoteViewModel> : BizcoreFra
         SLog.d(TAG, "onReceiveModelString,value:${value}")
     }
 
+    override fun toLogin() {
+        val ac = activity;
+        if(ac is NoteActivity<*,*>){
+            ac.toLogin();
+        }
+    }
+
     companion object {
         private const val TAG = "Mirror_Main_DemoFragment=>"
     }

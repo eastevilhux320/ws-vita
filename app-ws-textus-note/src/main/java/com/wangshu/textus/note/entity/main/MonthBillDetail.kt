@@ -1,12 +1,12 @@
-package com.wangshu.note.app.entity.main
+package com.wangshu.textus.note.entity.main
 
-import com.star.light.common.entity.AppEntity
-import com.star.light.common.ext.AmountExt.format
-import com.wangshu.note.app.R
-import com.wangshu.note.app.common.NoteApp
+import com.wangshu.textus.note.R
+import com.wangshu.textus.note.common.NoteApp
+import com.wsvita.core.common.BaseEntity
+import ext.BigDecimalExt.format
 import java.math.BigDecimal
 
-class MonthBillDetail : AppEntity() {
+class MonthBillDetail : BaseEntity() {
 
     /**
      * 本月支出总和

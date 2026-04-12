@@ -74,6 +74,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <!--账号组件配置 start-->
+        <activity android:name="com.wsvita.account.model.login.LoginActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.wangshu.textus.note.account.login"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--账号组件配置 end-->
     </application>
 
 </manifest>

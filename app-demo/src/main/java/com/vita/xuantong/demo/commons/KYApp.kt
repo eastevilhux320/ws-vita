@@ -20,7 +20,7 @@ import com.wsvita.framework.configure.FrameConfig
 import com.wsvita.framework.configure.FrameConfigure
 import com.wsvita.framework.local.manager.StorageManager
 import com.wsvita.framework.utils.SLog
-import com.wsvita.network.NetworkOptions
+import com.wsvita.network.configure.NetworkOptions
 import com.wsvita.network.configure.NetworkConfig
 import com.wsvita.network.configure.NetworkConfigure
 import ext.TimeExt.systemTime

@@ -3,7 +3,6 @@ package com.wsvita.network.configure
 import com.wsvita.framework.utils.SLog
 import com.wsvita.network.IDataSecurity
 import com.wsvita.network.NetworkClient
-import com.wsvita.network.NetworkOptions
 
 /**
  * 网络组件配置入口类，负责连接业务层配置与底层网络引擎

@@ -2,4 +2,16 @@
     <string name="app_name">app-ws-textus-note</string>
     <string name="bill_detail_year_format">%s年度统计</string>
     <string name="home_month_total_format">共%s元</string>
+    <string name="month_income">This month\'s income</string>
+    <string name="month_expenditure">本月支出</string>
+    <string name="home_month_tips">月·支出</string>
+    <string name="bill_detail_today">今日</string>
+    <string name="bill_detail_year">本年度</string>
+    <string name="bill_detail_month">本月</string>
+    <string name="bill_detail_week">本周</string>
+    <string name="month_bill_percent_income">本月收入占比</string>
+    <string name="month_bill_percent_expenditure">本月支出占比</string>
+    <string name="bill_expenditure_num_total_format">支出:&#160;%s笔</string>
+    <string name="bill_income_num_total_format">收入:&#160;%s笔</string>
+    <string name="app_note_slogan">舒记，记录生活的温柔方式</string>
 </resources>

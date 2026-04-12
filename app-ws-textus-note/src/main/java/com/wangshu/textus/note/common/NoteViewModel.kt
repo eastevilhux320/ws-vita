@@ -2,6 +2,7 @@ package com.wangshu.textus.note.common
 
 import android.app.Application
 import androidx.lifecycle.viewModelScope
+import com.wsvita.account.local.manager.AccountManager
 import com.wsvita.biz.core.commons.BizcoreViewModel
 import com.wsvita.core.common.NavigationViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -75,6 +76,10 @@ abstract class NoteViewModel(application: Application) : BizcoreViewModel(applic
         viewModelScope.launch {
             _commonDataFlow.emit(TextusDataEvent.Empty())
         }
+    }
+
+    override fun isLogin(): Boolean {
+        return AccountManager.instance.isLogin();
     }
 
     /**

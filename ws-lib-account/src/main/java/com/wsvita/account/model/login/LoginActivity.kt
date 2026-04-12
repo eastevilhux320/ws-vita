@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import androidx.activity.FullyDrawnReporter
 import com.wsvita.account.commons.AccountContainerActivity
+import com.wsvita.account.configure.AccountConfig
 import com.wsvita.account.configure.AccountConfigure
 import com.wsvita.account.model.login.main.MainFragment
 import com.wsvita.core.configure.ScreenConfig
@@ -68,6 +69,11 @@ class LoginActivity : AccountContainerActivity<LoginViewModel>() {
     override fun onIntentReceivedString(key: String, value: String) {
         super.onIntentReceivedString(key, value)
         SLog.d(TAG,"onIntentReceivedString,key:${key},value");
+    }
+
+    override fun onConfigChanged(config: AccountConfig) {
+        super.onConfigChanged(config)
+        dataBinding.vitaTitleBar.setBackgroundColor(config.mainThemeColor);
     }
 
     companion object{

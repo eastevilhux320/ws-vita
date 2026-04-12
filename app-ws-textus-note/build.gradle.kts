@@ -95,6 +95,13 @@ android {
             matchingFallbacks.add("debug")
         }
 
+        create("personal") {
+            initWith(getByName("debug"))
+            buildConfigField("int", "VERSION_TYPE", libs.versions.env.personal.get())
+            buildConfigField("String", "VERSION_DESCRIPTION", "\"SIT版本\"")
+            matchingFallbacks.add("debug")
+        }
+
         create("uat") {
             initWith(getByName("release"))
             isMinifyEnabled = true

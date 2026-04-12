@@ -1,6 +1,9 @@
 package ext
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.google.gson.*
+import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -8,6 +11,10 @@ import java.time.LocalTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.*
+
+inline fun <reified T> Gson.parseJSON(json: String?): T {
+    return this.fromJson<T>(json, object : TypeToken<T>() {}.type)
+}
 
 /**
  * 基于 Gson 的 JSON 扩展工具类
@@ -52,6 +59,10 @@ object JsonExt {
         return this.toJson(false);
     }
 
+    fun Any?.toJSON(): String {
+        return this.toJson();
+    }
+
     /**
      * 构建配置好的 Gson 实例
      * * 包含对 Date 和 Java 8 Time API 的类型适配器注册
@@ -60,6 +71,7 @@ object JsonExt {
      * @param timestampMode 是否将日期序列化为长整型时间戳
      * @return Gson
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun createGson(timestampMode: Boolean): Gson {
         val builder = GsonBuilder()
 

@@ -13,6 +13,7 @@ import com.wangshu.textus.note.common.NoteFragment
 import com.wangshu.textus.note.databinding.FragmentMainHomeBinding
 import com.wangshu.textus.note.entity.bill.BillTypeEntity
 import ext.StringExt.parseColor
+import ext.ViewExt.createComplexRectDrawable
 
 class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
     private lateinit var navigationAdapter : NavigationAdapter;
@@ -40,27 +41,6 @@ class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
                 toLogin();
                 return@onNavigationClick;
             }
-            it.code?.let {
-                val code = NavigationCode.getNavigationCode(it);
-                SLog.d(TAG,"onNavigationClick,code:${code.code}")
-                when(code){
-                    NavigationCode.NOTE_MAIN_NAV_BILL->{
-                        BillData.billList(requireContext(),false);
-                    }
-                    NavigationCode.NOTE_MAIN_NAV_BUDGET->{
-                        BudgetData.toBudget(requireContext(),null,false);
-                    }
-                    NavigationCode.NOTE_MAIN_NAV_NOTE->{
-                        BillData.billStatistics(requireContext(),TimeType.DAILY,false);
-                    }
-                    NavigationCode.NOTE_MAIN_NAV_INCOME->{
-                        FinanceData.toMain(requireContext());
-                    }
-                    NavigationCode.NOTE_MAIN_NAV_SERVICE->{
-                        CustomerData.customerWeb(requireContext());
-                    }
-                }
-            }
         }
 
         dataBinding.swipeRefreshlayout.setOnRefreshListener {
@@ -72,83 +52,18 @@ class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
         dataBinding.incomePercentAdapter = incomePercentAdapter;
         dataBinding.expenditurePercentAdapter = expenditurePercentAdapter;
 
-        addPopup = HomeAddPopup.Builder(requireContext())
-            .onAdd {
-                when(it){
-                    HomeAddPopup.ADD_TYPE_MEMO->{
-                        WSNoteData.memo(requireContext(),false);
-                    }
-                    HomeAddPopup.ADD_TYPE_NOTE->{
-                        setAlpha(0.7f);
-                        val notePopup = getAppActivity().showCommentInput(onLoading = {
-                            viewModel.showLoading();
-                        }, onDismissLoading = {
-                            viewModel.dismissLoading();
-                        }, onSuccess = {
-                            //发布成功
-                            SLog.d(TAG,"notePopup success");
-                        })
-                        viewModel.currentLocation()?.let { it1 -> notePopup.setLocation(it1) }
-                        notePopup.setOnDismissListener {
-                            setAlpha(1f);
-                        }
-                    }
-                    HomeAddPopup.ADD_TYPE_PLAN->{
-                        PlanData.publishPlan(requireContext(),false);
-                    }
-                }
-            }
-            .onBill {
-                billPopup.showViewDown(dataBinding.clMainLayout);
-            }
-            .size(getScreenSize(requireContext())[0],220.dip2px())
-            .builder();
-        addPopup.setOnDismissListener {
-            setAlpha(1f);
-        }
-
-        billPopup = BillPopup.Builder(requireContext())
-            .onSelectTime {
-                //选择时间
-                AppManager.instance.selectDataTime(requireContext(),0);
-            }
-            .onSelectParentType {
-                //选择父类型
-                BillData.selectBillType(requireContext(),it,
-                    REQUEST_SELECT_PARENT_TYPE,false);
-            }
-            .onSelectChildType {
-                //选择子类型
-                BillData.selectBillType(requireContext(), it,
-                    REQUEST_SELECT_CHILD_TYPE,false);
-            }
-            .onLoading {
-                viewModel.showLoading();
-            }
-            .onDismissLoading {
-                viewModel.dismissLoading();
-            }
-            .onBillSuccess {
-                viewModel.refreshData();
-            }
-            .size(getScreenSize(requireContext())[0],590.dip2px())
-            .isTranslucent(true)
-            .builder();
-
     }
 
     override fun addObserve() {
         super.addObserve()
+
         viewModel.homeConfig.observe(this, Observer {
             dataBinding.clMainTitle.setBackgroundColor(Color.parseColor(it.toolBarColor));
             val editBgcolor = it.searchBgcolor?.parseColor() ?: Color.WHITE;
             val searchStrokeColor = it.searchStrokeColor?.parseColor() ?: Color.WHITE;
 
             dataBinding.editHomeSearch.setBackground(
-                requireContext().createRectangleShape(
-                    editBgcolor,
-                    it.searchStroke, searchStrokeColor, it.searchRadius
-                )
+                requireContext().createComplexRectDrawable(editBgcolor, it.searchStroke, searchStrokeColor, it.searchRadius)
             );
         })
 
@@ -157,17 +72,17 @@ class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
         })
 
         viewModel.navigationList.observe(this, Observer {
-            navigationAdapter.dataList = it;
+            navigationAdapter.setList(it);
             navigationAdapter.notifyDataSetChanged();
         })
 
         viewModel.incomePercentList.observe(this, Observer {
-            incomePercentAdapter.dataList = it;
+            incomePercentAdapter.setList(it)
             incomePercentAdapter.notifyDataSetChanged();
         })
 
         viewModel.expenditurePercentList.observe(this, Observer {
-            expenditurePercentAdapter.dataList = it;
+            expenditurePercentAdapter.setList(it)
             expenditurePercentAdapter.notifyDataSetChanged();
         })
     }
@@ -178,44 +93,12 @@ class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
 
     override fun onViewClick(view: View) {
         super.onViewClick(view)
+        if(!viewModel.isLogin()){
+            toLogin();
+            return;
+        }
         when(view.id){
-            R.id.iv_add_icon->{
-                if(viewModel.locationSuccess()){
-                    setAlpha(0.7f);
-                    addPopup.showViewDown(dataBinding.clMainLayout);
-                }else{
-                    if(PermissionsManager.instance.hasLocationPermissions(getAppActivity())){
-                        //已经有权限,请求定位
-                        viewModel.showLoading();
-                        val ac = getAppActivity(MainActivity::class.java);
-                        ac?.requestLocation();
-                        delay(800){
-                            viewModel.dismissLoading();
-                            setAlpha(0.7f);
-                            addPopup.showViewDown(dataBinding.clMainLayout);
-                        }
-                    }else{
-                        //没有权限，请求权限
-                        val ac = getAppActivity(MainActivity::class.java);
-                        ac?.requestLocationTips();
-                    }
-                }
-            }
-            R.id.cl_bill_detail_day->{
-                BillData.billStatistics(requireContext(),TimeType.DAILY,false);
-            }
-            R.id.cl_bill_detail_week->{
-                BillData.billStatistics(requireContext(),TimeType.WEEKLY,false);
-            }
-            R.id.cl_bill_detail_month->{
-                BillData.billStatistics(requireContext(),TimeType.MONTHLY,false);
-            }
-            R.id.cl_bill_detail_year->{
-                BillData.billStatistics(requireContext(),TimeType.YEARLY,false);
-            }
-            R.id.edit_home_search->{
-                SearchData.searchMain(requireContext());
-            }
+
         }
     }
 
@@ -240,13 +123,13 @@ class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
      * @see
      * @return
      *      void
-     */
+     *//*
     fun requestLocationResult(permissionFlag : Boolean){
         setAlpha(0.7f);
         addPopup.showViewDown(dataBinding.clMainLayout);
-    }
+    }*/
 
-    fun receiveMainLocationChanged(location : BDLocation){
+  /*  fun receiveMainLocationChanged(location : BDLocation){
         SLog.d(TAG,"receiveMainLocationChanged");
         viewModel.recevieLocation(location);
     }
@@ -260,7 +143,7 @@ class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
         if(cType != null){
             billPopup.setChildType(cType);
         }
-    }
+    }*/
 
     companion object{
         private const val TAG = "WS_Note_HomeFragment==>";

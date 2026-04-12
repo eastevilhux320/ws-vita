@@ -11,7 +11,7 @@ class WebviewFragment : NoteFragment<FragmentMainWebviewBinding, WebviewViewMode
     }
 
     override fun layoutId(): Int {
-        return R.id.fragment_main_webview;
+        return R.layout.fragment_main_webview;
     }
 
 

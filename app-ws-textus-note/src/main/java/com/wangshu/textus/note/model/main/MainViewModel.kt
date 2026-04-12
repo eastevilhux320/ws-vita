@@ -2,13 +2,22 @@ package com.wangshu.textus.note.model.main
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.wangshu.textus.note.R
 import com.wangshu.textus.note.common.NoteFragment
 import com.wangshu.textus.note.common.NoteViewModel
 import com.wangshu.textus.note.local.NoteConstants
+import com.wangshu.textus.note.local.WSConstants
 import com.wangshu.textus.note.local.manager.ChannelManager
+import com.wangshu.textus.note.model.main.default.DefaultFragment
+import com.wangshu.textus.note.model.main.discovery.DiscoveryFragment
+import com.wangshu.textus.note.model.main.home.HomeFragment
+import com.wangshu.textus.note.model.main.mine.MineFragment
+import com.wangshu.textus.note.model.main.webview.WebviewFragment
 import com.wsvita.biz.core.entity.MainTabEntity
 import com.wsvita.biz.core.network.model.AppModel
 import com.wsvita.framework.utils.SLog
+import ext.JsonExt.toJSON
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -20,8 +29,34 @@ class MainViewModel(application: Application) : NoteViewModel(application) {
     val tabList = MutableLiveData<MutableList<MainTabEntity>>();
     val fragmentList = MutableLiveData<MutableList<NoteFragment<*, *>>>();
 
+    override fun initModel() {
+        super.initModel()
+        tabList();
+    }
 
-    private fun tabList() = GlobalScope.launch{
+    /**
+     * 选择底部导航栏
+     * create by Administrator at 2022/10/12 23:40
+     * @author Administrator
+     * @param position
+     *      选择的下标
+     * @return
+     *      void
+     */
+    fun selectTabIndex(position : Int){
+        if(position == lastSelectTab){
+            return;
+        }
+        val list = tabList.value;
+        list?.let {
+            it[lastSelectTab].itemSelect = false;
+            it[position].itemSelect = true;
+            lastSelectTab = position;
+            tabList.value = it;
+        }
+    }
+
+    private fun tabList() = viewModelScope.launch{
         val result = AppModel.instance.mainTabList(ChannelManager.instance.getChannel());
         SLog.d(TAG,"tabList=>${result.toJSON()}");
         if(result.isSuccess){
@@ -31,7 +66,7 @@ class MainViewModel(application: Application) : NoteViewModel(application) {
                 val fList = mutableListOf<NoteFragment<*, *>>()
                 var index = 0;
                 tabList.forEach {
-                    val tab = it.toJSON()?.parseJSON<MainTabEntity>();
+                    val tab = it;
                     tab?.itemSelect = index == 0;
                     lastSelectTab = 0;
                     index++;
@@ -43,7 +78,7 @@ class MainViewModel(application: Application) : NoteViewModel(application) {
                             fList.add(HomeFragment.newInstance());
                         }
                         NoteConstants.TabCode.FRAGMENT_NOTE->{
-                            fList.add(com.wangshu.note.app.model.main.note.NoteFragment.newInstance());
+                            fList.add(com.wangshu.textus.note.model.main.note.NoteFragment.newInstance());
                         }
                         NoteConstants.TabCode.FRAGMENT_DISCOVERY->{
                             fList.add(DiscoveryFragment.newInstance());
@@ -108,6 +143,10 @@ class MainViewModel(application: Application) : NoteViewModel(application) {
         mineTab.itemSelect = false;
         list.add(mineTab);
         tabList.value = list;
+    }
+
+    companion object{
+        private const val TAG = "Vita_Note_Main_MainViewModel=>";
     }
 
 }

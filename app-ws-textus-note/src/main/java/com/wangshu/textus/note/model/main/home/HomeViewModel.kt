@@ -4,10 +4,9 @@ import android.app.Application
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.wangshu.note.app.entity.main.MonthBillDetail
+import com.wangshu.textus.note.entity.main.MonthBillDetail
 import com.wangshu.textus.note.common.NoteViewModel
 import com.wangshu.textus.note.entity.bill.BillTypePercentEntity
-import com.wangshu.textus.note.entity.main.AppHomeConfig
 import com.wangshu.textus.note.network.NoteModel
 import com.wangshu.textus.note.network.reponse.YearlyDetailReponse
 import com.wsvita.biz.core.entity.AppHomeConfigEntity
@@ -16,7 +15,6 @@ import com.wsvita.biz.core.network.model.AppModel
 import com.wsvita.biz.core.network.model.BizcoreModel
 import com.wsvita.framework.utils.SLog
 import ext.JsonExt.toJson
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class HomeViewModel(application: Application) : NoteViewModel(application) {

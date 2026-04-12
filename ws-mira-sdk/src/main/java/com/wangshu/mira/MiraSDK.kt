@@ -20,7 +20,7 @@ import com.wsvita.framework.configure.FrameConfigure
 import com.wsvita.framework.local.manager.device.DeviceManager
 import com.wsvita.framework.local.manager.device.OAIDManager
 import com.wsvita.network.NetworkClient
-import com.wsvita.network.NetworkOptions
+import com.wsvita.network.configure.NetworkOptions
 import com.wsvita.network.configure.NetworkConfig
 import com.wsvita.network.configure.NetworkConfigure
 

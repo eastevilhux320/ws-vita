@@ -10,7 +10,7 @@ import com.wsvita.core.common.adapter.AppAdapter
 
 class TypePercentAdapter : AppAdapter<BillTypePercentEntity>{
 
-    constructor(context: Context,dataList: MutableList<BillTypePercentEntity>) : super(context,dataList){
+    constructor(context: Context,dataList: MutableList<BillTypePercentEntity>?) : super(context,dataList){
 
     }
 

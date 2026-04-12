@@ -5,11 +5,15 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.wangshu.textus.note.R
+import com.wangshu.textus.note.local.RouterName
+import com.wsvita.account.local.manager.AccountManager
 import com.wsvita.biz.core.commons.BizcoreActivity
 import com.wsvita.biz.core.commons.BizcoreContainerViewModel
 import com.wsvita.core.common.AppActivity
 import com.wsvita.core.configure.ScreenConfig
 import com.wsvita.framework.router.RouterConfigurator
+import com.wsvita.framework.router.contract.full.ComplexFullRouterContract
+import com.wsvita.framework.router.contract.sender.LongSendRouterContract
 import com.wsvita.framework.utils.SLog
 import kotlinx.coroutines.launch
 
@@ -22,6 +26,24 @@ abstract class NoteActivity<D : ViewDataBinding, V : NoteViewModel> : BizcoreAct
 
     override fun prepareRouters(configurator: RouterConfigurator) {
         super.prepareRouters(configurator)
+        if(needLogin()){
+            val s = ComplexFullRouterContract(Action.ACTION_LOGIN);
+            configurator.register(RouterName.ROUTER_LOGIN,s){
+                SLog.d(TAG,"prepareRouters,login result:${it}");
+                if(AccountManager.instance.isLogin()){
+                    loginSuccess();
+                }else{
+                    loginFail();
+                }
+            }
+        }
+    }
+
+    public override fun toLogin() {
+        super.toLogin()
+        if(needLogin()){
+            router(RouterName.ROUTER_LOGIN);
+        }
     }
 
     override fun initScreenConfig(): ScreenConfig {
@@ -109,6 +131,10 @@ abstract class NoteActivity<D : ViewDataBinding, V : NoteViewModel> : BizcoreAct
 
     override fun toLogin(code: Int, msg: String?) {
         super.toLogin(code, msg)
+    }
+
+    open fun needLogin(): Boolean {
+        return true;
     }
 
     protected open fun loginSuccess() {

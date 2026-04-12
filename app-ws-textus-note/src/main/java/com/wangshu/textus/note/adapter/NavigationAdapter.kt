@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.databinding.ViewDataBinding
 import com.wangshu.textus.note.R
+import com.wangshu.textus.note.BR
 import com.wangshu.textus.note.databinding.RecyclerItemAppNavigationBinding
 import com.wsvita.biz.core.entity.NavigationEntity
 import com.wsvita.core.common.adapter.AppAdapter
@@ -13,8 +14,9 @@ import ext.ViewExt.getScreenPair
 
 class NavigationAdapter : AppAdapter<NavigationEntity>{
     private var params : LinearLayout.LayoutParams? = null;
+    private var onNavigationClick : ((navigation : NavigationEntity)->Unit)? = null;
 
-    constructor(context: Context,dataList : MutableList<NavigationEntity>) : super(context,dataList) {
+    constructor(context: Context,dataList : MutableList<NavigationEntity>?) : super(context,dataList) {
         val size = context.getScreenPair().first;
         val itemSize = size/5;
         params = LinearLayout.LayoutParams(itemSize,itemSize);
@@ -30,11 +32,21 @@ class NavigationAdapter : AppAdapter<NavigationEntity>{
 
     override fun onBindItemData(binding: ViewDataBinding, item: NavigationEntity, position: Int) {
         super.onBindItemData(binding, item, position)
+        binding.setVariable(BR.navigation,item);
     }
 
     override fun onBindingView(root: View, item: NavigationEntity?, position: Int) {
         super.onBindingView(root, item, position)
         root.layoutParams = params;
+        root.setOnClickListener {
+            if (item != null) {
+                onNavigationClick?.invoke(item)
+            };
+        }
+    }
+
+    fun onNavigationClick(onNavigationClick : ((navigation : NavigationEntity)->Unit)){
+        this.onNavigationClick = onNavigationClick;
     }
 
     override fun setBean(dataBinding: ViewDataBinding, entity: NavigationEntity, position: Int) {

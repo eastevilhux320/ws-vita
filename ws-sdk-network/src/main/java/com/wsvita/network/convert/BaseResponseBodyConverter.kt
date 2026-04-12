@@ -4,7 +4,7 @@ import com.google.gson.*
 import com.wsvita.framework.utils.Base64Util
 import com.wsvita.framework.utils.SLog
 import com.wsvita.network.NetworkClient
-import com.wsvita.network.NetworkOptions
+import com.wsvita.network.configure.NetworkOptions
 import ext.StringExt.isNotInvalid
 import okhttp3.ResponseBody
 import retrofit2.Converter

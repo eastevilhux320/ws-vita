@@ -1,5 +1,6 @@
 package com.wsvita.account.model.login.phone
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -42,6 +43,9 @@ class PhoneFragment : AccountFragment<FragmentLoginPhoneBinding, PhoneViewModel>
         super.onConfigChanged(config)
         val btnBg = config.mainThemeColor.toRippleDrawable(25f);
         dataBinding.btnEnterLogin.background = btnBg;
+
+        val sendBtn = config.mainThemeColor.toRippleDrawable(5f);
+        dataBinding.inputPhoneNumber.setSuffixBackgroundDrawable(sendBtn);
     }
 
     override fun addObserve() {

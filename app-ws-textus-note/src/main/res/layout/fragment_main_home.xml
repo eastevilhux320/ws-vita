@@ -2,13 +2,724 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.wangshu.textus.note.model.main.home.HomeViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.wangshu.textus.note.model.main.home.HomeFragment" />
+
+        <variable
+            name="incomePercentAdapter"
+            type="com.wangshu.textus.note.adapter.TypePercentAdapter" />
+
+        <variable
+            name="expenditurePercentAdapter"
+            type="com.wangshu.textus.note.adapter.TypePercentAdapter" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_main_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_app_main_bg">
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_main_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_80"
+            android:paddingTop="@dimen/dp_35"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_home_logo"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:onClick="@{fragment.onViewClick}"
+                app:appSrc="@{viewModel.homeConfig.homeLogo}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/edit_home_search"
+                style="@style/AppEditText.Left"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:text="@{viewModel.homeConfig.searchHint}"
+                android:paddingLeft="@dimen/dp_8"
+                android:textColor="@color/starColorHint"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_scan_icon"
+                app:layout_constraintStart_toEndOf="@id/iv_home_logo"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{fragment.onViewClick}"/>
+
+            <ImageView
+                android:id="@+id/iv_home_search"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_10"
+                android:onClick="@{fragment.onViewClick}"
+                app:appSrc="@{viewModel.homeConfig.searchIcon}"
+                app:appVisibility="@{viewModel.homeConfig.showSearch}"
+                app:layout_constraintBottom_toBottomOf="@id/edit_home_search"
+                app:layout_constraintEnd_toEndOf="@id/edit_home_search"
+                app:layout_constraintTop_toTopOf="@id/edit_home_search" />
+
+            <ImageView
+                android:id="@+id/iv_scan_icon"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_10"
+                app:appSrc="@{viewModel.homeConfig.scanIcon}"
+                app:appVisibility="@{viewModel.homeConfig.showScan}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_add_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_add_icon"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_15"
+                android:onClick="@{fragment.onViewClick}"
+                app:appSrc="@{viewModel.homeConfig.addIcon}"
+                app:appVisibility="@{viewModel.homeConfig.showAdd}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refreshlayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:background="@color/color_app_main_bg"
+            app:layout_constraintTop_toBottomOf="@id/cl_main_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ll_main_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_10"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_navigation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_month_billdetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_150"
+                        android:background="@drawable/bg_home_bill"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:layout_marginRight="@dimen/dp_15"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:onClick="@{fragment.onViewClick}">
 
 
+                        <TextView
+                            android:id="@+id/tv_month_income_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/AppTextTheme.Normal"
+                            android:text="@string/month_income"
+                            android:textColor="@color/white"
+                            android:alpha="0.7"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:layout_marginBottom="@dimen/dp_23" />
+
+                        <TextView
+                            android:id="@+id/tv_month_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="@id/tv_month_income_text"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_month_income_text"
+                            app:layout_constraintStart_toEndOf="@id/tv_month_income_text"
+                            android:layout_marginLeft="@dimen/dp_2"
+                            android:text="@{viewModel.monthBillDeail.totalIncomeAmount}"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_month_totalamount_line"
+                            android:layout_width="@dimen/dp_1"
+                            android:layout_height="@dimen/dp_13"
+                            android:background="@color/white"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            app:layout_constraintTop_toTopOf="@id/tv_month_income_text"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_month_income_text"
+                            app:layout_constraintStart_toEndOf="@id/tv_month_income" />
+
+                        <TextView
+                            android:id="@+id/tv_month_expenditure_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintTop_toTopOf="@id/tv_month_income_text"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_month_income_text"
+                            app:layout_constraintStart_toEndOf="@id/tv_month_totalamount_line"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:text="@string/month_expenditure"
+                            android:textColor="@color/white"
+                            android:alpha="0.7" />
+
+                        <TextView
+                            android:id="@+id/tv_month_expenditure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="@id/tv_month_income_text"
+                            android:text="@{viewModel.monthBillDeail.totalExpenditureAmount}"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_month_income_text"
+                            app:layout_constraintStart_toEndOf="@id/tv_month_expenditure_text"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="@dimen/dp_2"/>
+
+
+                        <TextView
+                            android:id="@+id/tv_month_expenditure_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/sp_32"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:text="@{viewModel.monthBillDeail.totalExpenditureAmount}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            app:layout_constraintBottom_toTopOf="@id/tv_month_expenditure_text"/>
+
+                        <TextView
+                            android:id="@+id/tv_month_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_30"
+                            android:textSize="@dimen/sp_25"
+                            app:textIntString="@{viewModel.monthBillDeail.month}"
+                            app:layout_constraintBottom_toTopOf="@id/tv_month_expenditure_amount"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:textColor="@color/color_home_month"
+                            android:gravity="bottom" />
+
+                        <TextView
+                            android:id="@+id/tv_month_month_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_30"
+                            style="@style/AppTextTheme.Normal"
+                            android:text="@string/home_month_tips"
+                            app:layout_constraintStart_toEndOf="@id/tv_month_month"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_month_month"
+                            android:textColor="@color/white"
+                            android:gravity="bottom"
+                            android:paddingBottom="@dimen/dp_4"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_15"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_bill_detail_day"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_70"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@color/white"
+                        android:onClick="@{fragment.onViewClick}">
+
+                        <ImageView
+                            android:id="@+id/iv_bill_detail_day"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_30"
+                            android:src="@drawable/icon_home_detail_day"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="@dimen/dp_15" />
+
+                        <ImageView
+                            android:id="@+id/iv_detail_today_arrow"
+                            android:layout_width="@dimen/ws_arrow_img_size"
+                            android:layout_height="@dimen/ws_arrow_img_size"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginRight="@dimen/dp_15"
+                            android:src="@drawable/wsui_ic_va_arrow_gray"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_detail_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            app:layout_constraintVertical_weight="0.5"
+                            style="@style/AppTextTheme.Normal"
+                            android:textSize="@dimen/sp_16"
+                            android:text="@string/bill_detail_today"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_bill_detail_day"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            app:layout_constraintBottom_toTopOf="@id/tv_bill_detail_day_time"
+                            android:gravity="bottom|left"
+                            android:paddingBottom="@dimen/dp_2"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_detail_day_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:paddingTop="@dimen/dp_2"
+                            app:appText="@{viewModel.homeBillingDetail.todayTimeText}"
+                            app:layout_constraintTop_toBottomOf="@id/tv_bill_detail_day"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_bill_detail_day"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            android:gravity="top|left" />
+
+                        <TextView
+                            android:id="@+id/tv_bill_day_expenditure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            style="@style/AppTextTheme.Normal"
+                            app:noteBigDecimal="@{viewModel.homeBillingDetail.dayExpenditure}"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:gravity="bottom|right"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_marginRight="@dimen/dp_10"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_detail_today_arrow"
+                            app:layout_constraintBottom_toTopOf="@id/tv_bill_day_income"
+                            android:textColor="@color/color_bill_expenditure"
+                            android:paddingBottom="@dimen/dp_2"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_day_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            app:layout_constraintTop_toBottomOf="@id/tv_bill_day_expenditure"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_detail_today_arrow"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:textColor="@color/color_bill_income"
+                            android:gravity="top|right"
+                            android:paddingTop="@dimen/dp_2"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_marginRight="@dimen/dp_10"
+                            app:noteBigDecimal="@{viewModel.homeBillingDetail.dayIncome}"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_bill_detail_week"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_70"
+                        android:layout_marginTop="@dimen/dp_1"
+                        android:background="@color/white"
+                        android:onClick="@{fragment.onViewClick}">
+
+                        <ImageView
+                            android:id="@+id/iv_bill_detail_week"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_30"
+                            android:src="@drawable/icon_home_detail_week"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="@dimen/dp_15" />
+
+                        <ImageView
+                            android:id="@+id/iv_detail_week_arrow"
+                            android:layout_width="@dimen/ws_arrow_img_size"
+                            android:layout_height="@dimen/ws_arrow_img_size"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginRight="@dimen/dp_15"
+                            android:src="@drawable/wsui_ic_va_arrow_gray"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_detail_week"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            app:layout_constraintVertical_weight="0.5"
+                            style="@style/AppTextTheme.Normal"
+                            android:textSize="@dimen/sp_16"
+                            android:text="@string/bill_detail_week"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_bill_detail_week"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            app:layout_constraintBottom_toTopOf="@id/tv_bill_detail_week_time"
+                            android:gravity="bottom|left"
+                            android:paddingBottom="@dimen/dp_2"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_detail_week_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:paddingTop="@dimen/dp_2"
+                            android:text="@{viewModel.homeBillingDetail.weekTimeText}"
+                            app:layout_constraintTop_toBottomOf="@id/tv_bill_detail_week"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_bill_detail_week"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            android:gravity="top|left" />
+
+                        <TextView
+                            android:id="@+id/tv_bill_week_expenditure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            style="@style/AppTextTheme.Normal"
+                            app:noteBigDecimal="@{viewModel.homeBillingDetail.weekExpenditure}"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:gravity="bottom|right"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_marginRight="@dimen/dp_10"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_detail_week_arrow"
+                            app:layout_constraintBottom_toTopOf="@id/tv_bill_week_income"
+                            android:textColor="@color/color_bill_expenditure"
+                            android:paddingBottom="@dimen/dp_2"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_week_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            app:layout_constraintTop_toBottomOf="@id/tv_bill_week_expenditure"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_detail_week_arrow"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:textColor="@color/color_bill_income"
+                            android:gravity="top|right"
+                            android:paddingTop="@dimen/dp_2"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_marginRight="@dimen/dp_10"
+                            app:noteBigDecimal="@{viewModel.homeBillingDetail.weekIncome}"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_bill_detail_month"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_70"
+                        android:layout_marginTop="@dimen/dp_1"
+                        android:background="@color/white"
+                        android:onClick="@{fragment.onViewClick}">
+
+                        <ImageView
+                            android:id="@+id/iv_bill_detail_month"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_30"
+                            android:src="@drawable/icon_home_detail_month"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="@dimen/dp_15" />
+
+                        <ImageView
+                            android:id="@+id/iv_detail_month_arrow"
+                            android:layout_width="@dimen/ws_arrow_img_size"
+                            android:layout_height="@dimen/ws_arrow_img_size"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginRight="@dimen/dp_15"
+                            android:src="@drawable/wsui_ic_va_arrow_gray"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_detail_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            app:layout_constraintVertical_weight="0.5"
+                            style="@style/AppTextTheme.Normal"
+                            android:textSize="@dimen/sp_16"
+                            android:text="@string/bill_detail_month"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_bill_detail_month"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            app:layout_constraintBottom_toTopOf="@id/tv_bill_detail_month_time"
+                            android:gravity="bottom|left"
+                            android:paddingBottom="@dimen/dp_2"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_detail_month_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:paddingTop="@dimen/dp_2"
+                            android:text="@{viewModel.homeBillingDetail.monthTimeText}"
+                            app:layout_constraintTop_toBottomOf="@id/tv_bill_detail_month"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_bill_detail_month"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            android:gravity="top|left" />
+
+                        <TextView
+                            android:id="@+id/tv_bill_month_expenditure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            style="@style/AppTextTheme.Normal"
+                            app:noteBigDecimal="@{viewModel.homeBillingDetail.monthExpenditure}"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:gravity="bottom|right"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_marginRight="@dimen/dp_10"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_detail_month_arrow"
+                            app:layout_constraintBottom_toTopOf="@id/tv_bill_month_income"
+                            android:textColor="@color/color_bill_expenditure"
+                            android:paddingBottom="@dimen/dp_2"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_month_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            app:layout_constraintTop_toBottomOf="@id/tv_bill_month_expenditure"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_detail_month_arrow"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:textColor="@color/color_bill_income"
+                            android:gravity="top|right"
+                            android:paddingTop="@dimen/dp_2"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_marginRight="@dimen/dp_10"
+                            app:noteBigDecimal="@{viewModel.homeBillingDetail.monthIncome}"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_bill_detail_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_70"
+                        android:layout_marginTop="@dimen/dp_1"
+                        android:background="@color/white"
+                        android:onClick="@{fragment.onViewClick}">
+
+                        <ImageView
+                            android:id="@+id/iv_bill_detail_year"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_30"
+                            android:src="@drawable/icon_home_detail_year"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="@dimen/dp_15" />
+
+                        <ImageView
+                            android:id="@+id/iv_detail_year_arrow"
+                            android:layout_width="@dimen/ws_arrow_img_size"
+                            android:layout_height="@dimen/ws_arrow_img_size"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginRight="@dimen/dp_15"
+                            android:src="@drawable/wsui_ic_va_arrow_gray"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_detail_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            app:layout_constraintVertical_weight="0.5"
+                            style="@style/AppTextTheme.Normal"
+                            android:textSize="@dimen/sp_16"
+                            android:text="@string/bill_detail_year"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_bill_detail_year"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            app:layout_constraintBottom_toTopOf="@id/tv_bill_detail_year_time"
+                            android:gravity="bottom|left"
+                            android:paddingBottom="@dimen/dp_2"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_detail_year_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:paddingTop="@dimen/dp_2"
+                            android:text="@{viewModel.homeBillingDetail.yearTimeText}"
+                            app:layout_constraintTop_toBottomOf="@id/tv_bill_detail_year"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_bill_detail_year"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            android:gravity="top|left" />
+
+                        <TextView
+                            android:id="@+id/tv_bill_year_expenditure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            style="@style/AppTextTheme.Normal"
+                            app:noteBigDecimal="@{viewModel.homeBillingDetail.yearExpenditure}"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:gravity="bottom|right"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_marginRight="@dimen/dp_10"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_detail_year_arrow"
+                            app:layout_constraintBottom_toTopOf="@id/tv_bill_year_income"
+                            android:textColor="@color/color_bill_expenditure"
+                            android:paddingBottom="@dimen/dp_2"/>
+
+                        <TextView
+                            android:id="@+id/tv_bill_year_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_0"
+                            app:layout_constraintTop_toBottomOf="@id/tv_bill_year_expenditure"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_detail_year_arrow"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintVertical_weight="0.5"
+                            android:textColor="@color/color_bill_income"
+                            android:gravity="top|right"
+                            android:paddingTop="@dimen/dp_2"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_marginRight="@dimen/dp_10"
+                            app:noteBigDecimal="@{viewModel.homeBillingDetail.yearIncome}"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_income_percent"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_50"
+                        android:background="@color/white"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:visibility="@{viewModel.incomePercentList.size() > 0}">
+
+                        <ImageView
+                            android:id="@+id/iv_income_percent"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_30"
+                            android:src="@drawable/ic_bill_percent_income"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="@dimen/dp_15"/>
+
+                        <TextView
+                            android:id="@+id/tv_income_percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/AppTextTheme.Normal"
+                            android:text="@string/month_bill_percent_income"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:textSize="@dimen/sp_15"
+                            android:textColor="@color/color_bill_income"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_income_percent"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/AppTextTheme.Normal"
+                            app:appText="@{viewModel.homeBillingDetail.homeMonthIncomeText}"
+                            app:layout_constraintTop_toTopOf="@id/iv_income_percent"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_income_percent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginRight="@dimen/dp_15"
+                            android:textColor="@color/color_main_theme"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_billtype_percent_income"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:adapter="@{incomePercentAdapter}"
+                        android:visibility="@{viewModel.incomePercentList.size() > 0}"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_income_expenditure"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_50"
+                        android:background="@color/white"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:visibility="@{viewModel.expenditurePercentList.size() > 0}">
+
+                        <ImageView
+                            android:id="@+id/iv_expenditure_percent"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_30"
+                            android:src="@drawable/ic_bill_percent_expenditure"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginLeft="@dimen/dp_15"/>
+
+                        <TextView
+                            android:id="@+id/tv_expenditure_percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/AppTextTheme.Normal"
+                            android:text="@string/month_bill_percent_expenditure"
+                            android:textSize="@dimen/sp_15"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:textColor="@color/color_bill_expenditure"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iv_expenditure_percent"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/AppTextTheme.Normal"
+                            app:layout_constraintTop_toTopOf="@id/iv_expenditure_percent"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_expenditure_percent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginRight="@dimen/dp_15"
+                            android:textColor="@color/color_bill_expenditure"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_billtype_percent_expenditure"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:adapter="@{expenditurePercentAdapter}"
+                        android:visibility="@{viewModel.expenditurePercentList.size() > 0}"/>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_70"/>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </layout>
