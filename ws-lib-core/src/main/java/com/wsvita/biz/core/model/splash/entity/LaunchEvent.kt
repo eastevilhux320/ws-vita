@@ -4,7 +4,7 @@ package com.wsvita.biz.core.model.splash.entity
  * Splash 启动流程事件实体
  * 满足组件化中通过名称或 Code 获取具体值的需求
  */
-class SplashEvent {
+class LaunchEvent {
 
     var code: Int = -1
     var name: String? = null
@@ -13,7 +13,7 @@ class SplashEvent {
     /**
      * 提供一个便捷的初始化方法（链式调用）
      */
-    fun set(code: Int, name: String? = null, value: String? = null): SplashEvent {
+    fun set(code: Int, name: String? = null, value: String? = null): LaunchEvent {
         this.code = code
         this.name = name
         this.value = value
@@ -105,70 +105,70 @@ class SplashEvent {
 
         // --- 工厂方法定义 ---
 
-        fun start(): SplashEvent = SplashEvent().apply {
+        fun start(): LaunchEvent = LaunchEvent().apply {
             code = START
             name = "START"
         }
 
-        fun appBeforehandSuccess(token: String?): SplashEvent = SplashEvent().apply {
+        fun appBeforehandSuccess(token: String?): LaunchEvent = LaunchEvent().apply {
             code = APP_BEFOREHAND_SUCCESS
             name = "APP_BEFOREHAND_SUCCESS"
             value = token
         }
 
-        fun appBeforehandError(): SplashEvent = SplashEvent().apply {
+        fun appBeforehandError(): LaunchEvent = LaunchEvent().apply {
             code = APP_BEFOREHAND_ERROR
             name = "APP_BEFOREHAND_ERROR"
         }
 
-        fun accountStateOn(): SplashEvent = SplashEvent().apply {
+        fun accountStateOn(): LaunchEvent = LaunchEvent().apply {
             code = ACCOUNT_STATE_ON
             name = "ACCOUNT_STATE_ON";
         }
 
-        fun configLoaded(valStr: String? = null): SplashEvent = SplashEvent().apply {
+        fun configLoaded(valStr: String? = null): LaunchEvent = LaunchEvent().apply {
             code = CONFIG_LOADED
             name = "CONFIG_LOADED"
             value = valStr
         }
 
-        fun configError(): SplashEvent = SplashEvent().apply {
+        fun configError(): LaunchEvent = LaunchEvent().apply {
             code = CONFIG_ERROR
             name = "CONFIG_ERROR"
         }
 
-        fun needPrivacyPolicy(): SplashEvent = SplashEvent().apply {
+        fun needPrivacyPolicy(): LaunchEvent = LaunchEvent().apply {
             code = NEED_PRIVACY
             name = "NEED_PRIVACY"
         }
 
-        fun privacyPolicyAgreed(): SplashEvent = SplashEvent().apply {
+        fun privacyPolicyAgreed(): LaunchEvent = LaunchEvent().apply {
             code = PRIVACY_AGREED
             name = "PRIVACY_AGREED"
         }
 
-        fun denyPrivacyPolicy(): SplashEvent = SplashEvent().apply {
+        fun denyPrivacyPolicy(): LaunchEvent = LaunchEvent().apply {
             code = PRIVACY_DENY
             name = "PRIVACY_DENY"
         }
 
-        fun privacyAlreadyAccepted(): SplashEvent = SplashEvent().apply {
+        fun privacyAlreadyAccepted(): LaunchEvent = LaunchEvent().apply {
             code = PRIVACY_ACCEPTED
             name = "PRIVACY_ACCEPTED"
         }
 
-        fun adAvailable(adId: String?): SplashEvent = SplashEvent().apply {
+        fun adAvailable(adId: String?): LaunchEvent = LaunchEvent().apply {
             code = AD_AVAILABLE
             name = "AD_AVAILABLE"
             value = adId
         }
 
-        fun toMain(): SplashEvent = SplashEvent().apply {
+        fun toMain(): LaunchEvent = LaunchEvent().apply {
             code = TO_MAIN
             name = "TO_MAIN"
         }
 
-        fun finished(): SplashEvent = SplashEvent().apply {
+        fun finished(): LaunchEvent = LaunchEvent().apply {
             code = FINISHED
             name = "FINISHED"
         }

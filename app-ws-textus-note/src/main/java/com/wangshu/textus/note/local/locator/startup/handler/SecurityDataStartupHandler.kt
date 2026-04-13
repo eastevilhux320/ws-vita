@@ -3,6 +3,7 @@ package com.wangshu.textus.note.local.locator.startup.handler
 import com.wangshu.textus.note.local.manager.SecurityManager
 import com.wangshu.textus.note.local.locator.startup.BaseAppStartupHandlerImpl
 import com.wsvita.biz.core.startup.IStartupConfigProvider
+import com.wsvita.biz.core.startup.StartupScope
 import com.wsvita.framework.utils.SLog
 
 class SecurityDataStartupHandler : BaseAppStartupHandlerImpl() {
@@ -18,6 +19,10 @@ class SecurityDataStartupHandler : BaseAppStartupHandlerImpl() {
         val secretKey = provider.getString(SECRETKEY_PARAMS_NAME);
         SLog.d(TAG,"keyType:${keyType},secretKey:${secretKey}");
         SecurityManager.instance.resetSecret(keyType,secretKey?:"");
+    }
+
+    override fun getScope(): String {
+        return StartupScope.STARTUP_SCOPE_SECURITY;
     }
 
 }

@@ -1,7 +1,6 @@
 package com.wsvita.biz.core.model.splash
 
 import android.app.Application
-import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -10,33 +9,30 @@ import com.wsvita.biz.core.commons.BizcoreViewModel
 import com.wsvita.biz.core.configure.StartupConfigLocator
 import com.wsvita.biz.core.entity.AppUrlEntity
 import com.wsvita.biz.core.entity.SplashConfigEntity
-import com.wsvita.biz.core.model.splash.entity.SplashEvent
+import com.wsvita.biz.core.model.splash.entity.LaunchEvent
 import com.wsvita.biz.core.network.model.BizcoreModel
+import com.wsvita.biz.core.startup.StartupScope
 import com.wsvita.core.configure.ModelRequestConfig
-import com.wsvita.framework.entity.VError
 import com.wsvita.framework.local.manager.StorageManager
 import com.wsvita.framework.utils.SLog
 import com.wsvita.network.entity.Result
-import com.wsvita.network.manager.TokenManager
 import com.wsvita.network.model.NetworkModel
 import com.wsvita.network.response.AppBeforehandReponse
 import ext.JsonExt.toJson
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 class SplashViewModel(application: Application) : BizcoreViewModel(application) {
 
     val app = MutableLiveData<AppBeforehandReponse>()
 
-    private val _splashEvent = MutableSharedFlow<SplashEvent>(
+    private val _launchEvent = MutableSharedFlow<LaunchEvent>(
         replay = 1,
         extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
-    val splashEvent = _splashEvent.asSharedFlow()
+    val splashEvent = _launchEvent.asSharedFlow()
 
     private val _splashConfig = MutableLiveData<SplashConfigEntity>()
     val splashConfig: LiveData<SplashConfigEntity> get() = _splashConfig
@@ -55,7 +51,7 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
     override fun initModel() {
         super.initModel()
         // 使用工厂方法发送开始事件
-        emitSplash(SplashEvent.start())
+        emitSplash(LaunchEvent.start())
         disposeProtocol()
         viewModelScope.launch {
             getAppBeforehand()
@@ -73,7 +69,7 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
         // 更新内存状态
         protocolFlag = flag
         if (flag) {
-            emitSplash(SplashEvent.privacyPolicyAgreed())
+            emitSplash(LaunchEvent.privacyPolicyAgreed())
             /**
              * 记录用户同意状态。
              * * 这里的 key 必须与 [SplashViewModel.disposeProtocol] 方法中生成的 key 保持一致。
@@ -82,7 +78,7 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
             StorageManager.instance.put(key,true);
             doNext();
         } else {
-            emitSplash(SplashEvent.denyPrivacyPolicy())
+            emitSplash(LaunchEvent.denyPrivacyPolicy())
         }
     }
 
@@ -92,7 +88,7 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
      * @author Eastevil
      */
     fun privacyAlreadyAccepted(){
-        emitSplash(SplashEvent.privacyAlreadyAccepted())
+        emitSplash(LaunchEvent.privacyAlreadyAccepted())
     }
 
     /**
@@ -103,7 +99,7 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
      * @return
      */
     fun notifyToMain(){
-        emitSplash(SplashEvent.finished());
+        emitSplash(LaunchEvent.finished());
     }
 
     private suspend fun getAppBeforehand() {
@@ -115,15 +111,15 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
             it.token?.let { it1 -> StartupConfigLocator.instance.put("token", it1) }
             it.secretKey?.let { it1 -> StartupConfigLocator.instance.put("secretKey", it1) }
             StartupConfigLocator.instance.put("keyType", it.keyType)
-            StartupConfigLocator.instance.dispatchReady()
+            StartupConfigLocator.instance.dispatchAction(StartupScope.STARTUP_SCOPE_SECURITY);
 
             SLog.d(TAG, "getAppBeforehand success")
             // 修复：使用 appBeforehandSuccess 工厂方法传递 token
-            emitSplash(SplashEvent.appBeforehandSuccess(it.token))
+            emitSplash(LaunchEvent.appBeforehandSuccess(it.token))
 
             if(1 == it.state){
                 //当前处于登录状态
-                emitSplash(SplashEvent.accountStateOn());
+                emitSplash(LaunchEvent.accountStateOn());
             }
             launchConfig()
             withMain {
@@ -145,7 +141,7 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
         if (result != null) {
             SLog.d(TAG, "launch success")
             // 修复：使用 configLoaded 工厂方法，这里可根据需要传递 ID 字符串
-            emitSplash(SplashEvent.configLoaded(result.splash?.toJson()))
+            emitSplash(LaunchEvent.configLoaded(result.splash?.toJson()))
 
             withMain {
                 _splashConfig.value = result.splash
@@ -164,21 +160,21 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
      * 统一发送事件的方法
      * 接收由 SplashEvent 静态工厂创建的对象
      */
-    private fun emitSplash(event: SplashEvent) {
+    private fun emitSplash(event: LaunchEvent) {
         SLog.d(TAG, "emitSplash, time:${systemTime()}, event: $event")
         viewModelScope.launch {
-            _splashEvent.emit(event)
-            StartupConfigLocator.instance.put(SplashEvent.SPLASH_KEY,event.toJson());
+            _launchEvent.emit(event)
+            StartupConfigLocator.instance.put(LaunchEvent.SPLASH_KEY,event.toJson());
         }
     }
 
     override fun onRequestError(config: ModelRequestConfig, result: Result<*>): Boolean {
         when (config.requestCode) {
             REQ_LAUNCHE_CONFIG -> {
-                emitSplash(SplashEvent.configError())
+                emitSplash(LaunchEvent.configError())
             }
             REQ_APP_BEFOREHAND -> {
-                emitSplash(SplashEvent.appBeforehandError())
+                emitSplash(LaunchEvent.appBeforehandError())
             }
         }
         return super.onRequestError(config, result)
@@ -193,9 +189,9 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
         SLog.d(TAG, "is agree protocol: $isAgree")
         protocolFlag = isAgree
         if (isAgree) {
-            emitSplash(SplashEvent.privacyAlreadyAccepted())
+            emitSplash(LaunchEvent.privacyAlreadyAccepted())
         } else {
-            emitSplash(SplashEvent.needPrivacyPolicy())
+            emitSplash(LaunchEvent.needPrivacyPolicy())
         }
     }
 
@@ -206,7 +202,7 @@ class SplashViewModel(application: Application) : BizcoreViewModel(application) 
          */
         //模拟一个加载
         delay(2000){
-            emitSplash(SplashEvent.toMain())
+            emitSplash(LaunchEvent.toMain())
         }
     }
 

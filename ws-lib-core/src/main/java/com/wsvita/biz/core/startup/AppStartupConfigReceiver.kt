@@ -5,5 +5,5 @@ package com.wsvita.biz.core.startup
  */
 interface AppStartupConfigReceiver {
 
-    fun onStartupConfigReady(provider: IStartupConfigProvider)
+    fun onStartupConfigReady(actionTag : String,provider: IStartupConfigProvider)
 }

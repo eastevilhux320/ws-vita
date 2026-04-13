@@ -2,6 +2,7 @@ package com.wangshu.textus.note.local.locator.startup.handler
 
 import com.wangshu.textus.note.local.locator.startup.BaseAppStartupHandlerImpl
 import com.wsvita.biz.core.startup.IStartupConfigProvider
+import com.wsvita.biz.core.startup.StartupScope
 import com.wsvita.framework.utils.SLog
 import com.wsvita.network.manager.TokenManager
 
@@ -15,5 +16,9 @@ class TokenStartupHandler : BaseAppStartupHandlerImpl() {
         val token = provider.getString(TOKEN_PARAMS_NAME);
         SLog.d(TAG,"token:${token}");
         TokenManager.instance.resetToken(token);
+    }
+
+    override fun getScope(): String {
+        return return StartupScope.STARTUP_SCOPE_TOKEN;
     }
 }

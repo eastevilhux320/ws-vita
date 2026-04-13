@@ -1,8 +1,9 @@
 package com.wangshu.textus.note.local.locator.startup
 
 import com.wsvita.biz.core.startup.IStartupConfigProvider
+import com.wsvita.core.local.IBaseHandler
 
-interface IAppStartupHandler {
+interface IAppStartupHandler : IBaseHandler{
 
     /**
      * 执行业务初始化

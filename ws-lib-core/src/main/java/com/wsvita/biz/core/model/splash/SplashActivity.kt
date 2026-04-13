@@ -11,9 +11,8 @@ import com.wsvita.biz.core.commons.BizcoreActivity
 import com.wsvita.biz.core.configure.Action
 import com.wsvita.biz.core.configure.BizcoreConfig
 import com.wsvita.biz.core.configure.BizcoreConfigure
-import com.wsvita.biz.core.configure.StartupConfigLocator
 import com.wsvita.biz.core.databinding.ActivitySplashBinding
-import com.wsvita.biz.core.model.splash.entity.SplashEvent
+import com.wsvita.biz.core.model.splash.entity.LaunchEvent
 import com.wsvita.framework.router.RouterConfigurator
 import com.wsvita.framework.router.contract.EmptyRouterContract
 import com.wsvita.framework.router.contract.receiver.BooleanReceiveRouterContract
@@ -80,43 +79,40 @@ class SplashActivity : BizcoreActivity<ActivitySplashBinding, SplashViewModel>()
         })
     }
 
-    private fun handleSplashEvent(event: SplashEvent) {
+    private fun handleSplashEvent(event: LaunchEvent) {
         SLog.d(TAG, "handleSplashEvent: $event")
         when (event.code) {
-            SplashEvent.ACCOUNT_STATE_ON->{
-                StartupConfigLocator.instance.dispatchReady();
-            }
-            SplashEvent.PRIVACY_DENY -> {
+            LaunchEvent.PRIVACY_DENY -> {
                 //拒绝协议，直接退出app
                 SLog.w(TAG, "User denied privacy policy, exiting app")
                 finish()
             }
-            SplashEvent.PRIVACY_AGREED -> {
+            LaunchEvent.PRIVACY_AGREED -> {
                 SLog.i(TAG, "User agreed to privacy policy")
                 //用户同意协议
                 viewModel.privacyAlreadyAccepted();
             }
-            SplashEvent.APP_BEFOREHAND_SUCCESS -> {
+            LaunchEvent.APP_BEFOREHAND_SUCCESS -> {
                 val token = event.value
                 SLog.d(TAG, "App beforehand success, token: $token")
             }
-            SplashEvent.CONFIG_LOADED -> {
+            LaunchEvent.CONFIG_LOADED -> {
                 val configValue = event.value
                 SLog.d(TAG, "Config loaded successfully: $configValue")
             }
 
-            SplashEvent.AD_AVAILABLE -> {
+            LaunchEvent.AD_AVAILABLE -> {
                 val adId = event.value
                 SLog.i(TAG, "Ad available to show, adId: $adId")
             }
-            SplashEvent.FINISHED -> {
+            LaunchEvent.FINISHED -> {
                 SLog.i(TAG, "Splash process finished, navigating to Main")
                 // Perform navigation to main component here
             }
-            SplashEvent.CONFIG_ERROR, SplashEvent.APP_BEFOREHAND_ERROR -> {
+            LaunchEvent.CONFIG_ERROR, LaunchEvent.APP_BEFOREHAND_ERROR -> {
                 SLog.e(TAG, "Splash flow error occurred: ${event.name}")
             }
-            SplashEvent.TO_MAIN->{
+            LaunchEvent.TO_MAIN->{
                 viewModel.notifyToMain();
                 //进入主页
                 router(LAUNCH_TO_MAIN);

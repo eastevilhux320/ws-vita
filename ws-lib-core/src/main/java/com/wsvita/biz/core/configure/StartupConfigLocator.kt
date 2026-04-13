@@ -2,21 +2,23 @@ package com.wsvita.biz.core.configure
 
 import com.wsvita.biz.core.startup.AppStartupConfigReceiver
 import com.wsvita.biz.core.startup.IStartupConfigProvider
+import com.wsvita.framework.utils.SLog
+import java.util.concurrent.CopyOnWriteArrayList
 
 class StartupConfigLocator private constructor() {
 
     companion object {
+        private const val TAG = "WSV_Core_StartupConfigLocator=>"
         val instance by lazy(LazyThreadSafetyMode.SYNCHRONIZED) { StartupConfigLocator() }
     }
 
-    @Volatile
-    private var receiver: AppStartupConfigReceiver? = null
+    private val receivers = CopyOnWriteArrayList<AppStartupConfigReceiver>()
 
     // 这里的 Map 存储全局公共配置
     private var globalData: MutableMap<String, Any> = HashMap()
 
-    fun register(receiver: AppStartupConfigReceiver?) {
-        this.receiver = receiver
+    fun register(receiver: AppStartupConfigReceiver) {
+        if (!receivers.contains(receiver)) receivers.add(receiver)
     }
 
     /**
@@ -27,15 +29,12 @@ class StartupConfigLocator private constructor() {
     }
 
     /**
-     * 关键修正：分发时创建快照
+     * 核心触发方法：只发信号和数据快照，不关心谁来处理
      */
-    fun dispatchReady() {
-        var callback = this.receiver
-        if (callback != null) {
-            // 创建当前数据的快照，防止回调执行过程中的数据污染
-            var snapshot = ConfigSnapshot(HashMap(globalData))
-            callback.onStartupConfigReady(snapshot)
-        }
+    fun dispatchAction(actionTag: String = "ALL") {
+        SLog.d(TAG,"dispatchAction,actionTag:${actionTag}")
+        val snapshot = ConfigSnapshot(HashMap(globalData))
+        receivers.forEach { it.onStartupConfigReady(actionTag,snapshot) }
     }
 
     /**
