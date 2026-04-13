@@ -1,10 +1,18 @@
 package com.wangshu.textus.note.common
 
 import android.app.Application
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.wsvita.account.commons.AccountConstants
+import com.wsvita.account.entity.Account
+import com.wsvita.account.entity.AccountAction
+import com.wsvita.account.entity.IAccount
 import com.wsvita.account.local.manager.AccountManager
 import com.wsvita.biz.core.commons.BizcoreViewModel
 import com.wsvita.core.common.NavigationViewModel
+import com.wsvita.framework.ext.JsonExt.parseGson
+import com.wsvita.framework.utils.SLog
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -16,6 +24,27 @@ abstract class NoteViewModel(application: Application) : BizcoreViewModel(applic
      */
     private val _commonDataFlow = MutableSharedFlow<TextusDataEvent<*>>()
     val commonDataFlow = _commonDataFlow.asSharedFlow()
+
+    private val _account = MutableLiveData<IAccount?>();
+    val account: LiveData<IAccount?> = _account;
+
+    // 1. 定义广播接收器成员变量（避免匿名内部类，方便注销）
+    private val accountReceiver = object : android.content.BroadcastReceiver() {
+        override fun onReceive(context: android.content.Context?, intent: android.content.Intent?) {
+            val action = intent?.action
+            SLog.d(TAG, "receive broadcast action: $action")
+            when(action){
+                AccountAction.ACTION_ACCOUNT_MODIFIED->{
+                    SLog.d(TAG,"account changed")
+                    // 执行更新逻辑
+                    val accountJson = intent.getStringExtra(AccountConstants.AccountKeys.ACCOUNT_DETAIL)
+                    SLog.i(TAG,"account changed,data:${accountJson}");
+                    val account = accountJson?.parseGson<Account>()
+                    _account.value = account
+                }
+            }
+        }
+    }
 
     /**
      * 【公共分发】发送 Int 类型基础数据事件。
@@ -108,5 +137,9 @@ abstract class NoteViewModel(application: Application) : BizcoreViewModel(applic
             }
             _commonDataFlow.emit(event)
         }
+    }
+
+    companion object{
+        private const val TAG = "Note_Common_NoteViewModel==>";
     }
 }

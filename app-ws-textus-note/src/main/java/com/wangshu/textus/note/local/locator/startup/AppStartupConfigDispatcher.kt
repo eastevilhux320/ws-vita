@@ -1,8 +1,8 @@
-package com.wangshu.textus.note.local.startup
+package com.wangshu.textus.note.local.locator.startup
 
-import com.wangshu.textus.note.local.startup.handler.SecurityDataStartupHandler
-import com.wangshu.textus.note.local.startup.handler.SplashStartupHandler
-import com.wangshu.textus.note.local.startup.handler.TokenStartupHandler
+import com.wangshu.textus.note.local.locator.startup.handler.SecurityDataStartupHandler
+import com.wangshu.textus.note.local.locator.startup.handler.SplashStartupHandler
+import com.wangshu.textus.note.local.locator.startup.handler.TokenStartupHandler
 import com.wsvita.biz.core.startup.AppStartupConfigReceiver
 import com.wsvita.biz.core.startup.IStartupConfigProvider
 

@@ -1,7 +1,6 @@
 package com.wsvita.app.local.accountup.handler
 
 import com.wsvita.account.accountup.BaseAccountHandlerImpl
-import com.wsvita.account.accountup.IAccountConfigProvider
 
 /**
  * 专门处理 Service Key 修改的节点

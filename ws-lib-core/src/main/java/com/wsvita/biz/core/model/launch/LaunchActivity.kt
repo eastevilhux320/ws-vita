@@ -1,5 +1,6 @@
 package com.wsvita.biz.core.model.launch
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
@@ -56,6 +57,7 @@ class LaunchActivity : BizcoreActivity<ActivityLaunchBinding, LaunchViewModel>()
 
     override fun onConfigChanged(config: BizcoreConfig) {
         super.onConfigChanged(config)
+        dataBinding.ivBizcoreSplash.setBackgroundResource(config.splashDefaultId);
     }
 
     override fun addObserve() {
@@ -125,6 +127,7 @@ class LaunchActivity : BizcoreActivity<ActivityLaunchBinding, LaunchViewModel>()
             }
         }
     }
+
 
     companion object{
         private const val TAG = "WS_Biz_Launch_LaunchViewModel=>"

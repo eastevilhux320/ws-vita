@@ -1,4 +1,4 @@
-package com.wsvita.app.local.startup.handler
+package com.vita.xuantong.demo.local.startup.handler
 
 import com.vita.xuantong.demo.commons.KYApp
 import com.wsvita.account.local.manager.AccountManager

@@ -1,6 +1,6 @@
-package com.wangshu.textus.note.local.startup.handler
+package com.wangshu.textus.note.local.locator.startup.handler
 
-import com.wangshu.textus.note.local.startup.BaseAppStartupHandlerImpl
+import com.wangshu.textus.note.local.locator.startup.BaseAppStartupHandlerImpl
 import com.wsvita.biz.core.startup.IStartupConfigProvider
 import com.wsvita.framework.utils.SLog
 import com.wsvita.network.manager.TokenManager

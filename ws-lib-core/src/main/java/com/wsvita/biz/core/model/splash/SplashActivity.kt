@@ -11,6 +11,7 @@ import com.wsvita.biz.core.commons.BizcoreActivity
 import com.wsvita.biz.core.configure.Action
 import com.wsvita.biz.core.configure.BizcoreConfig
 import com.wsvita.biz.core.configure.BizcoreConfigure
+import com.wsvita.biz.core.configure.StartupConfigLocator
 import com.wsvita.biz.core.databinding.ActivitySplashBinding
 import com.wsvita.biz.core.model.splash.entity.SplashEvent
 import com.wsvita.framework.router.RouterConfigurator
@@ -82,6 +83,9 @@ class SplashActivity : BizcoreActivity<ActivitySplashBinding, SplashViewModel>()
     private fun handleSplashEvent(event: SplashEvent) {
         SLog.d(TAG, "handleSplashEvent: $event")
         when (event.code) {
+            SplashEvent.ACCOUNT_STATE_ON->{
+                StartupConfigLocator.instance.dispatchReady();
+            }
             SplashEvent.PRIVACY_DENY -> {
                 //拒绝协议，直接退出app
                 SLog.w(TAG, "User denied privacy policy, exiting app")

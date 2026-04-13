@@ -35,9 +35,7 @@
             app:wsui_suffixHeight="@dimen/dp_30"
             app:wsui_suffixMarginRight="@dimen/dp_15"
             app:wsui_suffixSize="@dimen/sp_11"
-            app:wsui_clean_unable="false"
-            android:paddingLeft="@dimen/dp_5"
-            android:paddingRight="@dimen/dp_5"/>
+            app:wsui_clean_unable="false" />
 
         <com.wsvita.ui.view.SimpleInputLayout
             android:id="@+id/input_otp"

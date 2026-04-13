@@ -5,7 +5,7 @@ import com.wangshu.mira.MiraSDK
 import com.wangshu.mira.configure.MiraConfig
 import com.wangshu.textus.note.local.manager.ChannelManager
 import com.wangshu.textus.note.local.manager.SecurityManager
-import com.wangshu.textus.note.local.startup.AppStartupConfigDispatcher
+import com.wangshu.textus.note.local.locator.startup.AppStartupConfigDispatcher
 import com.wangshu.textus.note.R
 import com.wangshu.textus.note.local.manager.ContainerManager
 import com.wsvita.biz.core.configure.BizcoreConfig
@@ -21,8 +21,10 @@ import com.wsvita.framework.configure.FrameConfigure
 import com.wsvita.framework.local.manager.StorageManager
 import com.wsvita.framework.utils.SLog
 import com.wangshu.textus.note.BuildConfig
+import com.wangshu.textus.note.local.locator.account.AccountConfigDispatcher
 import com.wsvita.account.configure.AccountConfig
 import com.wsvita.account.configure.AccountConfigure
+import com.wsvita.account.local.locator.AccountConfigLocator
 import com.wsvita.framework.ext.BaseApplicationExt.appName
 import com.wsvita.network.configure.NetworkOptions
 import com.wsvita.network.configure.NetworkConfig
@@ -220,8 +222,14 @@ class NoteApp : BaseApplication() {
 
 
     private fun registerConfigs(){
+        //注册启动组件回调
         var dispatcher = AppStartupConfigDispatcher()
         dispatcher.initChain()
         StartupConfigLocator.instance.register(dispatcher)
+
+        //注册账号组件回调
+        val accountDispatcher = AccountConfigDispatcher();
+        accountDispatcher.initChain();
+        AccountConfigLocator.instance.register(accountDispatcher);
     }
 }

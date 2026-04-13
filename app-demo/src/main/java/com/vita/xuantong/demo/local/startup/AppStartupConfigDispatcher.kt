@@ -1,7 +1,7 @@
 package com.wsvita.app.local.startup
 
 import com.wsvita.app.local.startup.handler.SecurityDataStartupHandler
-import com.wsvita.app.local.startup.handler.SplashStartupHandler
+import com.vita.xuantong.demo.local.startup.handler.SplashStartupHandler
 import com.wsvita.app.local.startup.handler.TokenStartupHandler
 import com.wsvita.biz.core.startup.AppStartupConfigReceiver
 import com.wsvita.biz.core.startup.IStartupConfigProvider

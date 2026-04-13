@@ -1,7 +1,5 @@
 package com.wsvita.app.local.accountup
 
-import com.wsvita.account.accountup.IAccountConfigProvider
-
 /**
  * 账号登录成功后的处理回调
  */

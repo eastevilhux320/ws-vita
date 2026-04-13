@@ -1,22 +1,18 @@
 package com.wsvita.account.local.manager
 
 import android.content.Intent
-import com.wsvita.account.accountup.AccountConfigLocator
+import com.wsvita.account.local.locator.AccountConfigLocator
 import com.wsvita.account.commons.AccountConstants
 import com.wsvita.account.entity.AccountAction
 import com.wsvita.account.entity.IAccount
 import com.wsvita.account.local.event.AccountModifyEvent
 import com.wsvita.account.network.model.AccountModel
 import com.wsvita.core.configure.SDKManager
-import com.wsvita.framework.GlideApp
-import com.wsvita.framework.local.BaseManager
 import com.wsvita.framework.local.WsContext
 import com.wsvita.framework.utils.SLog
-import com.wsvita.module.account.AccountEventIndex
 import ext.JsonExt.toJson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow

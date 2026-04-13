@@ -2,13 +2,12 @@ package com.wsvita.account.model.login.main
 
 import android.app.Application
 import androidx.lifecycle.viewModelScope
-import com.wsvita.account.accountup.AccountConfigLocator
+import com.wsvita.account.local.locator.AccountConfigLocator
 import com.wsvita.account.commons.AccountConstants
 import com.wsvita.account.commons.AccountViewModel
+import com.wsvita.account.local.locator.AccountScope
 import com.wsvita.account.local.manager.AccountManager
 import com.wsvita.account.network.model.AccountModel
-import com.wsvita.core.configure.ModelRequestConfig
-import com.wsvita.network.entity.Result
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AccountViewModel(application) {
@@ -26,7 +25,9 @@ class MainViewModel(application: Application) : AccountViewModel(application) {
                 it.secretKey?.let { it1 -> locator.put(AccountConstants.AccountKeys.SERVICE_KEY, it1) };
                 it.keyType?.let { it1 -> locator.put(AccountConstants.AccountKeys.KEY_TYPE, it1) }
 
-                locator.dispatchLoginReady()
+                locator.dispatchAction(AccountScope.AC_SCOPE_LOGIN);
+                locator.dispatchAction(AccountScope.AC_SCOPE_TOKEN);
+
                 AccountManager.instance.notifyMember();
                 //需要重置账号中的数据
                 withMain {

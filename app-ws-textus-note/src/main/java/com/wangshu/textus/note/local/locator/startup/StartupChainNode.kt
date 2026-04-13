@@ -1,4 +1,4 @@
-package com.wangshu.textus.note.local.startup
+package com.wangshu.textus.note.local.locator.startup
 
 import com.wsvita.biz.core.startup.IStartupConfigProvider
 

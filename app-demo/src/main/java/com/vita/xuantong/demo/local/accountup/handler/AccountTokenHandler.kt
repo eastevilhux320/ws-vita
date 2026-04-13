@@ -1,7 +1,6 @@
-package com.wsvita.app.local.accountup.handler
+package com.vita.xuantong.demo.local.accountup.handler
 
 import com.wsvita.account.accountup.BaseAccountHandlerImpl
-import com.wsvita.account.accountup.IAccountConfigProvider
 import com.wsvita.account.commons.AccountConstants
 import com.wsvita.framework.utils.SLog
 import com.wsvita.network.manager.TokenManager

@@ -4,7 +4,7 @@ import com.vita.xuantong.demo.ext.AppExt.appName
 import com.wangshu.vita.demo.BuildConfig
 import com.wsvita.account.configure.AccountConfig
 import com.wsvita.account.configure.AccountConfigure
-import com.wsvita.app.local.accountup.AccountConfigDispatcher
+import com.vita.xuantong.demo.local.accountup.AccountConfigDispatcher
 import com.vita.xuantong.demo.local.manager.ChannelManager
 import com.wsvita.app.local.manager.ContainerManager
 import com.wsvita.app.local.startup.AppStartupConfigDispatcher
@@ -26,7 +26,7 @@ import com.wsvita.network.configure.NetworkConfigure
 import ext.TimeExt.systemTime
 import org.greenrobot.eventbus.EventBus
 import com.wangshu.vita.demo.R
-import com.wsvita.account.accountup.AccountConfigLocator
+import com.wsvita.account.local.locator.AccountConfigLocator
 import com.wsvita.app.local.manager.SecurityManager
 import com.wsvita.module.account.AccountEventIndex
 

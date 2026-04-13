@@ -1,7 +1,8 @@
-package com.wangshu.textus.note.local.startup.handler
+package com.wangshu.textus.note.local.locator.startup.handler
 
 import com.wangshu.textus.note.common.NoteApp
-import com.wangshu.textus.note.local.startup.BaseAppStartupHandlerImpl
+import com.wangshu.textus.note.local.locator.startup.BaseAppStartupHandlerImpl
+import com.wsvita.account.local.manager.AccountManager
 import com.wsvita.biz.core.model.splash.entity.SplashEvent
 import com.wsvita.biz.core.startup.IStartupConfigProvider
 import com.wsvita.framework.ext.JsonExt.parseGson
@@ -41,7 +42,7 @@ class SplashStartupHandler : BaseAppStartupHandlerImpl() {
                 SplashEvent.ACCOUNT_STATE_ON -> {
                     SLog.e(TAG, "ACCOUNT_STATE_ON.")
                     //接收到启动页发送的账号可用，处于登录状态的事务，更新用户信息
-
+                    AccountManager.instance.notifyMember();
                 }
 
                 // [300] Remote configuration loaded successfully

@@ -14,7 +14,7 @@
     <string name="account_ac_loginphone_hint_phone">请输入手机号码</string>
     <string name="account_ac_loginphone_phone">手机号码</string>
     <string name="account_send_opt">发送验证码</string>
-    <string name="account_ac_opt_code">验&#160;证&#160;码</string>
+    <string name="account_ac_opt_code">验&#160;&#160;证&#160;&#160;码</string>
     <string name="account_hint_ac_out_code">请输入短信验证码</string>
     <string name="account_send_opt_timer">秒后发送</string>
     <string name="account_phone_login">立即登录</string>
