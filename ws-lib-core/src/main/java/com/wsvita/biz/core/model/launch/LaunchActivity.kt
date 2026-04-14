@@ -128,7 +128,7 @@ class LaunchActivity : BizcoreActivity<ActivityLaunchBinding, LaunchViewModel>()
 
 
     companion object{
-        private const val TAG = "WS_Biz_Launch_LaunchViewModel=>"
+        private const val TAG = "WS_Biz_Launch_LaunchActivity=>"
         private const val ROUTER_PROTOCOL = "biz_splash_protocol";
         private const val LAUNCH_TO_MAIN = "biz_splash_to_main";
     }

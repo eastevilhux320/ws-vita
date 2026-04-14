@@ -1,4 +1,4 @@
-package com.wsvita.app.local
+package com.vita.xuantong.demo.local
 
 import android.widget.ImageView
 import android.widget.TextView

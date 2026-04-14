@@ -16,4 +16,24 @@
     <string name="tab_main_mine">我的</string>
     <string name="tab_main_home">首页</string>
     <string name="app_note_slogan">舒记，记录生活的温柔方式</string>
+    <string name="app_mine_assets">我的资产</string>
+    <string name="mine_coupon_format">%s张</string>
+    <string name="mine_integral_format">积分:%s</string>
+    <string name="mime_assets_assets_balance">余额</string>
+    <string name="mime_assets_integral">积分</string>
+    <string name="mine_assets_coupon">优惠卷</string>
+    <string name="budget_name_time_1">今日预算</string>
+    <string name="budget_name_time_2">本周预算%s</string>
+    <string name="budget_name_time_3">%s月预算</string>
+    <string name="budget_name_time_4">%s年度预算</string>
+    <string name="budget_name_default">预算</string>
+    <string name="budget_used_surplus_format">已使用%s,剩余%s</string>
+    <string name="budget_used_percent">已使用</string>
+    <string name="budget_surplus_percent">剩余\n%s</string>
+    <string name="month_budget_format">%s月预算</string>
+    <string name="mine_budget_list">我的预算</string>
+    <string name="remaining_amount">剩余预算</string>
+    <string name="budget_total_amount">预算总金额</string>
+    <string name="budget_used_amount">支出总金额</string>
+    <string name="budget_used">已使用</string>
 </resources>

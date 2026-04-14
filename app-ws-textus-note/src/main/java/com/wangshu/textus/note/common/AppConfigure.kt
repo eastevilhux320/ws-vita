@@ -31,7 +31,7 @@ class AppConfigure private constructor(){
                 when (BuildConfig.VERSION_TYPE) {
                     BuildConfig.VERSION_DEV -> "http://192.168.1.142:8800/wangshu/note/"
                     BuildConfig.VERSION_PERSONAL-> "http://192.168.1.14:8800/wangshu/note/"
-                    BuildConfig.VERSION_SIT -> "http://8.141.95.4:8800/wangshu/note/"
+                    BuildConfig.VERSION_SIT -> "http://192.168.1.142:8800/wangshu/note/"
                     BuildConfig.VERSION_UAT -> "http://47.118.26.100:8800/wangshu/note/"
                     BuildConfig.VERSION_RELEASE -> "http://47.118.26.100:8800/wangshu/note/"
                     else -> throw IllegalStateException("version type error")

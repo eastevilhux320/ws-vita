@@ -119,6 +119,7 @@ abstract class BizcoreContainerActivity<V : BizcoreContainerViewModel> : AppCont
         }
         SLog.w(TAG, "Location permission status confirmed. Executing...")
         LocationClient.setAgreePrivacy(true)
+        LocationClient.setKey("bL5vhZJTeYxe0XRGXqVY70JjvCuRiMty");
         // 2. 初始化定位客户端 (单例检查，避免重复创建)
         if (mLocClient == null) {
             // 注意：百度 SDK 建议传递 ApplicationContext

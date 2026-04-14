@@ -4,6 +4,7 @@ import com.wangshu.textus.note.common.AppConfigure
 import com.wangshu.textus.note.entity.AppConfig
 import com.wangshu.textus.note.local.NoteConstants
 import com.wangshu.textus.note.network.request.BillTypePercentRequest
+import com.wangshu.textus.note.network.request.BudgetDetailRequest
 import com.wangshu.textus.note.network.service.NoteService
 import com.wsvita.biz.core.configure.BizcoreConfigure
 import com.wsvita.biz.core.network.service.BizcoreService
@@ -70,5 +71,23 @@ class NoteModel private constructor(){
         request.startTime = sTime;
         request.endTime = eTime;
         return@withContext service.percentDetail(request);
+    }
+
+    /**
+     * Description
+     * create by Eastevil at 2026/4/14 14:42
+     * @author Eastevil
+     * @param budgetType
+     *       预算类型，1-个人预算，2-家庭预算，3-团队预算
+     * @param timeType
+     *       预算时间类型，1-每天预算，2-每周预算，3-每月预算，4-每季度预算，5-每年预算
+     * @return
+     */
+    suspend fun budgetDetail(budgetType : Int?,timeType  : Int?) = withContext(Dispatchers.IO){
+        val request = BudgetDetailRequest();
+        request.appId = appId;
+        request.budgetType = budgetType;
+        request.timeType = timeType;
+        return@withContext service.budgetDetail(request);
     }
 }

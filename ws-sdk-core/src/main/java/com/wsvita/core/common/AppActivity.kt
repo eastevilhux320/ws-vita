@@ -626,6 +626,17 @@ abstract class AppActivity<D : ViewDataBinding, V : AppViewModel> : SDKActivity<
     }
 
     /**
+     * 设置百度地图返回的定位次数，0表示只1次
+     * create by Eastevil at 2026/4/14 16:16
+     * @author Eastevil
+     * @param
+     * @return
+     */
+    protected open fun baiduScanSpan() : Int{
+        return 0;
+    }
+
+    /**
      * ╔════════════════════════════════════════════════════════════════════════════════════╗
      * ║ 私有实现                                             ║
      * ╚════════════════════════════════════════════════════════════════════════════════════╝

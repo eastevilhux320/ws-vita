@@ -6,8 +6,11 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+import com.wangshu.textus.note.R
 import com.wsvita.biz.core.configure.BizcoreConfigure
 import com.wsvita.framework.GlideApp
+import com.wsvita.ui.ext.ViewExt.showBigDecimalWithYuan
 import com.wsvita.ui.view.SuffixInputLayout
 import ext.BigDecimalExt.scale
 import ext.StringExt.isInvalid
@@ -27,10 +30,19 @@ object AppVeiwAttr {
     private val roundedCorners5 = RoundedCorners(5);
     private val roundedCorners3 = RoundedCorners(3);
 
+
     @JvmStatic
     @BindingAdapter("appSrc")
     fun setImage(view: ImageView, src : String?){
         when(view.id){
+            R.id.iv_mine_account_icon->{
+                GlideApp.with(view)
+                    .load(src)
+                    .apply(RequestOptions.circleCropTransform())
+                    .error(R.drawable.icon_user_header_default)
+                    .placeholder(R.drawable.icon_user_header_default)
+                    .into(view);
+            }
             else->{
                 GlideApp.with(view)
                     .load(src)
@@ -98,6 +110,9 @@ object AppVeiwAttr {
     @BindingAdapter("noteBigDecimal")
     fun setBigDecimal(view : TextView,bigDecimal: BigDecimal?){
         when(view.id){
+            R.id.tv_assets_balance->{
+                bigDecimal?.let { view.showBigDecimalWithYuan(it) };
+            }
             else-> view.setText(bigDecimal?.scale(2))
         }
     }

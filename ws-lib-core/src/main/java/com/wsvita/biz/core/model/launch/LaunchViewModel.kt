@@ -110,8 +110,10 @@ class LaunchViewModel(application: Application) : BizcoreViewModel(application) 
         reponse?.let {
             it.token?.let { it1 -> StartupConfigLocator.instance.put("token", it1) }
             it.secretKey?.let { it1 -> StartupConfigLocator.instance.put("secretKey", it1) }
+            StartupConfigLocator.instance.put("keyType", it.keyType)
+            StartupConfigLocator.instance.put("beforehandState", it.state)
             SLog.d(TAG, "getAppBeforehand success")
-            StartupConfigLocator.instance.dispatchAction(StartupScope.STARTUP_SCOPE_SECURITY);
+            StartupConfigLocator.instance.dispatchAction(StartupScope.STARTUP_SCOPE_ALL);
 
             // 修复：使用 appBeforehandSuccess 工厂方法传递 token
             emitSplash(LaunchEvent.appBeforehandSuccess(it.token))
@@ -120,7 +122,7 @@ class LaunchViewModel(application: Application) : BizcoreViewModel(application) 
                 //当前处于登录状态
                 emitSplash(LaunchEvent.accountStateOn());
             }
-            StartupConfigLocator.instance.put("keyType", it.keyType)
+
             launchConfig()
             withMain {
                 app.value = it
@@ -170,6 +172,7 @@ class LaunchViewModel(application: Application) : BizcoreViewModel(application) 
     }
 
     override fun onRequestError(config: ModelRequestConfig, result: Result<*>): Boolean {
+        SLog.d(TAG,"onRequestError,code:${config.requestCode},result:${result.toJson()}")
         when (config.requestCode) {
             REQ_LAUNCHE_CONFIG -> {
                 emitSplash(LaunchEvent.configError())

@@ -132,4 +132,27 @@
         <attr name="wsui_arrowMarginBottom" />
     </declare-styleable>
 
+    <declare-styleable name="CirclePercentView">
+        <!--百分比颜色-->
+        <attr name="circle_percent_color" format="color"/>
+        <!--圆环颜色，即非百分比颜色-->
+        <attr name="circle_nor_color" format="color"/>
+        <!--百分比文字颜色-->
+        <attr name="percent_text_color" format="color"/>
+        <!--百分比文字大小-->
+        <attr name="percent_text_size" format="dimension"/>
+        <!--百分比值-->
+        <attr name="percent" format="float"/>
+        <!--百分比值小数保留位数-->
+        <attr name="percent_digit" format="integer"/>
+        <!--是否需要动画效果,从0到percent的变化效果-->
+        <attr name="percent_anim_flag" format="boolean"/>
+        <!--提示文本-->
+        <attr name="tips_text" format="string"/>
+        <!--提示文本颜色-->
+        <attr name="tips_text_color" format="color"/>
+        <!--提示文本大小-->
+        <attr name="tips_text_size" format="dimension"/>
+    </declare-styleable>
+
 </resources>

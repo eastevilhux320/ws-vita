@@ -14,7 +14,7 @@ import retrofit2.http.Path
 
 interface AccountService {
 
-    @GET("api/account/accountinfo/{appId}")
+    @GET("api/account/centerinfo/{appId}")
     fun accountCenter(@Path("appId") appId : Long) : Result<AccountCenterReponse>;
 
     /**

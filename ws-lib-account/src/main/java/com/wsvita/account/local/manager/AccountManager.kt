@@ -6,6 +6,7 @@ import com.wsvita.account.commons.AccountConstants
 import com.wsvita.account.entity.AccountAction
 import com.wsvita.account.entity.IAccount
 import com.wsvita.account.local.event.AccountModifyEvent
+import com.wsvita.account.local.locator.AccountScope
 import com.wsvita.account.network.model.AccountModel
 import com.wsvita.core.configure.SDKManager
 import com.wsvita.framework.local.WsContext
@@ -68,6 +69,9 @@ class AccountManager private constructor() : SDKManager() {
 
             this.mCurrentAccount = account
             this._isLoginFlow.value = true
+
+            //触发组件自身的回调
+            AccountConfigLocator.instance.dispatchAction(AccountScope.AC_SCOPE_UPDATE);
 
             //发送账号变更事件
             val accountJson = account.toJson();

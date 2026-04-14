@@ -1,5 +1,6 @@
 package com.wangshu.textus.note.local.locator.account
 
+import com.wangshu.textus.note.local.locator.account.handler.AccountUpdateHandler
 import com.wangshu.textus.note.local.locator.account.handler.ExitHander
 import com.wangshu.textus.note.local.locator.account.handler.LoginHandler
 import com.wangshu.textus.note.local.locator.account.handler.TokenHandler
@@ -31,6 +32,7 @@ class AccountConfigDispatcher : AccountConfigReceiver {
         handlers.add(TokenHandler())
         handlers.add(LoginHandler())
         handlers.add(ExitHander())
+        handlers.add(AccountUpdateHandler())
     }
 
     override fun onAccountConfigReady(actionTag: String, provider: IAccountConfigProvider) {

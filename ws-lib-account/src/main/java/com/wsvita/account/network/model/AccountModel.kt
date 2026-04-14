@@ -33,6 +33,10 @@ class AccountModel private constructor(){
         return AccountConfigure.instance.getConfig();
     }
 
+    suspend fun accountCenter() = withContext(Dispatchers.IO){
+        return@withContext service.accountCenter(appId);
+    }
+
     /**
      * 手机短信验证码登录
      * create by Administrator at 2026/1/11 22:38

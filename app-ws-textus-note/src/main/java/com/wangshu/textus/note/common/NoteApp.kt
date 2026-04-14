@@ -1,6 +1,8 @@
 package com.wangshu.textus.note.common
 
 import android.graphics.Color
+import com.baidu.location.LocationClient
+import com.baidu.mapapi.SDKInitializer
 import com.wangshu.mira.MiraSDK
 import com.wangshu.mira.configure.MiraConfig
 import com.wangshu.textus.note.local.manager.ChannelManager
@@ -53,6 +55,12 @@ class NoteApp : BaseApplication() {
         super.onInit()
         SLog.init(true);
         instance = this;
+
+        //百度地图初始化
+        SDKInitializer.setAgreePrivacy(this, true)
+        LocationClient.setAgreePrivacy(true)
+        SDKInitializer.initialize(this)
+
         //需要注意初始化的顺序
         initBaseServices();
     }

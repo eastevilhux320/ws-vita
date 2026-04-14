@@ -15,16 +15,11 @@
 
         </provider>
 
-        <!--百度地图 start-->
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="vLzUdMroZx7hNlVyknMcMm30NmYc1rto" />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote"
             android:foregroundServiceType="location" />
-        <!--百度地图 end-->
 
         <activity android:name="com.wsvita.biz.core.model.protocol.ProtocolActivity"
             android:exported="true">

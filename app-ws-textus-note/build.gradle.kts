@@ -84,6 +84,7 @@ android {
     // 4. 环境变体配置（完全复刻旧 App，确保 BuildConfig.VERSION_TYPE 一致）
     buildTypes {
         getByName("debug") {
+            signingConfig = signingConfigs.getByName("wsts")
             buildConfigField("int", "VERSION_TYPE", libs.versions.env.dev.get())
             buildConfigField("String", "VERSION_DESCRIPTION", "\"开发版本\"")
         }

@@ -41,9 +41,12 @@ class SplashStartupHandler : BaseAppStartupHandlerImpl() {
                 }
 
                 LaunchEvent.ACCOUNT_STATE_ON -> {
-                    SLog.e(TAG, "ACCOUNT_STATE_ON.")
-                    //接收到启动页发送的账号可用，处于登录状态的事务，更新用户信息
-                    AccountManager.instance.notifyMember();
+                    SLog.d(TAG, "ACCOUNT_STATE_ON.")
+                    val state = provider.getInt("beforehandState",-1);
+                    if(1 == state){
+                        //接收到启动页发送的账号可用，处于登录状态的事务，更新用户信息
+                        AccountManager.instance.notifyMember();
+                    }
                 }
 
                 // [300] Remote configuration loaded successfully

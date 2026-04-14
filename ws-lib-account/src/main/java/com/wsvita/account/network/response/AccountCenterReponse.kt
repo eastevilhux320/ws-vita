@@ -1,11 +1,14 @@
 package com.wsvita.account.network.response
 
 import com.wsvita.account.entity.account.AppAccountEntity
+import com.wsvita.account.entity.assets.AssetsEntity
 import com.wsvita.network.entity.BaseResponse
 
 class AccountCenterReponse : BaseResponse() {
 
    var account: AppAccountEntity? = null;
+
+   var userAssets : AssetsEntity? = null;
 
    //var budget : BudgetEntity? = null;
 

@@ -1,13 +1,8 @@
 package com.wangshu.textus.note.local.locator.startup
 
-import com.wangshu.textus.note.local.locator.account.IAccountHandler
-import com.wangshu.textus.note.local.locator.account.handler.ExitHander
-import com.wangshu.textus.note.local.locator.account.handler.LoginHandler
-import com.wangshu.textus.note.local.locator.account.handler.TokenHandler
 import com.wangshu.textus.note.local.locator.startup.handler.SecurityDataStartupHandler
 import com.wangshu.textus.note.local.locator.startup.handler.SplashStartupHandler
 import com.wangshu.textus.note.local.locator.startup.handler.TokenStartupHandler
-import com.wsvita.account.local.locator.AccountScope
 import com.wsvita.biz.core.startup.AppStartupConfigReceiver
 import com.wsvita.biz.core.startup.IStartupConfigProvider
 import com.wsvita.biz.core.startup.StartupScope

@@ -15,4 +15,5 @@ object AccountScope {
     const val AC_SCOPE_LOGOUT = "vita_ac_scope_logout"
     const val AC_SCOPE_TOKEN = "vita_ac_scope_token"
     const val AC_SCOPE_ALL = "vita_ac_scope_all"
+    const val AC_SCOPE_UPDATE = "vita_ac_scope_update";
 }

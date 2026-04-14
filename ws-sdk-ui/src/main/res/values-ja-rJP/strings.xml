@@ -12,4 +12,5 @@
     <string name="week_5">金</string>
     <string name="week_6">土</string>
     <string name="week_7">日</string>
+    <string name="app_yuan_format">%s元</string>
 </resources>

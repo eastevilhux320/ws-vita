@@ -12,4 +12,5 @@
     <string name="week_5">Fri</string>
     <string name="week_6">Sat</string>
     <string name="week_7">Sun</string>
+    <string name="app_yuan_format">%s元</string>
 </resources>

@@ -14,6 +14,7 @@ import com.wangshu.textus.note.common.NoteActivity
 import com.wangshu.textus.note.common.NoteFragment
 import com.wangshu.textus.note.databinding.ActivityMainBinding
 import com.wsvita.biz.core.adapter.MainTabAdapter
+import com.wsvita.biz.core.entity.BizLocation
 import com.wsvita.core.configure.ScreenConfig
 import com.wsvita.framework.utils.SLog
 import ext.ViewExt.dip2px
@@ -95,6 +96,24 @@ class MainActivity : NoteActivity<ActivityMainBinding, MainViewModel>() {
         viewModel.fragmentList.observe(this, Observer {
             initViewpaer(it);
         })
+    }
+
+    override fun needLocation(): Boolean {
+        return true;
+    }
+
+    override fun onLocationChanged(location: BizLocation) {
+        super.onLocationChanged(location)
+        val currentIndex = dataBinding.viewpaer.currentItem;
+        val f = viewModel.fragmentList.value?.get(currentIndex);
+        if(f is com.wangshu.textus.note.model.main.note.NoteFragment){
+            f.receiveContainerLocation(location);
+        }
+    }
+
+    override fun baiduScanSpan(): Int {
+        //return 1 * 60 * 60 * 1000;
+        return 5000;
     }
 
     private fun initViewpaer(fragmentList : MutableList<NoteFragment<*, *>>){
