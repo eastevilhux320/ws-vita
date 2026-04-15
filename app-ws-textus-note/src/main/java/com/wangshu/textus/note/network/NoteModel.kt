@@ -1,13 +1,12 @@
 package com.wangshu.textus.note.network
 
+import com.wangshu.textus.note.BuildConfig
 import com.wangshu.textus.note.common.AppConfigure
-import com.wangshu.textus.note.entity.AppConfig
-import com.wangshu.textus.note.local.NoteConstants
+import com.wangshu.textus.note.local.manager.ChannelManager
 import com.wangshu.textus.note.network.request.BillTypePercentRequest
 import com.wangshu.textus.note.network.request.BudgetDetailRequest
+import com.wangshu.textus.note.network.request.WeatherLngWlatRequest
 import com.wangshu.textus.note.network.service.NoteService
-import com.wsvita.biz.core.configure.BizcoreConfigure
-import com.wsvita.biz.core.network.service.BizcoreService
 import com.wsvita.network.configure.NetworkConfigure
 import ext.TimeExt.currentMonthEnd
 import ext.TimeExt.currentMonthStart
@@ -89,5 +88,17 @@ class NoteModel private constructor(){
         request.budgetType = budgetType;
         request.timeType = timeType;
         return@withContext service.budgetDetail(request);
+    }
+
+    suspend fun weatherByLngAndLat(lng : String,lat : String) = withContext(Dispatchers.IO){
+        val request = WeatherLngWlatRequest();
+        request.type = 3;
+        request.lng = lng;
+        request.lat = lat;
+        request.appId = appId;
+        request.channel = ChannelManager.instance.getChannel();
+        request.version = BuildConfig.VERSION_CODE
+        request.versionName = BuildConfig.VERSION_NAME
+        return@withContext service.weatherByLngAndLat(request);
     }
 }

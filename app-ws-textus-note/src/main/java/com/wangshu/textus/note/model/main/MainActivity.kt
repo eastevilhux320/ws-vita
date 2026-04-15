@@ -9,11 +9,14 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.wangshu.textus.note.R
+import com.wangshu.textus.note.adapter.MainPagerAdapter
 import com.wangshu.textus.note.common.NoteActivity
 import com.wangshu.textus.note.common.NoteFragment
 import com.wangshu.textus.note.databinding.ActivityMainBinding
 import com.wsvita.biz.core.adapter.MainTabAdapter
+import com.wsvita.biz.core.commons.BizcoreFragment
 import com.wsvita.biz.core.entity.BizLocation
 import com.wsvita.core.configure.ScreenConfig
 import com.wsvita.framework.utils.SLog
@@ -21,6 +24,7 @@ import ext.ViewExt.dip2px
 
 class MainActivity : NoteActivity<ActivityMainBinding, MainViewModel>() {
     private lateinit var mainTabAdapter : MainTabAdapter;
+    private lateinit var pagerAdapter: MainPagerAdapter;
 
     override fun initScreenConfig(): ScreenConfig {
         val c = ScreenConfig()
@@ -38,7 +42,6 @@ class MainActivity : NoteActivity<ActivityMainBinding, MainViewModel>() {
         return R.layout.activity_main
     }
 
-
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
 
@@ -51,28 +54,19 @@ class MainActivity : NoteActivity<ActivityMainBinding, MainViewModel>() {
 
         mainTabAdapter.onMainTabClick { tab, position ->
             SLog.d(TAG,"onItemSelect==>${position}");
-            viewModel.selectTabIndex(position);
-            dataBinding.viewpaer.currentItem = position;
+            selectIndex(position);
         }
 
+        pagerAdapter = MainPagerAdapter(this)
+        dataBinding.viewpaer.adapter = pagerAdapter
+        dataBinding.viewpaer.isUserInputEnabled = false
 
-        dataBinding.viewpaer.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-            override fun onPageScrollStateChanged(state: Int) {
-            }
-
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-            }
-
+        // 3. 页面切换监听
+        dataBinding.viewpaer.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                SLog.d(TAG,"onPageSelected==>${position}");
-                viewModel.selectTabIndex(position);
+                selectIndex(position)
             }
         })
-
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -81,7 +75,7 @@ class MainActivity : NoteActivity<ActivityMainBinding, MainViewModel>() {
         SLog.d(TAG,"onNewIntent_mainPosition=>${mainPosition}")
         val pageCurrentPos = dataBinding.viewpaer.currentItem;
         if(pageCurrentPos != mainPosition){
-            viewModel.selectTabIndex(mainPosition);
+            selectIndex(mainPosition);
             dataBinding.viewpaer.setCurrentItem(mainPosition);
         }
     }
@@ -94,7 +88,7 @@ class MainActivity : NoteActivity<ActivityMainBinding, MainViewModel>() {
         })
 
         viewModel.fragmentList.observe(this, Observer {
-            initViewpaer(it);
+            pagerAdapter.updateData(it)
         })
     }
 
@@ -102,42 +96,44 @@ class MainActivity : NoteActivity<ActivityMainBinding, MainViewModel>() {
         return true;
     }
 
-    override fun onLocationChanged(location: BizLocation) {
-        super.onLocationChanged(location)
-        val currentIndex = dataBinding.viewpaer.currentItem;
-        val f = viewModel.fragmentList.value?.get(currentIndex);
-        if(f is com.wangshu.textus.note.model.main.note.NoteFragment){
-            f.receiveContainerLocation(location);
-        }
-    }
-
     override fun baiduScanSpan(): Int {
         //return 1 * 60 * 60 * 1000;
         return 5000;
     }
 
-    private fun initViewpaer(fragmentList : MutableList<NoteFragment<*, *>>){
-        dataBinding.viewpaer.adapter = object : FragmentStatePagerAdapter(supportFragmentManager,
-            BEHAVIOR_SET_USER_VISIBLE_HINT
-        ) {
-            /**
-             * Return the Fragment associated with a specified position.
-             */
-            override fun getItem(position: Int): Fragment {
-                return fragmentList[position]
-            }
+    override fun onLocationChanged(location: BizLocation) {
+        super.onLocationChanged(location)
+        SLog.d(TAG,"onLocationChanged");
+    }
 
-            /**
-             * Return the number of views available.
-             */
-            override fun getCount(): Int {
-                return fragmentList.size;
-            }
+    fun currentLocation(): BizLocation? {
+        return viewModel.location.value;
+    }
 
-            override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-                //super.destroyItem(container, position, `object`)
+    private fun selectIndex(position: Int) {
+        if (viewModel.isSameSelect(position)) {
+            return
+        }
+        SLog.d(TAG, "selectIndex: $position")
+
+        // 1. Hide the current one immediately
+        currentFragment()?.onMainHidden()
+
+        // 2. Update ViewModel and ViewPager
+        viewModel.selectTabIndex(position)
+        dataBinding.viewpaer.currentItem = position
+
+        // 3. IMPORTANT: Wait for the ViewPager to finish attaching the fragment
+        // posting to the view's queue ensures this runs after the transaction
+        dataBinding.viewpaer.post {
+            if (!isFinishing && !isDestroyed) {
+                currentFragment()?.onMainShow()
             }
         }
+    }
+
+    private fun currentFragment(): NoteMainFragment<*, *>? {
+        return viewModel.fragmentList.value?.get(dataBinding.viewpaer.currentItem);
     }
 
     companion object{

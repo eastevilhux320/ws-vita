@@ -1,11 +1,13 @@
 package com.wangshu.textus.note.network.service
 
 import com.wangshu.textus.note.entity.main.MonthBillDetail
+import com.wangshu.textus.note.entity.weather.YiyuanWeather
 import com.wangshu.textus.note.network.reponse.BillTypePercentResponse
 import com.wangshu.textus.note.network.reponse.BudgetDetailResponse
 import com.wangshu.textus.note.network.reponse.YearlyDetailReponse
 import com.wangshu.textus.note.network.request.BillTypePercentRequest
 import com.wangshu.textus.note.network.request.BudgetDetailRequest
+import com.wangshu.textus.note.network.request.WeatherLngWlatRequest
 import com.wsvita.network.entity.Result
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -49,4 +51,17 @@ interface NoteService {
 
     @POST("api/assets/budget/mine")
     fun budgetDetail(@Body request : BudgetDetailRequest) : Result<BudgetDetailResponse>;
+
+    /**
+     * 根据经纬度查询天气
+     * @author Eastevil
+     * @createTime 2025/9/2 16:29
+     * @param
+     * @since
+     * @see
+     * @return
+     */
+    @POST("api/weather/lngwlat")
+    fun weatherByLngAndLat(@Body request : WeatherLngWlatRequest) : Result<YiyuanWeather>;
+
 }

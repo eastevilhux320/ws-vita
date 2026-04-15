@@ -5,13 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wangshu.textus.note.common.NoteViewModel
 import com.wangshu.textus.note.entity.BudgetEntity
+import com.wangshu.textus.note.model.main.NoteMainViewModel
 import com.wangshu.textus.note.network.NoteModel
 import com.wsvita.account.entity.assets.AssetsEntity
 import com.wsvita.account.network.model.AccountModel
 import com.wsvita.account.network.response.AccountCenterReponse
 import kotlinx.coroutines.launch
 
-class MineViewModel(application: Application) : NoteViewModel(application) {
+class MineViewModel(application: Application) : NoteMainViewModel(application) {
 
     val accountCenter = MutableLiveData<AccountCenterReponse>();
     val assets = MutableLiveData<AssetsEntity>();

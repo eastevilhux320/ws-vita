@@ -4,8 +4,9 @@ import android.os.Bundle
 import com.wangshu.textus.note.R
 import com.wangshu.textus.note.common.NoteFragment
 import com.wangshu.textus.note.databinding.FragmentMainDefaultBinding
+import com.wangshu.textus.note.model.main.NoteMainFragment
 
-class DefaultFragment : NoteFragment<FragmentMainDefaultBinding, DefaultViewModel>() {
+class DefaultFragment : NoteMainFragment<FragmentMainDefaultBinding, DefaultViewModel>() {
 
 
     override fun navigationId(): Int {

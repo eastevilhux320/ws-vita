@@ -51,7 +51,7 @@ class YearlyDetailReponse {
     /**
      * 今日收入
      */
-    var  dayIncome: BigDecimal = BigDecimal.ZERO
+    var  dayIncome: BigDecimal? = BigDecimal.ZERO
 
     /**
      * 年开始时间
@@ -133,8 +133,8 @@ class YearlyDetailReponse {
 
     val todayBalanceText : String
         get() {
-            val b = dayIncome.subtract(dayExpenditure);
-            return b.scale(2);
+            val b = dayIncome?.subtract(dayExpenditure);
+            return b?.scale(2)?:"0.00";
         }
 
     val monthIncomeText : String

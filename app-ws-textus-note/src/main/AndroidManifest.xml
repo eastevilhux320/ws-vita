@@ -41,6 +41,13 @@
         android:usesCleartextTraffic="true"
         android:extractNativeLibs="true">
 
+        <provider
+            android:name="com.wsvita.framework.local.WsFrameInitializer"
+            android:authorities="${applicationId}.wsvita.framework.initializer"
+            android:exported="false"
+            android:multiprocess="true"
+            android:initOrder="100" />
+
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="ooz0BS0lY3BNI349mjXBYAMakFIuFNrX"/>

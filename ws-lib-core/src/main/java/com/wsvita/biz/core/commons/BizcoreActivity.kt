@@ -71,23 +71,23 @@ abstract class BizcoreActivity<D : ViewDataBinding,V : BizcoreViewModel> : AppAc
         if (mLocClient == null) {
             // 注意：百度 SDK 建议传递 ApplicationContext
             mLocClient = LocationClient(applicationContext)
-        }
-        val client = mLocClient ?: return
-        sdkLocationListener = SDKLocationListener();
-        sdkLocationListener?.onLocation { bdLocation, location ->
-            SLog.d(TAG,"sdkLocationListener,onLocation");
-            viewModel.receiveLocation(location);
-        }
-        client.registerLocationListener(sdkLocationListener)
-        // 3. 配置参数 (调用私有方法)
-        client.locOption = initLocationOption()
-        if(baiduScanSpan() > 0){
-            //除了 LocationClientOption 本身，你的代码中还需要确保处理了以下两点，否则在 Android 12+ 上极易崩溃或无法定位
-            //client.enableLocInForeground()
-            //后期优化
+
+            sdkLocationListener = SDKLocationListener();
+            sdkLocationListener?.onLocation { bdLocation, location ->
+                SLog.d(TAG,"sdkLocationListener,onLocation");
+                viewModel.receiveLocation(location);
+            }
+            mLocClient?.registerLocationListener(sdkLocationListener)
+            // 3. 配置参数 (调用私有方法)
+            mLocClient?.locOption = initLocationOption()
+            if(baiduScanSpan() > 0){
+                //除了 LocationClientOption 本身，你的代码中还需要确保处理了以下两点，否则在 Android 12+ 上极易崩溃或无法定位
+                //client.enableLocInForeground()
+                //后期优化
+            }
         }
         //开始定位
-        client.start();
+        mLocClient?.start();
     }
 
     protected open fun onLocationChanged(location : BizLocation){

@@ -11,6 +11,9 @@
             name="fragment"
             type="com.wangshu.textus.note.model.main.note.NoteFragment" />
 
+        <variable
+            name="memoAdapter"
+            type="com.wsvita.core.common.adapter.CoreAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,96 +24,60 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_note_title"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
+            android:layout_height="@dimen/dp_80"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/color_main_theme"
             android:paddingTop="@dimen/dp_32">
 
-            <!-- 时间 -->
             <TextView
-                android:id="@+id/tv_note_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/sp_24"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:layout_marginStart="@dimen/dp_15"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/tv_note_date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_chainStyle="packed"/>
-
-            <!-- 日期 -->
-            <TextView
-                android:id="@+id/tv_note_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:layout_marginStart="@dimen/dp_15"
-                app:layout_constraintTop_toBottomOf="@id/tv_note_time"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_chainStyle="packed"/>
-
-            <ImageView
-                android:id="@+id/iv_weather_discovery_icon"
-                android:layout_width="@dimen/dp_30"
-                android:layout_height="@dimen/dp_30"
-                app:layout_constraintTop_toTopOf="@id/tv_note_time"
-                app:layout_constraintBottom_toBottomOf="@id/tv_note_time"
-                app:layout_constraintEnd_toStartOf="@id/ll_note_location"
-                android:layout_marginRight="@dimen/dp_5"/>
-
-            <TextView
-                android:id="@+id/tv_weather_weather"
+                android:id="@+id/tv_week_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/AppTextTheme.Normal"
-                app:layout_constraintTop_toTopOf="@id/tv_note_date"
-                app:layout_constraintBottom_toBottomOf="@id/tv_note_date"
-                app:layout_constraintStart_toStartOf="@id/iv_weather_discovery_icon"
-                app:layout_constraintEnd_toEndOf="@id/iv_weather_discovery_icon"
+                app:appText="@{viewModel.time.showWeekTime()}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="@dimen/dp_15"
                 android:textColor="@color/white"/>
 
+
             <TextView
-                android:id="@+id/tv_note_weather_temperature"
+                android:id="@+id/tv_temperature_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/sp_24"
-                android:textColor="@android:color/white"
-                app:layout_constraintTop_toTopOf="@id/tv_note_time"
-                app:layout_constraintBottom_toBottomOf="@id/tv_note_time"
+                style="@style/AppTextTheme.Normal"
+                app:appText="@{viewModel.weather.temperatureText}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginRight="@dimen/dp_15"/>
-
-            <LinearLayout
-                android:id="@+id/ll_note_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="@id/tv_note_date"
-                app:layout_constraintBottom_toBottomOf="@id/tv_note_date"
                 android:layout_marginRight="@dimen/dp_15"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:gravity="center_vertical">
+                android:textColor="@color/white"/>
 
-                <ImageView
-                    android:layout_width="@dimen/dp_15"
-                    android:layout_height="@dimen/dp_15" />
 
-                <TextView
-                    android:id="@+id/tv_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintTop_toBottomOf="@id/tv_note_time"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintVertical_chainStyle="packed"/>
+            <ImageView
+                android:id="@+id/iv_weather_icon"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                app:srcUrl="@{viewModel.weather.weatherPic}"
+                app:layout_constraintTop_toTopOf="@id/tv_temperature_text"
+                app:layout_constraintBottom_toBottomOf="@id/tv_temperature_text"
+                app:layout_constraintEnd_toStartOf="@id/tv_temperature_text"
+                android:layout_marginRight="@dimen/dp_5"/>
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_note_city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AppTextTheme.Normal"
+                app:appText="@{viewModel.location.district}"
+                app:layout_constraintBottom_toTopOf="@id/tv_temperature_text"
+                app:layout_constraintBottom_toBottomOf="@id/tv_temperature_text"
+                app:layout_constraintEnd_toStartOf="@id/iv_weather_icon"
+                android:layout_marginRight="@dimen/dp_10"
+                android:textColor="@color/white"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -159,6 +126,7 @@
                                 android:id="@+id/iv_note_today_ie"
                                 android:layout_width="@dimen/dp_30"
                                 android:layout_height="@dimen/dp_30"
+                                android:src="@drawable/ic_note_today_ie"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 android:padding="@dimen/dp_5"
@@ -170,6 +138,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 style="@style/AppTextTheme.Normal"
+                                android:text="@string/note_today_ie"
                                 app:layout_constraintTop_toTopOf="@id/iv_note_today_ie"
                                 app:layout_constraintBottom_toBottomOf="@id/iv_note_today_ie"
                                 app:layout_constraintStart_toEndOf="@id/iv_note_today_ie"
@@ -184,6 +153,8 @@
                                 app:layout_constraintBottom_toBottomOf="@id/iv_note_today_ie"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:layout_marginRight="@dimen/dp_15"
+                                android:background="@drawable/shape_fillet_maintheme_15"
+                                android:text="@string/note_bill"
                                 style="@style/AppTextTheme.Normal"
                                 android:textColor="@color/white"
                                 android:onClick="@{fragment.onViewClick}"/>
@@ -206,6 +177,7 @@
                                     android:layout_height="@dimen/dp_20"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
+                                    android:src="@drawable/ic_ie_income"
                                     app:layout_constraintVertical_chainStyle="packed"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintEnd_toStartOf="@id/tv_today_income_text"
@@ -218,6 +190,7 @@
                                     app:layout_constraintTop_toTopOf="@id/iv_today_income"
                                     app:layout_constraintBottom_toBottomOf="@id/iv_today_income"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    android:text="@string/note_today_income"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     android:textColor="@color/color_bill_income"
                                     android:layout_marginLeft="@dimen/dp_5"
@@ -229,6 +202,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/AppTextTheme.Normal"
+                                    android:text="@{viewModel.billingDetail.todayIncomeText}"
                                     android:textColor="@color/color_bill_income"
                                     android:textSize="@dimen/sp_18"
                                     app:layout_constraintTop_toBottomOf="@id/iv_today_income"
@@ -255,6 +229,7 @@
                                     android:layout_height="@dimen/dp_20"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
+                                    android:src="@drawable/ic_ie_expenditure"
                                     app:layout_constraintVertical_chainStyle="packed"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintEnd_toStartOf="@id/tv_today_expenditure_text"
@@ -267,6 +242,7 @@
                                     app:layout_constraintTop_toTopOf="@id/iv_today_expenditure"
                                     app:layout_constraintBottom_toBottomOf="@id/iv_today_expenditure"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    android:text="@string/note_today_expenditure"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     android:textColor="@color/color_bill_expenditure"
                                     android:layout_marginLeft="@dimen/dp_5"
@@ -278,6 +254,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/AppTextTheme.Normal"
+                                    android:text="@{viewModel.billingDetail.todayExpenditureText}"
                                     android:textColor="@color/color_bill_expenditure"
                                     android:textSize="@dimen/sp_18"
                                     app:layout_constraintTop_toBottomOf="@id/iv_today_expenditure"
@@ -303,6 +280,7 @@
                                     android:layout_height="@dimen/dp_20"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
+                                    android:src="@drawable/ic_ie_balance"
                                     app:layout_constraintVertical_chainStyle="packed"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     app:layout_constraintEnd_toStartOf="@id/tv_today_balance_text"
@@ -315,6 +293,7 @@
                                     app:layout_constraintTop_toTopOf="@id/iv_today_balance"
                                     app:layout_constraintBottom_toBottomOf="@id/iv_today_balance"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    android:text="@string/note_today_balance"
                                     app:layout_constraintHorizontal_chainStyle="packed"
                                     android:textColor="@color/color_main_theme"
                                     android:layout_marginLeft="@dimen/dp_5"
@@ -326,6 +305,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/AppTextTheme.Normal"
+                                    app:appText="@{viewModel.billingDetail.todayBalanceText}"
                                     android:textColor="@color/color_main_theme"
                                     android:textSize="@dimen/sp_18"
                                     app:layout_constraintTop_toBottomOf="@id/iv_today_balance"
@@ -340,7 +320,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_note_view"
+                        android:id="@+id/card_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
@@ -354,24 +334,76 @@
                         android:layout_marginTop="@dimen/dp_10">
 
 
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_note_memo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/iv_note_note_memo"
+                                android:layout_width="@dimen/dp_30"
+                                android:layout_height="@dimen/dp_30"
+                                android:src="@drawable/ic_note_note_memo"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:padding="@dimen/dp_5"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:layout_marginLeft="@dimen/dp_10"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/AppTextTheme.Normal"
+                                android:text="@string/note_memo_tips"
+                                app:layout_constraintTop_toTopOf="@id/iv_note_note_memo"
+                                app:layout_constraintBottom_toBottomOf="@id/iv_note_note_memo"
+                                app:layout_constraintStart_toEndOf="@id/iv_note_note_memo"
+                                android:layout_marginLeft="@dimen/dp_5"
+                                android:textColor="@color/color_note_memo"/>
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_note_memo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="@id/iv_note_note_memo"
+                                app:layout_constraintBottom_toBottomOf="@id/iv_note_note_memo"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginRight="@dimen/dp_10"
+                                android:gravity="center_vertical"
+                                android:onClick="@{fragment.onViewClick}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/AppTextTheme.Normal"
+                                    android:text="@string/note_memo"
+                                    android:textColor="@color/color_note_memo"
+                                    android:layout_marginRight="@dimen/dp_5"/>
+
+                                <ImageView
+                                    android:layout_width="@dimen/dp_13"
+                                    android:layout_height="@dimen/dp_13"
+                                    android:src="@drawable/ic_note_memo"/>
+
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_memo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toBottomOf="@id/iv_note_note_memo"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:adapter="@{memoAdapter}"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
                     </androidx.cardview.widget.CardView>
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card_note_plan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp"
-                        android:layout_marginLeft="@dimen/dp_15"
-                        android:layout_marginRight="@dimen/dp_15"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="@dimen/dp_10">
-
-
-                    </androidx.cardview.widget.CardView>
 
                     <Space
                         android:layout_width="match_parent"

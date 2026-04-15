@@ -6,9 +6,10 @@ import com.google.android.material.appbar.AppBarLayout
 import com.wangshu.textus.note.R
 import com.wangshu.textus.note.common.NoteFragment
 import com.wangshu.textus.note.databinding.FragmentMainMineBinding
+import com.wangshu.textus.note.model.main.NoteMainFragment
 import ext.ColorExt.changeAlpha
 
-class MineFragment : NoteFragment<FragmentMainMineBinding, MineViewModel>() {
+class MineFragment : NoteMainFragment<FragmentMainMineBinding, MineViewModel>() {
 
     override fun navigationId(): Int {
         return R.id.nav_textus_note_main_mine;

@@ -4,8 +4,9 @@ import android.os.Bundle
 import com.wangshu.textus.note.R
 import com.wangshu.textus.note.common.NoteFragment
 import com.wangshu.textus.note.databinding.FragmentMainWebviewBinding
+import com.wangshu.textus.note.model.main.NoteMainFragment
 
-class WebviewFragment : NoteFragment<FragmentMainWebviewBinding, WebviewViewModel>() {
+class WebviewFragment : NoteMainFragment<FragmentMainWebviewBinding, WebviewViewModel>() {
     override fun navigationId(): Int {
         return R.id.nav_textus_note_main_webview;
     }
@@ -13,7 +14,6 @@ class WebviewFragment : NoteFragment<FragmentMainWebviewBinding, WebviewViewMode
     override fun layoutId(): Int {
         return R.layout.fragment_main_webview;
     }
-
 
     override fun getVMClass(): Class<WebviewViewModel> {
         return WebviewViewModel::class.java;

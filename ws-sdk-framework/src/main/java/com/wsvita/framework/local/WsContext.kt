@@ -27,7 +27,7 @@ object WsContext {
     val context: Context get() = app.applicationContext
 
     @JvmStatic
-    internal fun init(application: Application) {
+    fun init(application: Application) {
         if (_application == null) {
             _application = application
         }

@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">app-ws-textus-note</string>
+
+    <string name="chinese_time_week_format">MM月dd日 EEEE</string>
+    <string name="time_week_format">MM月dd日 EEEE</string>
+
     <string name="bill_detail_year_format">%s年度统计</string>
     <string name="home_month_total_format">共%s元</string>
     <string name="month_income">本月收入</string>
@@ -34,4 +38,20 @@
     <string name="budget_total_amount">预算总金额</string>
     <string name="budget_used_amount">支出总金额</string>
     <string name="budget_used">已使用</string>
+    <string name="app_unit_temperature">℃</string>
+    <string name="note_today_ie">今日收支</string>
+    <string name="note_bill">记一笔</string>
+    <string name="note_today_income">收入</string>
+    <string name="note_today_expenditure">支出</string>
+    <string name="note_today_balance">结余</string>
+    <string name="note_memo_tips">偷得浮生半日闲</string>
+    <string name="note_memo">添加备忘录</string>
+    <string name="memo_degree_1">极度重要</string>
+    <string name="memo_degree_2">重要</string>
+    <string name="memo_degree_3">一般</string>
+    <string name="memo_degree_4">可忽略</string>
+    <string name="memo_degree">紧急程度</string>
+    <string name="memo_time">提醒时间</string>
+    <string name="memo_select_time">选择提醒时间</string>
+    <string name="memo_end_time">截止时间</string>
 </resources>

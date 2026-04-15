@@ -12,10 +12,11 @@ import com.wangshu.textus.note.adapter.TypePercentAdapter
 import com.wangshu.textus.note.common.NoteFragment
 import com.wangshu.textus.note.databinding.FragmentMainHomeBinding
 import com.wangshu.textus.note.entity.bill.BillTypeEntity
+import com.wangshu.textus.note.model.main.NoteMainFragment
 import ext.StringExt.parseColor
 import ext.ViewExt.createComplexRectDrawable
 
-class HomeFragment : NoteFragment<FragmentMainHomeBinding, HomeViewModel>() {
+class HomeFragment : NoteMainFragment<FragmentMainHomeBinding, HomeViewModel>() {
     private lateinit var navigationAdapter : NavigationAdapter;
     private lateinit var incomePercentAdapter : TypePercentAdapter;
     private lateinit var expenditurePercentAdapter : TypePercentAdapter;

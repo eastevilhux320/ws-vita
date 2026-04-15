@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.wangshu.textus.note.entity.main.MonthBillDetail
 import com.wangshu.textus.note.common.NoteViewModel
 import com.wangshu.textus.note.entity.bill.BillTypePercentEntity
+import com.wangshu.textus.note.model.main.NoteMainViewModel
 import com.wangshu.textus.note.network.NoteModel
 import com.wangshu.textus.note.network.reponse.YearlyDetailReponse
 import com.wsvita.biz.core.entity.AppHomeConfigEntity
@@ -17,7 +18,7 @@ import com.wsvita.framework.utils.SLog
 import ext.JsonExt.toJson
 import kotlinx.coroutines.launch
 
-class HomeViewModel(application: Application) : NoteViewModel(application) {
+class HomeViewModel(application: Application) : NoteMainViewModel(application) {
     val homeConfig = MutableLiveData<AppHomeConfigEntity>();
     /**
      * 首页导航菜单
@@ -132,7 +133,7 @@ class HomeViewModel(application: Application) : NoteViewModel(application) {
     }
 
     private suspend fun monthTypePercent(){
-        val result = request(requestCode = REQ_CODE_PERCENT_DETAIL, showLoading = true){
+        val result = request(requestCode = REQ_CODE_PERCENT_DETAIL, showLoading = false){
             NoteModel.instance.percentDetail(null,null);
         }
         result?.let {

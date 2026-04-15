@@ -155,4 +155,11 @@
         <attr name="tips_text_size" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="EmptyView">
+        <attr name="empty_img_width" format="dimension"/>
+        <attr name="empty_img_height" format="dimension"/>
+        <attr name="empty_text" format="string"/>
+        <attr name="empty_src" format="reference"/>
+    </declare-styleable>
+
 </resources>

@@ -28,6 +28,7 @@ import com.wsvita.account.configure.AccountConfig
 import com.wsvita.account.configure.AccountConfigure
 import com.wsvita.account.local.locator.AccountConfigLocator
 import com.wsvita.framework.ext.BaseApplicationExt.appName
+import com.wsvita.framework.local.WsContext
 import com.wsvita.network.configure.NetworkOptions
 import com.wsvita.network.configure.NetworkConfig
 import com.wsvita.network.configure.NetworkConfigure
@@ -55,6 +56,8 @@ class NoteApp : BaseApplication() {
         super.onInit()
         SLog.init(true);
         instance = this;
+
+        WsContext.init(this);
 
         //百度地图初始化
         SDKInitializer.setAgreePrivacy(this, true)

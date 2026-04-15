@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="memo"
+            type="com.wangshu.textus.note.entity.note.MemoEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_memo_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{memo.title}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/AppTextTheme.Normal"
+            android:gravity="left|top"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"/>
+
+        <ImageView
+            android:id="@+id/iv_memo_time"
+            android:layout_width="@dimen/dp_15"
+            android:layout_height="@dimen/dp_15"
+            android:src="@drawable/ic_memo_time_tips"
+            app:layout_constraintTop_toBottomOf="@id/tv_memo_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/dp_25"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+        <TextView
+            android:id="@+id/tv_memo_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            android:text="@string/memo_end_time"
+            app:layout_constraintTop_toTopOf="@id/iv_memo_time"
+            app:layout_constraintBottom_toBottomOf="@id/iv_memo_time"
+            app:layout_constraintStart_toEndOf="@id/iv_memo_time"
+            android:textColor="@color/starColorHint"
+            android:textSize="@dimen/sp_11"
+            android:layout_marginLeft="@dimen/dp_5"/>
+
+        <TextView
+            android:id="@+id/tv_memo_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/iv_memo_time"
+            app:layout_constraintBottom_toBottomOf="@id/iv_memo_time"
+            app:layout_constraintStart_toEndOf="@id/tv_memo_end_time"
+            android:text="@{memo.memoTipsText}"
+            android:layout_marginLeft="@dimen/dp_5"
+            style="@style/AppTextTheme.Normal"
+            android:textSize="@dimen/sp_11"/>
+
+
+        <ImageView
+            android:id="@+id/iv_memo_degree"
+            android:layout_width="@dimen/dp_15"
+            android:layout_height="@dimen/dp_15"
+            app:layout_constraintTop_toBottomOf="@id/iv_memo_time"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_7"
+            android:src="@{memo.degreeIcon}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/dp_10"/>
+
+        <TextView
+            android:id="@+id/tv_memo_degree_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            android:text="@{memo.degreeText}"
+            android:textSize="@dimen/sp_11"
+            android:textColor="@{memo.degreeTextColor}"
+            app:layout_constraintTop_toTopOf="@id/iv_memo_degree"
+            app:layout_constraintBottom_toBottomOf="@id/iv_memo_degree"
+            app:layout_constraintStart_toEndOf="@id/iv_memo_degree"
+            android:layout_marginLeft="@dimen/dp_5"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

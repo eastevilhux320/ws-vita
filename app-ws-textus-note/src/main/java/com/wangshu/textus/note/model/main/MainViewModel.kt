@@ -14,6 +14,7 @@ import com.wangshu.textus.note.model.main.discovery.DiscoveryFragment
 import com.wangshu.textus.note.model.main.home.HomeFragment
 import com.wangshu.textus.note.model.main.mine.MineFragment
 import com.wangshu.textus.note.model.main.webview.WebviewFragment
+import com.wsvita.biz.core.entity.BizLocation
 import com.wsvita.biz.core.entity.MainTabEntity
 import com.wsvita.biz.core.network.model.AppModel
 import com.wsvita.framework.utils.SLog
@@ -25,9 +26,8 @@ class MainViewModel(application: Application) : NoteViewModel(application) {
 
     private var lastSelectTab : Int = -1;
 
-
     val tabList = MutableLiveData<MutableList<MainTabEntity>>();
-    val fragmentList = MutableLiveData<MutableList<NoteFragment<*, *>>>();
+    val fragmentList = MutableLiveData<MutableList<NoteMainFragment<*, *>>>();
 
     override fun initModel() {
         super.initModel()
@@ -56,6 +56,10 @@ class MainViewModel(application: Application) : NoteViewModel(application) {
         }
     }
 
+    fun isSameSelect(index : Int): Boolean {
+        return index == lastSelectTab;
+    }
+
     private fun tabList() = viewModelScope.launch{
         val result = AppModel.instance.mainTabList(ChannelManager.instance.getChannel());
         SLog.d(TAG,"tabList=>${result.toJSON()}");
@@ -63,7 +67,7 @@ class MainViewModel(application: Application) : NoteViewModel(application) {
             val tabList = result.data;
             if(tabList != null && tabList.isNotEmpty()){
                 val list = mutableListOf<MainTabEntity>();
-                val fList = mutableListOf<NoteFragment<*, *>>()
+                val fList = mutableListOf<NoteMainFragment<*, *>>()
                 var index = 0;
                 tabList.forEach {
                     val tab = it;
