@@ -16,17 +16,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_discovery_title"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_80"
+            android:layout_height="@dimen/dp_100"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/color_main_theme"
-            android:paddingTop="@dimen/dp_32">
+            android:paddingTop="@dimen/dp_38">
 
             <ImageView
                 android:id="@+id/iv_discovery_title_minren"
-                android:layout_width="@dimen/dp_20"
-                android:layout_height="@dimen/dp_20"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
                 android:src="@drawable/ic_discovery_minren_minyan"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +58,13 @@
                 android:textColor="@color/white"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
