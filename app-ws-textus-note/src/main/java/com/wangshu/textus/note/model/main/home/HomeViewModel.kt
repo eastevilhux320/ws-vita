@@ -5,10 +5,9 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wangshu.textus.note.entity.main.MonthBillDetail
-import com.wangshu.textus.note.common.NoteViewModel
 import com.wangshu.textus.note.entity.bill.BillTypePercentEntity
 import com.wangshu.textus.note.model.main.NoteMainViewModel
-import com.wangshu.textus.note.network.NoteModel
+import com.wangshu.textus.note.network.model.NoteModel
 import com.wangshu.textus.note.network.reponse.YearlyDetailReponse
 import com.wsvita.biz.core.entity.AppHomeConfigEntity
 import com.wsvita.biz.core.entity.NavigationEntity

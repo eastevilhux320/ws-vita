@@ -13,4 +13,11 @@
     <string name="week_6">六</string>
     <string name="week_7">日</string>
     <string name="app_yuan_format">%s元</string>
+
+    <string name="app_year">年</string>
+    <string name="app_month">月</string>
+    <string name="app_day">日</string>
+    <string name="app_hour">時</string>
+    <string name="app_minute">分</string>
+    <string name="app_second">秒</string>
 </resources>

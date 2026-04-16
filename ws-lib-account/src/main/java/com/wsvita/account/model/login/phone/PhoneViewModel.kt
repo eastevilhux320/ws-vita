@@ -16,6 +16,7 @@ import com.wsvita.module.account.R
 import com.wsvita.network.model.NetworkModel
 import ext.StringExt.isInvalid
 import kotlinx.coroutines.launch
+import java.net.URLDecoder
 
 class PhoneViewModel(application: Application) : AccountViewModel(application) {
     private var optTimeText : String? = null;
@@ -60,11 +61,17 @@ class PhoneViewModel(application: Application) : AccountViewModel(application) {
                 //登录成功，需要修改token及key
                 val locator = AccountConfigLocator.instance;
                 it.token?.let { it1 -> locator.put(AccountConstants.AccountKeys.TOKEN, it1) };
-                it.secretKey?.let { it1 -> locator.put(AccountConstants.AccountKeys.SERVICE_KEY, it1) };
+                it.secretKey?.let { it1 ->
+                    //后端返回的key是经过了urldecode的。需要处理
+                    val key = URLDecoder.decode(it1,"UTF-8");
+                    locator.put(AccountConstants.AccountKeys.SERVICE_KEY, key);
+                };
                 it.keyType?.let { it1 -> locator.put(AccountConstants.AccountKeys.KEY_TYPE, it1) }
 
-                locator.dispatchAction(AccountScope.AC_SCOPE_LOGIN);
+
                 locator.dispatchAction(AccountScope.AC_SCOPE_TOKEN);
+                locator.dispatchAction(AccountScope.AC_SCOPE_SECURITY_KEY)
+                locator.dispatchAction(AccountScope.AC_SCOPE_LOGIN);
 
                 AccountManager.instance.notifyMember();
                 //需要重置账号中的数据

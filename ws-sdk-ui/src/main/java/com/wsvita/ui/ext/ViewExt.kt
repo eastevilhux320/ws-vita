@@ -1,7 +1,9 @@
 package com.wsvita.ui.ext
 
+import android.content.Context
 import android.util.TypedValue
 import android.widget.TextView
+import androidx.databinding.ViewDataBinding
 import com.wsvita.ui.R
 import ext.ViewExt.getString
 import java.math.BigDecimal
@@ -57,5 +59,9 @@ object ViewExt {
     fun TextView.showBigDecimalWithYuan(bigDecimal: BigDecimal){
         val s = this.getString(R.string.app_yuan_format,bigDecimal.setScale(2));
         this.setText(s);
+    }
+
+    fun ViewDataBinding.context(): Context? {
+        return this.root.context;
     }
 }

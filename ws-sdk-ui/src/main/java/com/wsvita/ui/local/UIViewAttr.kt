@@ -28,7 +28,7 @@ object UIViewAttr {
      *      void
      */
     @BindingAdapter("wsui:autoUpper")
-    fun setAutoUpper(editText: EditText, autoUpper: Boolean?) {
+    fun setAutoUpper(editText: EditText, autoUpper: Boolean) {
         if (autoUpper == true) {
             val filters = editText.filters?.toMutableList() ?: mutableListOf()
             if (filters.none { it is InputFilter.AllCaps }) {

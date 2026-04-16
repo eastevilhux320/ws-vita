@@ -3,10 +3,12 @@ package com.wangshu.textus.note.local.locator.account
 import com.wangshu.textus.note.local.locator.account.handler.AccountUpdateHandler
 import com.wangshu.textus.note.local.locator.account.handler.ExitHander
 import com.wangshu.textus.note.local.locator.account.handler.LoginHandler
+import com.wangshu.textus.note.local.locator.account.handler.SecurityDateHandler
 import com.wangshu.textus.note.local.locator.account.handler.TokenHandler
 import com.wsvita.account.local.locator.AccountConfigReceiver
 import com.wsvita.account.local.locator.AccountScope
 import com.wsvita.account.local.locator.IAccountConfigProvider
+import kotlinx.coroutines.handleCoroutineException
 
 class AccountConfigDispatcher : AccountConfigReceiver {
 
@@ -33,6 +35,7 @@ class AccountConfigDispatcher : AccountConfigReceiver {
         handlers.add(LoginHandler())
         handlers.add(ExitHander())
         handlers.add(AccountUpdateHandler())
+        handlers.add(SecurityDateHandler());
     }
 
     override fun onAccountConfigReady(actionTag: String, provider: IAccountConfigProvider) {

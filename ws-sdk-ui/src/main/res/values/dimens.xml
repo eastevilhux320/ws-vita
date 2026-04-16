@@ -555,4 +555,8 @@
     <dimen name="wsui_app_input_height">@dimen/dp_50</dimen>
 
     <dimen name="wsui_arrow_size">@dimen/dp_12</dimen>
+
+
+    <dimen name="empty_view_width">@dimen/dp_200</dimen>
+    <dimen name="empty_view_height">@dimen/dp_200</dimen>
 </resources>

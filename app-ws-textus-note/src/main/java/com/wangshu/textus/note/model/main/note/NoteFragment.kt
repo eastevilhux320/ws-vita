@@ -1,8 +1,11 @@
 package com.wangshu.textus.note.model.main.note
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.baidu.entity.pb.PoiResult.Contents.Ext.DetailInfo.Meishipaihao.Main
 import com.wangshu.textus.note.R
+import com.wangshu.textus.note.adapter.NoteAdapter
+import com.wangshu.textus.note.adapter.PlanAdapter
 import com.wangshu.textus.note.databinding.FragmentMainNoteBinding
 import com.wangshu.textus.note.model.main.MainActivity
 import com.wangshu.textus.note.model.main.NoteMainFragment
@@ -11,12 +14,15 @@ import com.wsvita.biz.core.commons.BizConstants
 import com.wsvita.biz.core.commons.BizcoreContainerActivity
 import com.wsvita.core.common.adapter.CoreAdapter
 import com.wsvita.core.common.adapter.CoreAdapterBuilder
+import com.wsvita.core.recycler.IRecyclerItem
 import com.wsvita.framework.router.FinishParam
 import com.wsvita.framework.utils.SLog
 import ext.JsonExt.toJson
 
 class NoteFragment : NoteMainFragment<FragmentMainNoteBinding, NoteViewModel>() {
     private lateinit var memoAdapter : CoreAdapter;
+    private lateinit var planAdapter : PlanAdapter;
+    private lateinit var noteAdapter : NoteAdapter;
 
     override fun navigationId(): Int {
         return R.id.nav_textus_note_main_note;
@@ -42,6 +48,12 @@ class NoteFragment : NoteMainFragment<FragmentMainNoteBinding, NoteViewModel>() 
             }
             .build();
         dataBinding.memoAdapter = memoAdapter;
+
+        planAdapter = PlanAdapter(requireContext(),null);
+        dataBinding.planAdapter = planAdapter;
+
+        noteAdapter = NoteAdapter(requireContext(),null);
+        dataBinding.noteAdapter = noteAdapter;
     }
 
     override fun onMainShow() {
@@ -57,6 +69,19 @@ class NoteFragment : NoteMainFragment<FragmentMainNoteBinding, NoteViewModel>() 
     override fun onResume() {
         super.onResume()
         SLog.d(TAG,"onResume");
+    }
+
+    override fun addObserve() {
+        super.addObserve()
+        viewModel.memoList.observe(this, Observer {
+            memoAdapter.setList(it as MutableList<IRecyclerItem>);
+            memoAdapter.notifyDataSetChanged();
+        })
+
+        viewModel.planList.observe(this, Observer {
+            planAdapter.setList(it);
+            planAdapter.notifyDataSetChanged();
+        })
     }
 
     companion object{

@@ -13,4 +13,11 @@
     <string name="week_6">Sat</string>
     <string name="week_7">Sun</string>
     <string name="app_yuan_format">%s元</string>
+
+    <string name="app_year">Year</string>
+    <string name="app_month">Month</string>
+    <string name="app_day">Day</string>
+    <string name="app_hour">Hour</string>
+    <string name="app_minute">Minute</string>
+    <string name="app_second">Second</string>
 </resources>

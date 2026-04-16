@@ -1,10 +1,14 @@
-package com.wangshu.textus.note.network
+package com.wangshu.textus.note.network.model
 
 import com.wangshu.textus.note.BuildConfig
 import com.wangshu.textus.note.common.AppConfigure
+import com.wangshu.textus.note.local.ext.AppExt.appVersionCode
+import com.wangshu.textus.note.local.ext.AppExt.appVersionName
 import com.wangshu.textus.note.local.manager.ChannelManager
 import com.wangshu.textus.note.network.request.BillTypePercentRequest
 import com.wangshu.textus.note.network.request.BudgetDetailRequest
+import com.wangshu.textus.note.network.request.NoteListRequest
+import com.wangshu.textus.note.network.request.UserPlanListRequest
 import com.wangshu.textus.note.network.request.WeatherLngWlatRequest
 import com.wangshu.textus.note.network.service.NoteService
 import com.wsvita.network.configure.NetworkConfigure
@@ -100,5 +104,40 @@ class NoteModel private constructor(){
         request.version = BuildConfig.VERSION_CODE
         request.versionName = BuildConfig.VERSION_NAME
         return@withContext service.weatherByLngAndLat(request);
+    }
+
+    suspend fun todayMemoList() = withContext(Dispatchers.IO){
+        return@withContext service.todayMemoList();
+    }
+
+    suspend fun userTodayPlanList(request : UserPlanListRequest) = withContext(Dispatchers.IO){
+        request.queryTime = System.currentTimeMillis();
+        return@withContext service.userPlanList(request);
+    }
+
+    /**
+     * 查询日记列表
+     * create by Administrator at 2023/4/24 23:33
+     * @author Administrator
+     * @param startTime
+     *      开始时间
+     * @param endTime
+     *      结束时间
+     * @return
+     *      日记列表
+     */
+    suspend fun noteList(page : Long,startTime : Long?, endTime :Long?,
+                         orderFiled : String="create_date",order : String="desc") = withContext(Dispatchers.IO){
+        val request = NoteListRequest();
+        request.startTime = startTime;
+        request.endTime = endTime;
+        request.page = page;
+        request.orderField = orderFiled;
+        request.order = order
+        request.appId = appId;
+        request.channel = ChannelManager.instance.getChannel();
+        request.version = appVersionCode();
+        request.versionName = appVersionName();
+        return@withContext service.noteList(request);
     }
 }

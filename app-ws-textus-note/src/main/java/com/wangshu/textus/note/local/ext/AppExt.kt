@@ -2,6 +2,7 @@ package com.wangshu.textus.note.local.ext
 
 import android.app.Application
 import android.os.Build
+import com.wangshu.textus.note.BuildConfig
 
 object AppExt {
 
@@ -18,5 +19,13 @@ object AppExt {
         } catch (e: Exception) {
             "Unknown" // 兜底名称
         }
+    }
+
+    fun appVersionCode(): Int {
+        return BuildConfig.VERSION_CODE;
+    }
+
+    fun appVersionName(): String {
+        return  BuildConfig.VERSION_NAME;
     }
 }

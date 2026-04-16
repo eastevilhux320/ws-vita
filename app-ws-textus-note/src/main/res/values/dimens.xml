@@ -1,3 +1,5 @@
 <resources>
     <dimen name="ws_arrow_img_size">@dimen/dp_12</dimen>
+    <dimen name="rv_item_paln_icon_size">@dimen/dp_80</dimen>
+    <dimen name="plan_create_time_height">@dimen/dp_50</dimen>
 </resources>
